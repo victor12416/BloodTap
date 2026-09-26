@@ -1,0 +1,415 @@
+{
+  "soils": [
+    {
+      "name": "Dirt",
+      "tick": 300,
+      "effect": 1.0,
+      "weed": 1.0,
+      "requirement": 0
+    },
+    {
+      "name": "Fertilizer",
+      "tick": 180,
+      "effect": 0.75,
+      "weed": 1.2,
+      "requirement": 50
+    },
+    {
+      "name": "Clay",
+      "tick": 900,
+      "effect": 1.25,
+      "weed": 1.0,
+      "requirement": 100
+    },
+    {
+      "name": "Pebbles",
+      "tick": 300,
+      "effect": 0.25,
+      "weed": 0.1,
+      "requirement": 200
+    },
+    {
+      "name": "Wood chips",
+      "tick": 300,
+      "effect": 0.25,
+      "weed": 0.1,
+      "requirement": 300
+    }
+  ],
+  "plants": [
+    {
+      "id": 0,
+      "key": "bakerWheat",
+      "cost_minutes": 1,
+      "minimum_cost": 30,
+      "age_tick": 7,
+      "age_random": 2,
+      "mature": 35,
+      "effect": "prod",
+      "power": 0.01
+    },
+    {
+      "id": 1,
+      "key": "thumbcorn",
+      "cost_minutes": 5,
+      "minimum_cost": 100,
+      "age_tick": 6,
+      "age_random": 2,
+      "mature": 20,
+      "effect": "click",
+      "power": 0.02
+    },
+    {
+      "id": 2,
+      "key": "cronerice",
+      "cost_minutes": 15,
+      "minimum_cost": 250,
+      "age_tick": 0.4,
+      "age_random": 0.7,
+      "mature": 55,
+      "effect": "hunter",
+      "power": 0.03
+    },
+    {
+      "id": 3,
+      "key": "gildmillet",
+      "cost_minutes": 15,
+      "minimum_cost": 1500,
+      "age_tick": 2,
+      "age_random": 1.5,
+      "mature": 40,
+      "effect": "omen_gain",
+      "power": 0.01
+    },
+    {
+      "id": 4,
+      "key": "clover",
+      "cost_minutes": 25,
+      "minimum_cost": 77777,
+      "age_tick": 1,
+      "age_random": 1.5,
+      "mature": 35,
+      "effect": "omen_freq",
+      "power": 0.01
+    },
+    {
+      "id": 5,
+      "key": "goldenClover",
+      "cost_minutes": 125,
+      "minimum_cost": 777777777777,
+      "age_tick": 4,
+      "age_random": 12,
+      "mature": 50,
+      "effect": "omen_freq",
+      "power": 0.03
+    },
+    {
+      "id": 6,
+      "key": "shimmerlily",
+      "cost_minutes": 60,
+      "minimum_cost": 777777,
+      "age_tick": 5,
+      "age_random": 6,
+      "mature": 70,
+      "effect": "omen_gain",
+      "power": 0.01
+    },
+    {
+      "id": 7,
+      "key": "elderwort",
+      "cost_minutes": 180,
+      "minimum_cost": 100000000,
+      "age_tick": 0.3,
+      "age_random": 0.5,
+      "mature": 90,
+      "effect": "hunter",
+      "power": 0.01
+    },
+    {
+      "id": 8,
+      "key": "bakeberry",
+      "cost_minutes": 45,
+      "minimum_cost": 100000000,
+      "age_tick": 1,
+      "age_random": 1,
+      "mature": 50,
+      "effect": "prod",
+      "power": 0.01
+    },
+    {
+      "id": 9,
+      "key": "chocoroot",
+      "cost_minutes": 15,
+      "minimum_cost": 100000,
+      "age_tick": 4,
+      "age_random": 0,
+      "mature": 25,
+      "effect": "prod",
+      "power": 0.01
+    },
+    {
+      "id": 10,
+      "key": "whiteChocoroot",
+      "cost_minutes": 15,
+      "minimum_cost": 100000,
+      "age_tick": 4,
+      "age_random": 0,
+      "mature": 25,
+      "effect": "omen_gain",
+      "power": 0.01
+    },
+    {
+      "id": 11,
+      "key": "whiteMildew",
+      "cost_minutes": 20,
+      "minimum_cost": 9999,
+      "age_tick": 8,
+      "age_random": 12,
+      "mature": 70,
+      "effect": "prod",
+      "power": 0.01
+    },
+    {
+      "id": 12,
+      "key": "brownMold",
+      "cost_minutes": 20,
+      "minimum_cost": 9999,
+      "age_tick": 8,
+      "age_random": 12,
+      "mature": 70,
+      "effect": "prod_mult",
+      "power": -0.01
+    },
+    {
+      "id": 13,
+      "key": "meddleweed",
+      "cost_minutes": 1,
+      "minimum_cost": 10,
+      "age_tick": 10,
+      "age_random": 6,
+      "mature": 50,
+      "effect": "none",
+      "power": 0
+    },
+    {
+      "id": 14,
+      "key": "whiskerbloom",
+      "cost_minutes": 20,
+      "minimum_cost": 1000000,
+      "age_tick": 2,
+      "age_random": 2,
+      "mature": 60,
+      "effect": "insight",
+      "power": 0.002
+    },
+    {
+      "id": 15,
+      "key": "chimerose",
+      "cost_minutes": 15,
+      "minimum_cost": 242424,
+      "age_tick": 1,
+      "age_random": 1.5,
+      "mature": 30,
+      "effect": "visitor",
+      "power": 0.01
+    },
+    {
+      "id": 16,
+      "key": "nursetulip",
+      "cost_minutes": 40,
+      "minimum_cost": 1000000000,
+      "age_tick": 0.5,
+      "age_random": 2,
+      "mature": 60,
+      "effect": "prod_mult",
+      "power": -0.02
+    },
+    {
+      "id": 17,
+      "key": "drowsyfern",
+      "cost_minutes": 90,
+      "minimum_cost": 100000,
+      "age_tick": 0.05,
+      "age_random": 0.1,
+      "mature": 30,
+      "effect": "prod",
+      "power": 0.03
+    },
+    {
+      "id": 18,
+      "key": "wardlichen",
+      "cost_minutes": 10,
+      "minimum_cost": 10000,
+      "age_tick": 5,
+      "age_random": 4,
+      "mature": 65,
+      "effect": "parasite",
+      "power": -0.15
+    },
+    {
+      "id": 19,
+      "key": "keenmoss",
+      "cost_minutes": 50,
+      "minimum_cost": 1000000,
+      "age_tick": 4,
+      "age_random": 5,
+      "mature": 65,
+      "effect": "drop",
+      "power": 0.03
+    },
+    {
+      "id": 20,
+      "key": "queenbeet",
+      "cost_minutes": 90,
+      "minimum_cost": 1000000000,
+      "age_tick": 1,
+      "age_random": 0.4,
+      "mature": 80,
+      "effect": "prod_mult",
+      "power": -0.02
+    },
+    {
+      "id": 21,
+      "key": "queenbeetLump",
+      "cost_minutes": 120,
+      "minimum_cost": 1000000000000,
+      "age_tick": 0.04,
+      "age_random": 0.08,
+      "mature": 85,
+      "effect": "prod_mult",
+      "power": -0.1
+    },
+    {
+      "id": 22,
+      "key": "duketater",
+      "cost_minutes": 480,
+      "minimum_cost": 1000000000000,
+      "age_tick": 0.4,
+      "age_random": 0.1,
+      "mature": 95,
+      "effect": "none",
+      "power": 0
+    },
+    {
+      "id": 23,
+      "key": "crumbspore",
+      "cost_minutes": 10,
+      "minimum_cost": 999,
+      "age_tick": 3,
+      "age_random": 3,
+      "mature": 65,
+      "effect": "none",
+      "power": 0
+    },
+    {
+      "id": 24,
+      "key": "glovemorel",
+      "cost_minutes": 30,
+      "minimum_cost": 10000,
+      "age_tick": 3,
+      "age_random": 18,
+      "mature": 80,
+      "effect": "prod_mult",
+      "power": -0.01
+    },
+    {
+      "id": 25,
+      "key": "cheapcap",
+      "cost_minutes": 40,
+      "minimum_cost": 100000,
+      "age_tick": 6,
+      "age_random": 16,
+      "mature": 40,
+      "effect": "cost",
+      "power": -0.002
+    },
+    {
+      "id": 26,
+      "key": "foolBolete",
+      "cost_minutes": 15,
+      "minimum_cost": 10000,
+      "age_tick": 5,
+      "age_random": 25,
+      "mature": 50,
+      "effect": "omen_freq",
+      "power": 0.02
+    },
+    {
+      "id": 27,
+      "key": "doughshroom",
+      "cost_minutes": 100,
+      "minimum_cost": 100000000,
+      "age_tick": 1,
+      "age_random": 2,
+      "mature": 85,
+      "effect": "none",
+      "power": 0
+    },
+    {
+      "id": 28,
+      "key": "wrinklegill",
+      "cost_minutes": 20,
+      "minimum_cost": 1000000,
+      "age_tick": 1,
+      "age_random": 3,
+      "mature": 65,
+      "effect": "parasite",
+      "power": 0.02
+    },
+    {
+      "id": 29,
+      "key": "greenRot",
+      "cost_minutes": 60,
+      "minimum_cost": 1000000,
+      "age_tick": 12,
+      "age_random": 13,
+      "mature": 65,
+      "effect": "omen_freq",
+      "power": 0.01
+    },
+    {
+      "id": 30,
+      "key": "shriekbulb",
+      "cost_minutes": 60,
+      "minimum_cost": 4444444444444,
+      "age_tick": 3,
+      "age_random": 1,
+      "mature": 60,
+      "effect": "prod_mult",
+      "power": -0.02
+    },
+    {
+      "id": 31,
+      "key": "tidygrass",
+      "cost_minutes": 90,
+      "minimum_cost": 100000000000000,
+      "age_tick": 0.5,
+      "age_random": 0,
+      "mature": 40,
+      "effect": "none",
+      "power": 0
+    },
+    {
+      "id": 32,
+      "key": "everdaisy",
+      "cost_minutes": 180,
+      "minimum_cost": 1e+20,
+      "age_tick": 0.3,
+      "age_random": 0,
+      "mature": 75,
+      "effect": "none",
+      "power": 0
+    },
+    {
+      "id": 33,
+      "key": "ichorpuff",
+      "cost_minutes": 120,
+      "minimum_cost": 987654321,
+      "age_tick": 1,
+      "age_random": 1.5,
+      "mature": 35,
+      "effect": "none",
+      "power": 0
+    }
+  ]
+}

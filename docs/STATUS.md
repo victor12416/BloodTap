@@ -1,8 +1,10 @@
 # Engineering status
 
-Current milestone: **v0.28 subsystem fidelity repair**
+Executable status: **recovered core plus v0.19 corrections**.
 
-Verified milestones now include:
+On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19 has now been reapplied and verified locally; v0.20-v0.28 are still pending. See [recovery notes](RECOVERY.md).
+
+Historically reported milestones include:
 
 - v0.19: Ritual free grants, Ascetic break behavior, prestige-root dependency.
 - v0.20: Blood Moon stochastic stage transitions.
@@ -12,9 +14,13 @@ Verified milestones now include:
 - v0.27: all eleven Caryll Oath mechanical hooks, including Creation, Labor, Industry, Mother, Scorn and Order.
 - v0.28: Calendar core lifecycle and exact Calendar-Oath timing/drop hooks.
 
-Targeted/core tests pass for each completed milestone. Broad progression simulation remains intentionally deferred.
+Verified locally: recovered core script, unchanged v0.19 milestone script, and six v0.19 integration/boundary tests. The core script's obsolete prestige-unlock assertion was updated to require U363. Both recovered JSON data files are unchanged. No broad progression simulation was run.
+
+Audit of the recovered baseline: v0.20 and v0.28 fail assertions; v0.21-v0.23 lack `highest_owned`; v0.24-v0.27 lack their later APIs/state. These nine milestone scripts remain pending, not passing or silently skipped.
 
 ## Immediate queue
+
+Prerequisite: reapply v0.20 Blood Moon transitions, then v0.21-v0.28 in order, using the preserved tests and documented rules. The data files are recovered, but the full frozen specification (including the mutation matrix and exact Exchange tick rules) is still missing; unresolved formulas must be specified explicitly before claiming fidelity.
 
 1. Finish Garden passive-effect families and harvest/death reward integration.
 2. Tighten natural Omen candidate/wrath parity and special outcomes.

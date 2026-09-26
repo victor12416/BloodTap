@@ -1,0 +1,1242 @@
+{
+  "schema_version": "0.3",
+  "price_growth": 1.15,
+  "producers": [
+    {
+      "id": "B00",
+      "name": "Whispering Messengers",
+      "base_cost": 15,
+      "base_eps": 0.1
+    },
+    {
+      "id": "B01",
+      "name": "Yharnam Hunters",
+      "base_cost": 100,
+      "base_eps": 1
+    },
+    {
+      "id": "B02",
+      "name": "Blood Gardens",
+      "base_cost": 1100,
+      "base_eps": 8
+    },
+    {
+      "id": "B03",
+      "name": "Tomb Excavations",
+      "base_cost": 12000,
+      "base_eps": 47
+    },
+    {
+      "id": "B04",
+      "name": "Hunter Workshops",
+      "base_cost": 130000,
+      "base_eps": 260
+    },
+    {
+      "id": "B05",
+      "name": "Echo Vaults",
+      "base_cost": 1400000,
+      "base_eps": 1400
+    },
+    {
+      "id": "B06",
+      "name": "Healing Churches",
+      "base_cost": 20000000,
+      "base_eps": 7800
+    },
+    {
+      "id": "B07",
+      "name": "Byrgenwerth Observatories",
+      "base_cost": 330000000,
+      "base_eps": 44000
+    },
+    {
+      "id": "B08",
+      "name": "Chalice Caravans",
+      "base_cost": 5100000000.0,
+      "base_eps": 260000
+    },
+    {
+      "id": "B09",
+      "name": "Blood Laboratories",
+      "base_cost": 75000000000.0,
+      "base_eps": 1600000.0
+    },
+    {
+      "id": "B10",
+      "name": "Nightmare Gates",
+      "base_cost": 1000000000000.0,
+      "base_eps": 10000000.0
+    },
+    {
+      "id": "B11",
+      "name": "Dream Loops",
+      "base_cost": 14000000000000.0,
+      "base_eps": 65000000.0
+    },
+    {
+      "id": "B12",
+      "name": "Eldritch Crucibles",
+      "base_cost": 170000000000000.0,
+      "base_eps": 430000000.0
+    },
+    {
+      "id": "B13",
+      "name": "Lumen Gardens",
+      "base_cost": 2100000000000000.0,
+      "base_eps": 2900000000.0
+    },
+    {
+      "id": "B14",
+      "name": "Omen Altars",
+      "base_cost": 2.6e+16,
+      "base_eps": 21000000000.0
+    },
+    {
+      "id": "B15",
+      "name": "Recursive Nightmares",
+      "base_cost": 3.1e+17,
+      "base_eps": 150000000000.0
+    },
+    {
+      "id": "B16",
+      "name": "Caryll Scriptoria",
+      "base_cost": 7.1e+19,
+      "base_eps": 1100000000000.0
+    },
+    {
+      "id": "B17",
+      "name": "Dream Convergences",
+      "base_cost": 1.2e+22,
+      "base_eps": 8300000000000.0
+    },
+    {
+      "id": "B18",
+      "name": "Great One Memories",
+      "base_cost": 1.9e+24,
+      "base_eps": 64000000000000.0
+    },
+    {
+      "id": "B19",
+      "name": "Reawakened Selves",
+      "base_cost": 5.4e+26,
+      "base_eps": 510000000000000.0
+    }
+  ],
+  "standard_tiers": {
+    "unlock_owned": [
+      1,
+      5,
+      25,
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350,
+      400,
+      450,
+      500,
+      550,
+      600
+    ],
+    "cost_base_multipliers": [
+      10,
+      50,
+      500,
+      50000.0,
+      5000000.0,
+      500000000.0,
+      500000000000.0,
+      500000000000000.0,
+      5e+17,
+      5e+20,
+      5e+24,
+      5e+28,
+      5e+32,
+      5e+36,
+      5e+40
+    ]
+  },
+  "messenger": {
+    "doubling_costs": [
+      100,
+      500,
+      10000
+    ],
+    "doubling_unlocks": [
+      1,
+      1,
+      10
+    ],
+    "additive_unlock": 25,
+    "additive_cost": 100000,
+    "base_additive_coefficient": 0.1,
+    "coefficient_multiplier_thresholds": [
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350,
+      400,
+      450,
+      500,
+      550
+    ],
+    "coefficient_multipliers": [
+      5,
+      10,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ]
+  },
+  "prestige": {
+    "scale": 1000000000000.0,
+    "exponent": 3
+  },
+  "offline": {
+    "initial_efficiency": 0.05,
+    "initial_cap_seconds": 3600,
+    "tail_factor": 0.1
+  },
+  "clicking": {
+    "mouse_upgrade_costs": [
+      50000.0,
+      5000000.0,
+      500000000.0,
+      50000000000.0,
+      5000000000000.0,
+      500000000000000.0,
+      5e+16,
+      5e+18,
+      5e+20,
+      5e+22,
+      5e+24,
+      5e+26,
+      5e+28,
+      5e+30,
+      5e+32
+    ],
+    "handmade_unlocks": [
+      1000.0,
+      100000.0,
+      10000000.0,
+      1000000000.0,
+      100000000000.0,
+      10000000000000.0,
+      1000000000000000.0,
+      1e+17,
+      1e+19,
+      1e+21,
+      1e+23,
+      1e+25,
+      1e+27,
+      1e+29,
+      1e+31
+    ]
+  },
+  "achievements": {
+    "ownership_thresholds": [
+      1,
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350,
+      400,
+      450,
+      500,
+      550,
+      600,
+      650,
+      700
+    ],
+    "messenger_thresholds": [
+      1,
+      2,
+      50,
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      1000
+    ],
+    "total_building_thresholds": [
+      100,
+      500,
+      1000,
+      2500,
+      5000,
+      7500,
+      10000
+    ],
+    "upgrade_count_thresholds": [
+      20,
+      50,
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700
+    ]
+  },
+  "insight_amplifiers": {
+    "achievement_unlocks": [
+      13,
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      275,
+      300,
+      325,
+      350
+    ],
+    "costs": [
+      9000000.0,
+      9000000000.0,
+      90000000000000.0,
+      9e+16,
+      9e+20,
+      9e+23,
+      9e+26,
+      9e+29,
+      9e+32,
+      9e+35,
+      9e+38,
+      9e+41,
+      9e+44,
+      9e+47,
+      9e+50
+    ],
+    "coefficients": [
+      0.1,
+      0.125,
+      0.15,
+      0.175,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.175,
+      0.15,
+      0.125,
+      0.115,
+      0.11,
+      0.105
+    ]
+  },
+  "global_relics": [
+    {
+      "id": "U033",
+      "cost": 999999.0,
+      "bonus_percent": 1.0,
+      "run_earnings_unlock": 49999.95
+    },
+    {
+      "id": "U034",
+      "cost": 4999995.0,
+      "bonus_percent": 1.0,
+      "run_earnings_unlock": 249999.75
+    },
+    {
+      "id": "U035",
+      "cost": 9999999.0,
+      "bonus_percent": 1.0,
+      "run_earnings_unlock": 499999.95
+    },
+    {
+      "id": "U036",
+      "cost": 49999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 2499999.75
+    },
+    {
+      "id": "U037",
+      "cost": 99999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 4999999.95
+    },
+    {
+      "id": "U038",
+      "cost": 499999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 24999999.75
+    },
+    {
+      "id": "U039",
+      "cost": 99999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 4999999.95
+    },
+    {
+      "id": "U040",
+      "cost": 4999999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 249999999.75
+    },
+    {
+      "id": "U041",
+      "cost": 9999999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 499999999.95
+    },
+    {
+      "id": "U042",
+      "cost": 49999999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 2499999999.75
+    },
+    {
+      "id": "U055",
+      "cost": 99999999999.0,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4999999999.95
+    },
+    {
+      "id": "U056",
+      "cost": 99999999999.0,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4999999999.95
+    },
+    {
+      "id": "U080",
+      "cost": 499999999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 24999999999.75
+    },
+    {
+      "id": "U081",
+      "cost": 999999999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 49999999999.95
+    },
+    {
+      "id": "U088",
+      "cost": 4999999999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 249999999999.75
+    },
+    {
+      "id": "U089",
+      "cost": 9999999999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 499999999999.95
+    },
+    {
+      "id": "U090",
+      "cost": 49999999999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 2499999999999.75
+    },
+    {
+      "id": "U092",
+      "cost": 99999999999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 4999999999999.95
+    },
+    {
+      "id": "U104",
+      "cost": 499999999999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 24999999999999.75
+    },
+    {
+      "id": "U105",
+      "cost": 499999999999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 24999999999999.75
+    },
+    {
+      "id": "U106",
+      "cost": 999999999999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 49999999999999.95
+    },
+    {
+      "id": "U107",
+      "cost": 999999999999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 49999999999999.95
+    },
+    {
+      "id": "U150",
+      "cost": 1e+16,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 500000000000000.0
+    },
+    {
+      "id": "U151",
+      "cost": 1e+16,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 500000000000000.0
+    },
+    {
+      "id": "U256",
+      "cost": 5e+16,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 2500000000000000.0
+    },
+    {
+      "id": "U257",
+      "cost": 5e+16,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 2500000000000000.0
+    },
+    {
+      "id": "U258",
+      "cost": 1e+17,
+      "bonus_percent": 3.0,
+      "run_earnings_unlock": 5000000000000000.0
+    },
+    {
+      "id": "U259",
+      "cost": 5e+17,
+      "bonus_percent": 3.0,
+      "run_earnings_unlock": 2.5e+16
+    },
+    {
+      "id": "U260",
+      "cost": 1e+18,
+      "bonus_percent": 3.0,
+      "run_earnings_unlock": 5e+16
+    },
+    {
+      "id": "U261",
+      "cost": 5e+18,
+      "bonus_percent": 3.0,
+      "run_earnings_unlock": 2.5e+17
+    },
+    {
+      "id": "U262",
+      "cost": 1e+19,
+      "bonus_percent": 3.0,
+      "run_earnings_unlock": 5e+17
+    },
+    {
+      "id": "U263",
+      "cost": 5e+19,
+      "bonus_percent": 3.0,
+      "run_earnings_unlock": 2.5e+18
+    },
+    {
+      "id": "U338",
+      "cost": 1e+20,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+18
+    },
+    {
+      "id": "U339",
+      "cost": 5e+20,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+19
+    },
+    {
+      "id": "U340",
+      "cost": 1e+21,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+19
+    },
+    {
+      "id": "U341",
+      "cost": 5e+21,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+20
+    },
+    {
+      "id": "U342",
+      "cost": 1e+22,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+20
+    },
+    {
+      "id": "U343",
+      "cost": 5e+22,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+21
+    },
+    {
+      "id": "U350",
+      "cost": 1e+23,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+21
+    },
+    {
+      "id": "U351",
+      "cost": 5e+23,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+22
+    },
+    {
+      "id": "U352",
+      "cost": 1e+24,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+22
+    },
+    {
+      "id": "U403",
+      "cost": 4.999999999999999e+24,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.4999999999999996e+23
+    },
+    {
+      "id": "U404",
+      "cost": 1e+25,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5.0000000000000006e+23
+    },
+    {
+      "id": "U405",
+      "cost": 5e+25,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+24
+    },
+    {
+      "id": "U406",
+      "cost": 1e+26,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+24
+    },
+    {
+      "id": "U407",
+      "cost": 5e+26,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+25
+    },
+    {
+      "id": "U426",
+      "cost": 1e+29,
+      "bonus_percent": 13.0,
+      "run_earnings_unlock": 5e+27
+    },
+    {
+      "id": "U444",
+      "cost": 1e+27,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+25
+    },
+    {
+      "id": "U445",
+      "cost": 5e+27,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+26
+    },
+    {
+      "id": "U446",
+      "cost": 1e+28,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+26
+    },
+    {
+      "id": "U447",
+      "cost": 5e+28,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+27
+    },
+    {
+      "id": "U448",
+      "cost": 1e+29,
+      "bonus_percent": 1.0,
+      "run_earnings_unlock": 5e+27
+    },
+    {
+      "id": "U453",
+      "cost": 4.9999999999999994e+29,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+28
+    },
+    {
+      "id": "U454",
+      "cost": 1e+30,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5.0000000000000005e+28
+    },
+    {
+      "id": "U455",
+      "cost": 5e+30,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+29
+    },
+    {
+      "id": "U456",
+      "cost": 1e+31,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+29
+    },
+    {
+      "id": "U457",
+      "cost": 4.999999999999999e+31,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.4999999999999996e+30
+    },
+    {
+      "id": "U458",
+      "cost": 1e+32,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5.0000000000000004e+30
+    },
+    {
+      "id": "U464",
+      "cost": 5.0000000000000004e+32,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+31
+    },
+    {
+      "id": "U465",
+      "cost": 1e+33,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 4.999999999999999e+31
+    },
+    {
+      "id": "U466",
+      "cost": 5e+33,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+32
+    },
+    {
+      "id": "U467",
+      "cost": 1e+34,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+32
+    },
+    {
+      "id": "U468",
+      "cost": 5e+34,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+33
+    },
+    {
+      "id": "U469",
+      "cost": 1e+35,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+33
+    },
+    {
+      "id": "U498",
+      "cost": 4.9999999999999995e+35,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+34
+    },
+    {
+      "id": "U499",
+      "cost": 1e+36,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+34
+    },
+    {
+      "id": "U500",
+      "cost": 5.0000000000000004e+36,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+35
+    },
+    {
+      "id": "U501",
+      "cost": 1e+37,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 4.9999999999999995e+35
+    },
+    {
+      "id": "U502",
+      "cost": 99999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 4999999.95
+    },
+    {
+      "id": "U503",
+      "cost": 99999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 4999999.95
+    },
+    {
+      "id": "U504",
+      "cost": 99999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 4999999.95
+    },
+    {
+      "id": "U535",
+      "cost": 5e+37,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 2.5e+36
+    },
+    {
+      "id": "U536",
+      "cost": 1e+38,
+      "bonus_percent": 4.0,
+      "run_earnings_unlock": 5e+36
+    },
+    {
+      "id": "U538",
+      "cost": 5e+38,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 2.5e+37
+    },
+    {
+      "id": "U565",
+      "cost": 1e+39,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+37
+    },
+    {
+      "id": "U566",
+      "cost": 3.162277660168379e+39,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+38
+    },
+    {
+      "id": "U567",
+      "cost": 9.999999999999999e+39,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+38
+    },
+    {
+      "id": "U568",
+      "cost": 3.162277660168379e+40,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+39
+    },
+    {
+      "id": "U569",
+      "cost": 1e+41,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+39
+    },
+    {
+      "id": "U570",
+      "cost": 3.1622776601683795e+41,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+40
+    },
+    {
+      "id": "U571",
+      "cost": 9.999999999999999e+41,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+40
+    },
+    {
+      "id": "U572",
+      "cost": 3.162277660168379e+42,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+41
+    },
+    {
+      "id": "U573",
+      "cost": 9.999999999999999e+42,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.9999999999999995e+41
+    },
+    {
+      "id": "U574",
+      "cost": 3.162277660168379e+43,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841893e+42
+    },
+    {
+      "id": "U575",
+      "cost": 3.162277660168379e+43,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841893e+42
+    },
+    {
+      "id": "U576",
+      "cost": 9.999999999999999e+43,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.9999999999999995e+42
+    },
+    {
+      "id": "U577",
+      "cost": 3.162277660168379e+44,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841895e+43
+    },
+    {
+      "id": "U578",
+      "cost": 1e+45,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+43
+    },
+    {
+      "id": "U579",
+      "cost": 3.1622776601683795e+45,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+44
+    },
+    {
+      "id": "U580",
+      "cost": 1e+46,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+44
+    },
+    {
+      "id": "U581",
+      "cost": 3.1622776601683787e+46,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841894e+45
+    },
+    {
+      "id": "U582",
+      "cost": 3.1622776601683787e+46,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841894e+45
+    },
+    {
+      "id": "U583",
+      "cost": 9.999999999999998e+46,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.9999999999999993e+45
+    },
+    {
+      "id": "U584",
+      "cost": 3.1622776601683793e+47,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+46
+    },
+    {
+      "id": "U585",
+      "cost": 9.999999999999999e+47,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+46
+    },
+    {
+      "id": "U586",
+      "cost": 9.999999999999999e+47,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+46
+    },
+    {
+      "id": "U587",
+      "cost": 3.162277660168379e+48,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+47
+    },
+    {
+      "id": "U588",
+      "cost": 1e+49,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.9999999999999994e+47
+    },
+    {
+      "id": "U607",
+      "cost": 3.1622776601683793e+49,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+48
+    },
+    {
+      "id": "U608",
+      "cost": 9.999999999999999e+49,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+48
+    },
+    {
+      "id": "U609",
+      "cost": 3.162277660168379e+50,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+49
+    },
+    {
+      "id": "U614",
+      "cost": 3.162277660168379e+40,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+39
+    },
+    {
+      "id": "U615",
+      "cost": 1e+51,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+49
+    },
+    {
+      "id": "U616",
+      "cost": 3.1622776601683795e+51,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841898e+50
+    },
+    {
+      "id": "U617",
+      "cost": 1e+52,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+50
+    },
+    {
+      "id": "U652",
+      "cost": 3.162277660168379e+52,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+51
+    },
+    {
+      "id": "U653",
+      "cost": 1e+53,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+51
+    },
+    {
+      "id": "U654",
+      "cost": 3.162277660168379e+53,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+52
+    },
+    {
+      "id": "U655",
+      "cost": 9.999999999999999e+53,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+52
+    },
+    {
+      "id": "U656",
+      "cost": 3.162277660168379e+54,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841895e+53
+    },
+    {
+      "id": "U657",
+      "cost": 9.999999999999999e+54,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.9999999999999995e+53
+    },
+    {
+      "id": "U658",
+      "cost": 3.162277660168379e+55,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+54
+    },
+    {
+      "id": "U678",
+      "cost": 9.999999999999999e+55,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.9999999999999994e+54
+    },
+    {
+      "id": "U679",
+      "cost": 3.1622776601683794e+56,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+55
+    },
+    {
+      "id": "U680",
+      "cost": 9.999999999999999e+56,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+55
+    },
+    {
+      "id": "U681",
+      "cost": 3.1622776601683795e+57,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+56
+    },
+    {
+      "id": "U682",
+      "cost": 1e+58,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+56
+    },
+    {
+      "id": "U721",
+      "cost": 3.162277660168379e+58,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841894e+57
+    },
+    {
+      "id": "U722",
+      "cost": 1e+59,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+57
+    },
+    {
+      "id": "U723",
+      "cost": 3.1622776601683793e+59,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+58
+    },
+    {
+      "id": "U724",
+      "cost": 3.1622776601683793e+59,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841897e+58
+    },
+    {
+      "id": "U727",
+      "cost": 99999999.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 4999999.95
+    },
+    {
+      "id": "U728",
+      "cost": 499999995.0,
+      "bonus_percent": 2.0,
+      "run_earnings_unlock": 24999999.75
+    },
+    {
+      "id": "U807",
+      "cost": 1e+60,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+58
+    },
+    {
+      "id": "U808",
+      "cost": 3.1622776601683792e+60,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+59
+    },
+    {
+      "id": "U809",
+      "cost": 1e+61,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+59
+    },
+    {
+      "id": "U810",
+      "cost": 3.162277660168379e+61,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+60
+    },
+    {
+      "id": "U811",
+      "cost": 1e+62,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5.0000000000000005e+60
+    },
+    {
+      "id": "U812",
+      "cost": 3.162277660168379e+62,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+61
+    },
+    {
+      "id": "U813",
+      "cost": 9.999999999999999e+62,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.9999999999999996e+61
+    },
+    {
+      "id": "U814",
+      "cost": 3.1622776601683792e+63,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841895e+62
+    },
+    {
+      "id": "U815",
+      "cost": 1e+64,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+62
+    },
+    {
+      "id": "U816",
+      "cost": 3.1622776601683795e+64,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841898e+63
+    },
+    {
+      "id": "U820",
+      "cost": 1e+65,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+63
+    },
+    {
+      "id": "U821",
+      "cost": 3.1622776601683793e+65,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841898e+64
+    },
+    {
+      "id": "U822",
+      "cost": 1e+66,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 5e+64
+    },
+    {
+      "id": "U823",
+      "cost": 3.1622776601683793e+66,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+65
+    },
+    {
+      "id": "U867",
+      "cost": 9.999999999999998e+66,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+65
+    },
+    {
+      "id": "U868",
+      "cost": 3.162277660168379e+67,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+66
+    },
+    {
+      "id": "U869",
+      "cost": 9.999999999999998e+67,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+66
+    },
+    {
+      "id": "U870",
+      "cost": 3.162277660168379e+68,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841896e+67
+    },
+    {
+      "id": "U871",
+      "cost": 9.999999999999999e+68,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 4.999999999999999e+67
+    },
+    {
+      "id": "U872",
+      "cost": 3.1622776601683793e+69,
+      "bonus_percent": 5.0,
+      "run_earnings_unlock": 1.5811388300841895e+68
+    }
+  ],
+  "prestige_effectiveness_purchases": [
+    {
+      "id": "U129",
+      "cost": 11,
+      "effectiveness": 0.05
+    },
+    {
+      "id": "U130",
+      "cost": 1111,
+      "effectiveness": 0.25
+    },
+    {
+      "id": "U131",
+      "cost": 111111,
+      "effectiveness": 0.5
+    },
+    {
+      "id": "U132",
+      "cost": 11111111,
+      "effectiveness": 0.75
+    },
+    {
+      "id": "U133",
+      "cost": 1111111111,
+      "effectiveness": 1.0
+    }
+  ]
+}

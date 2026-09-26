@@ -4,25 +4,35 @@ BloodTap is an original gothic-horror incremental/clicker game project inspired 
 
 ## Current status
 
-**Pre-alpha / simulator phase — v0.18**
+**Pre-alpha / simulator phase — executable baseline restored, v0.19 reapplied**
 
-The economy and progression reference is pinned and versioned. The current engineering focus is making the mathematical simulator correct and fast enough to validate progression without relying on unnecessary full-run simulations.
+The simulator, economy data, Garden catalog, and core tests have been restored from the user-provided executable archive. The core suite and v0.19 corrections now pass locally. Historical v0.20-v0.28 tests remain pending integration; the archive did not contain their merged implementation. See [engineering status](docs/STATUS.md) and [recovery notes](docs/RECOVERY.md).
 
-### Verified in v0.18
+Run the verified subset from the repository root with Python 3.12 (no external dependencies):
+
+```powershell
+python -B -m simulator.tests.test_core
+python -B -m simulator.tests.test_v19_fidelity
+python -B -m unittest simulator.tests.test_v19_integration -v
+```
+
+Use `import simulator` in study scripts. Do not enable Python's `-O` flag: the historical test scripts use assertions. Running all historical tests currently fails on the pending milestones.
+
+### Recovered core
 
 - 20-producer base economy and 1.15 price growth
 - Standard producer upgrade tiers
 - Messenger/click progression
-- Achievement → Insight fixed-point resolution
+- Achievement and Insight progression
 - Prestige/Reawakening core
 - Offline-production framework
-- Event-driven timing
-- Conservative cheap affordability frontier for scheduling
-- Targeted v0.17 and v0.18 correctness tests
+- Adaptive purchase policy and affordability scheduling helpers
 
-### Still under active fidelity work
+The archive's core suite identifies its original baseline as v0.15. Earlier v0.17/v0.18 test suites and the full pinned fidelity specification were not recovered; those milestones are not newly certified.
 
-Omens, Hunter Ritual edge cases, Caryll Oath break behavior, Blood Moon stage transitions, Chalice Exchange fidelity, Blood Garden mutation/neighbor systems, calendar effects, and later ascension systems.
+### Remaining fidelity work
+
+First reapply v0.20-v0.28 against explicit rules and tests. Then continue Garden passive effects and harvest/death rewards, natural Omen candidate/wrath parity, Calendar collections and carryover, Great One/aura and parasite integration, and accounting/seeded verification. See `docs/STATUS.md` for the ordered queue.
 
 ## Development rules
 

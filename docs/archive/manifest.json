@@ -1,0 +1,31 @@
+{
+  "archive": "BloodTap_VSCode_Current_Executable.zip",
+  "archive_sha256": "e3f15814cc9bd7a84e425545fef8a3d9f8ae98fe8fdb3a2924f6d025426e5f48",
+  "files": [
+    {
+      "archive_path": "simulator.py",
+      "restored_path": "simulator/__init__.py",
+      "sha256": "6c41b29e54cddac267030485a02eaf2201c41e837d985c709a9497bd7a40d96d"
+    },
+    {
+      "archive_path": "economy_data.json",
+      "restored_path": "simulator/economy_data.json",
+      "sha256": "cbfbefe794aadb5553b8b2b008674c87901b1674db5ae2e85949e74652cad3d5"
+    },
+    {
+      "archive_path": "garden_data.json",
+      "restored_path": "simulator/garden_data.json",
+      "sha256": "35cb0e4e2781981c4fdd2183cfc66531b1be6382974cdedb41601ba03a404420"
+    },
+    {
+      "archive_path": "test_core.py",
+      "restored_path": "simulator/tests/test_core.py",
+      "sha256": "767c0e2305e7fc67d25d685e4e753f80df4a59b64d82b4b8c0f55178b2e99e23"
+    },
+    {
+      "archive_path": "README.txt",
+      "restored_path": "docs/archive/README.txt",
+      "sha256": "e5bf2604282e4d41a9000dd82a25b18c6ce856cbfe090a063e6ba1ccbdc49203"
+    }
+  ]
+}

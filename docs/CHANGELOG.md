@@ -1,5 +1,12 @@
 # BloodTap engineering changelog
 
+## 2026-09-26 executable recovery
+- Restored the engine, economy data, Garden catalog, and core suite from the user-provided executable archive; recorded original file hashes and archive provenance.
+- Verified the unchanged recovered core before modifications, then reapplied v0.19 Ritual price scaling, prestige-root dependency, and natural-Omen Ascetic break behavior.
+- Updated the recovered core test's older prestige-unlock expectation and added six integration/boundary tests. Core and v0.19 checks pass.
+- v0.20-v0.28 remain test-only milestones pending integration. The recovered archive is not a v0.28 implementation.
+- No balance data changes or broad progression simulations.
+
 ## v0.26
 - Added Quiet Hunt run-local toggle, x1.5 base production, current-EPS one-hour toggle cost, and natural-Omen suppression.
 - Added Veil x1.50-x1.75 production scaling, four-step defense probability, click/Omen break checks, counters, and 24-hour-unbuffed-EPS reactivation.
