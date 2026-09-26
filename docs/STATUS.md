@@ -1,8 +1,8 @@
 # Engineering status
 
-Executable status: **recovered core plus v0.19-v0.27 test-supported behavior**.
+Executable status: **recovered core plus v0.19-v0.28 test-supported behavior**.
 
-On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19-v0.27 preserved test cases now pass; v0.28 is still pending. See [recovery notes](RECOVERY.md).
+On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. Every preserved v0.19-v0.28 assertion now passes against the reconstructed, explicitly limited implementation. See [recovery notes](RECOVERY.md).
 
 Historically reported milestones include:
 
@@ -16,7 +16,7 @@ Historically reported milestones include:
 
 Verified locally: recovered core script, v0.19-v0.21 milestone scripts, simulator boundary tests, alpha unit/integration tests, and a real-browser desktop/mobile flow. The core script's obsolete prestige-unlock assertion was updated to require U363. Both recovered JSON data files are unchanged.
 
-Audit of the recovered baseline found that v0.28 still lacks later APIs and state. The v0.24 script passes against the two mutation rows it asserts, but the other matrix rules are still missing. The v0.27 script asserts Oaths 6-11; unasserted mechanics for earlier Oaths remain subject to recovery. One later milestone script remains pending, not passing or silently skipped.
+The v0.24 script passes against the two mutation rows it asserts, but the other matrix rules are still missing. The v0.27 script asserts Oaths 6-11; unasserted mechanics for earlier Oaths remain subject to recovery. The v0.28 script covers Calendar switching, two Omen timing factors, one drop-failure factor, expiry, and eternal mode. Passing all milestone scripts is a precise test-supported claim, not full parity with the missing specification.
 
 v0.20 validation: the existing milestone script and five boundary tests pass, including persisted geometric waits, research timing, pledge expiry, suppression, and reset. The parasite model remains approximate.
 
@@ -34,6 +34,8 @@ v0.26 validation: Quiet Hunt toggle cost/production and natural-Omen suppression
 
 v0.27 validation: the preserved Oaths 6-11 factors now affect producer prices, prestige effectiveness, clicks, production, Omen timing, Insight, forced wrath, parasites, and the Order Dreg-time hook. The preserved script and five integration tests pass. The Order helper is not applied to the Dreg cycle because the trigger semantics were not recovered; Oaths not asserted by this script remain outside the fidelity claim.
 
+v0.28 validation: the Calendar can be unlocked by its ascension upgrade or the preserved direct test flag, charges the escalating switch cost, expires after one day unless eternal mode is enabled, and composes the preserved Night of the Hunt and Masquerade timing factors with Omen scheduling. Communion scales those recovered timing and drop-failure reductions by slot. The preserved script and five boundary tests pass. Visitor/drop collections, carryover, the other Calendar effects, and any rules not asserted by the surviving script remain unavailable.
+
 Run `python -B -m simulator.verify` for the restored subset. `--all` also runs pending historical tests and currently exits with failure. CI tests the explicitly scoped restored subset.
 
 Playable preview status: the local client implements the core clicker loop, shops, achievements/Insight, collectible Omens, Reawakening, permanent offline memories, validated saves, import/export, reset safeguards, responsive layout, and reduced motion. Fifteen alpha tests and the Chrome desktop/mobile flow pass.
@@ -45,7 +47,7 @@ Balance status: three one-hour profiles and three adaptive profiles through the 
 Two decisions block alpha readiness:
 
 1. Set a target window and approved balance lever for the first useful two-fragment bundle. The current measured window is roughly 20.5 hours of highly active play.
-2. Recover or redefine the missing v0.28 rules, unasserted Oath hooks, the other Garden mutation rows, and remaining Exchange rules before exposing advanced systems. The full frozen specification, including most of the mutation matrix and exact Exchange tick rules, is still missing.
+2. Recover or redefine the unasserted Calendar and Oath hooks, the other Garden mutation rows, and remaining Exchange rules before exposing advanced systems. The full frozen specification, including most of the mutation matrix and exact Exchange tick rules, is still missing.
 
 1. Finish Garden passive-effect families and harvest/death reward integration.
 2. Tighten natural Omen candidate/wrath parity and special outcomes.

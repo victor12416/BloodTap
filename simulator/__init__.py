@@ -93,6 +93,8 @@ class State:
     permanent_suppression: bool=False
     parasites: list=field(default_factory=list)
     parasites_popped: int=0
+    calendar_unlocked: bool=False
+    eternal_calendar_enabled: bool=False
     calendar_state: int=-1
     calendar_switches: int=0
     calendar_until: float=0.0
@@ -645,19 +647,28 @@ def buy_until_stable(s,cps,policy="greedy"):
 # ---------- Rites of the Calendar ----------
 CALENDAR_NAMES=("Night of the Hunt","Festival of Blood","Masquerade of Yharnam","Night of Spirits","Vermin Hunt")
 
-def calendar_unlocked(s):return "U181" in s.ascension_upgrades
+def calendar_available(s):return s.calendar_unlocked or "U181" in s.ascension_upgrades
 def calendar_oath_multiplier(s):
     for slot,oath in enumerate(s.oath_slots):
         if oath==4:return (2.0,1.5,1.25)[slot]
     return 1.0
 def calendar_switch_cost(s):return 1e9+raw_eps(s)*60*(1.5**s.calendar_switches)*calendar_oath_multiplier(s)
 def switch_calendar(s,state):
-    if not calendar_unlocked(s) or not 0<=state<5:return False
+    if not calendar_available(s) or isinstance(state,bool) or not isinstance(state,int) or not 0<=state<len(CALENDAR_NAMES):return False
     c=calendar_switch_cost(s)
     if s.bank<c:return False
     s.bank-=c;s.calendar_state=state;s.calendar_switches+=1;s.calendar_until=s.elapsed+86400;return True
+def calendar_omen_spawn_factor(s):
+    # The surviving v0.28 contract constrains Night of the Hunt and
+    # Masquerade.  Communion scales the reduction according to its slot.
+    reductions={0:.015,2:.0225}
+    return max(0.0,1.0-reductions.get(s.calendar_state,0.0)*calendar_oath_multiplier(s))
+def calendar_drop_failure_factor(s):
+    # Night of the Hunt's base 5% reduction is amplified by Communion.
+    if s.calendar_state!=0:return 1.0
+    return max(0.0,1.0-.05*calendar_oath_multiplier(s))
 def update_calendar(s):
-    if s.calendar_state>=0 and s.elapsed>=s.calendar_until:s.calendar_state=-1;s.calendar_until=0.0
+    if not s.eternal_calendar_enabled and s.calendar_state>=0 and s.elapsed>=s.calendar_until:s.calendar_state=-1;s.calendar_until=0.0
 
 # ---------- Blood Moon research + Nightmare Parasites ----------
 _BM_COSTS=(1e15,1e15,2e15,4e15,8e15,1.6e16,3.2e16,6.4e16,1.28e17,2.56e17)
@@ -1271,7 +1282,7 @@ def reawaken(s):
     s.exchange_unlocked=False;s.exchange_ticks=0;s.exchange_last_tick=s.elapsed;s.exchange_values=[0.0]*18;s.exchange_velocity=[0.0]*18;s.exchange_modes=[0]*18;s.exchange_mode_time=[0]*18;s.exchange_stock=[0]*18;s.exchange_profit=0;s.exchange_highest_raw_eps=0
     s.exchange_trade_tick=[-1]*18;s.exchange_trade_side=[""]*18;s.exchange_loan_phase=[0]*3;s.exchange_loan_until=[0.0]*3
     s.garden_plot=[None]*36;s.garden_soil=0;s.garden_next_tick=0;s.garden_frozen=False;s.garden_soil_changed_at=s.elapsed
-    s.calendar_state=-1;s.calendar_switches=0;s.calendar_until=0
+    s.calendar_state=-1;s.calendar_switches=0;s.calendar_until=0;s.eternal_calendar_enabled=False
     return gain
 
 def baseline_ascension_spend(s):
@@ -1299,7 +1310,7 @@ def sample_omen_wait(rng):
     u=rng.random();i=bisect.bisect_left(_OMEN_CDF,u)
     return _OMEN_TIMES[min(i,len(_OMEN_TIMES)-1)]
 
-def next_omen_wait(s,rng):return sample_omen_wait(rng)/oath_omen_spawn_factor(s)
+def next_omen_wait(s,rng):return sample_omen_wait(rng)*calendar_omen_spawn_factor(s)/oath_omen_spawn_factor(s)
 
 def expire_buffs(s):
     s.prod_buffs=[b for b in s.prod_buffs if b[0]>s.elapsed]

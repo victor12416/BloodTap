@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.28 test-supported Calendar core
+- Restored Calendar unlock/switch lifecycle, escalating costs, one-day expiry, and eternal mode.
+- Composed the preserved Night of the Hunt and Masquerade Omen timing factors with scheduling, plus the preserved Communion drop-failure factor and slot scaling.
+- The preserved v0.28 script and five boundary tests pass, so every surviving v0.19-v0.28 milestone assertion now passes.
+- Calendar visitor/drop collections, carryover, other event effects, and rules absent from the surviving script remain outside the fidelity claim.
+
 ## v0.27 Oaths 6-11 restored
 - Wired the preserved Industry, Labor, Creation, Mother, Scorn, and Order factors into producer prices, prestige, clicking, production, Omen timing, Insight, forced wrath, and parasites.
 - Added compositional and integration checks for costs, timing, parasite payout, and Order's Dreg-time calculation.
