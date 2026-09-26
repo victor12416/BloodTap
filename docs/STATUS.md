@@ -38,7 +38,7 @@ v0.28 validation: the Calendar can be unlocked by its ascension upgrade or the p
 
 Run `python -B -m simulator.verify` for the recovered and test-supported contract. `--all` also discovers any preserved milestone script outside the declared set. CI tests the same declared contract.
 
-Playable alpha-candidate status: the local client implements the core clicker loop, stage-aware onboarding, shops, achievements/Insight, collectible Omens, Reawakening progress, permanent offline memories, validated saves, import/export, reset safeguards, responsive layout, and reduced motion. Nineteen alpha tests and the Chrome desktop/mobile flow pass.
+Playable alpha-candidate status: the local client implements the core clicker loop, stage-aware onboarding, shops, achievements/Insight, collectible Omens, Reawakening progress, permanent offline memories, validated saves, import/export, reset safeguards, responsive layout, and reduced motion. Twenty alpha tests and the Chrome desktop/mobile flow pass. CI produces a deterministic, manifest-backed source package from the same tested commit.
 
 Balance status: the playable alpha now uses a versioned 23,000,000-echo cubic prestige scale capped at its first two fragments. The 20-seed adaptive sample, with four taps/second and 100% Omen collection, reaches the useful bundle in 69m15s–89m50s with an 82m15s median. Later fragments retain the recovered scale. See [the balance report](balance/README.md). Human pacing remains unmeasured.
 

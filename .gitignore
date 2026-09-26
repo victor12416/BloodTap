@@ -2,3 +2,4 @@ __pycache__/
 *.py[cod]
 alpha-data/
 test-artifacts/
+dist/

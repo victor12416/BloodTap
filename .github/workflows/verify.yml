@@ -12,3 +12,10 @@ jobs:
           python-version: '3.12'
       - run: python -B -m simulator.verify
       - run: python -B -m unittest discover -s alpha -p "test_*.py"
+      - run: python -B -m tools.package_alpha
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BloodTap-alpha-${{ github.sha }}
+          path: dist/*.zip
+          if-no-files-found: error
+          retention-days: 14

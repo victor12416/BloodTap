@@ -8,6 +8,14 @@ python -B -m alpha.server
 
 Open <http://127.0.0.1:8765>. Python 3.12 is sufficient; playing needs no packages, build tools, external assets, or account. Stop the server with Ctrl+C. This is a local alpha candidate, not a public deployment.
 
+Each successful GitHub Actions run publishes a 14-day source package named `BloodTap-alpha-<commit>`. To build the same deterministic package locally:
+
+```powershell
+python -B -m tools.package_alpha
+```
+
+Extract the ZIP, keep its folder structure intact, and run `Start-BloodTap.cmd`. `PACKAGE-MANIFEST.txt` records the SHA-256 of every packaged source file. Python is intentionally not bundled.
+
 ## Implemented
 
 - Twenty producer types using the recovered economy, with original client display names.

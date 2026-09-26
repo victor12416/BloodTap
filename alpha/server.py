@@ -10,6 +10,7 @@ from alpha import saves
 from alpha.locking import exclusive_directory
 
 STATIC=Path(__file__).with_name('web')
+VERSION_FILE=Path(__file__).resolve().parent.parent/'VERSION'
 
 
 def make_server(game,port=8765):
@@ -81,7 +82,8 @@ def main():
     with exclusive_directory(args.data_dir):
         game=Game(args.data_dir/'save.json')
         server=make_server(game,args.port)
-        print(f'BloodTap: http://127.0.0.1:{server.server_port}',flush=True)
+        version=VERSION_FILE.read_text(encoding='utf-8').strip() if VERSION_FILE.exists() else 'development'
+        print(f'BloodTap {version}: http://127.0.0.1:{server.server_port}',flush=True)
         print(f'Save: {game.path.resolve()}\nPress Ctrl+C to stop.',flush=True)
         try:server.serve_forever()
         except KeyboardInterrupt:pass

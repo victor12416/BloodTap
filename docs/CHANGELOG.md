@@ -1,5 +1,10 @@
 # BloodTap engineering changelog
 
+## Reproducible alpha package
+- Added version `0.1.0-alpha.1` and a deterministic source-package builder with an embedded SHA-256 manifest.
+- Verified that two builds are byte-identical, archive paths are safe, and the extracted server starts under Python 3.12.
+- GitHub Actions now uploads the tested ZIP for 14 days on every successful commit.
+
 ## Alpha onboarding and accessibility
 - Added stage-aware first-purchase, automatic-income, first-fragment, and first-bundle guidance.
 - Exposed the exact next-fragment lifetime-echo threshold without changing the save schema.
