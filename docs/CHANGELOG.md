@@ -1,5 +1,10 @@
 # BloodTap engineering changelog
 
+## v0.20 reapplied
+- Restored .001-per-frame stochastic stage transitions with persisted geometric waits.
+- Research raises only the target; pledge expiry resumes at stage 1; suppression and Reawakening clear pending transitions.
+- Core, v0.19-v0.20 scripts, and eleven integration/boundary tests pass.
+
 ## 2026-09-26 executable recovery
 - Restored the engine, economy data, Garden catalog, and core suite from the user-provided executable archive; recorded original file hashes and archive provenance.
 - Verified the unchanged recovered core before modifications, then reapplied v0.19 Ritual price scaling, prestige-root dependency, and natural-Omen Ascetic break behavior.

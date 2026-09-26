@@ -76,6 +76,8 @@ class State:
     blood_moon_research_ready_at: float=-1.0
     blood_moon_stage: int=0
     blood_moon_target_stage: int=0
+    blood_moon_next_transition: float=-1.0
+    blood_moon_transition_after: float=0.0
     pledge_count: int=0
     pledge_until: float=0.0
     permanent_suppression: bool=False
@@ -585,7 +587,7 @@ def buy_blood_moon_research(s):
     j=blood_moon_next_step(s);s.bank-=_BM_COSTS[j];s.blood_moon_research_step=j
     if j in (5,7,9):
         s.blood_moon_target_stage={5:1,7:2,9:3}[j]
-        if not s.permanent_suppression and s.pledge_until<=s.elapsed:s.blood_moon_stage=s.blood_moon_target_stage
+        s.blood_moon_transition_after=s.elapsed
     if j<9:s.blood_moon_research_ready_at=s.elapsed+1800
     return True
 
@@ -631,13 +633,32 @@ def buy_pledge(s):
     price=8**min(s.pledge_count+2,14)
     if s.bank<price:return False
     s.bank-=price;pop_all_parasites(s);s.pledge_count+=1;s.pledge_until=s.elapsed+1800;s.blood_moon_stage=0
+    s.blood_moon_next_transition=-1.0
     return True
 
 def update_blood_moon(s,dt,rng):
-    if s.pledge_until and s.elapsed>=s.pledge_until and not s.permanent_suppression:
+    if not math.isfinite(dt) or dt<0:raise ValueError("dt must be finite and non-negative")
+    start=max(0.0,s.elapsed-dt,s.blood_moon_transition_after)
+    if s.permanent_suppression:
+        s.blood_moon_stage=0;s.blood_moon_next_transition=-1.0
+        return
+    if s.pledge_until:
+        s.blood_moon_stage=0;s.blood_moon_next_transition=-1.0
+        if s.elapsed<s.pledge_until:return
+        start=max(start,s.pledge_until)
         s.pledge_until=0
-        if s.blood_moon_target_stage>0:s.blood_moon_stage=max(1,s.blood_moon_target_stage)
-    update_parasites(s,dt,rng)
+        if s.blood_moon_target_stage>0:s.blood_moon_stage=1
+    # Persist a geometric waiting time instead of iterating 30 frames/second.
+    # Success probability is .001 per frame; each success advances one stage.
+    while s.blood_moon_stage<s.blood_moon_target_stage:
+        if s.blood_moon_next_transition<0:
+            frames=1+math.floor(math.log1p(-rng.random())/math.log1p(-.001))
+            s.blood_moon_next_transition=start+frames/30.0
+        if s.blood_moon_next_transition>s.elapsed:break
+        update_parasites(s,max(0.0,s.blood_moon_next_transition-start),rng)
+        start=s.blood_moon_next_transition
+        s.blood_moon_stage+=1;s.blood_moon_next_transition=-1.0
+    update_parasites(s,max(0.0,s.elapsed-start),rng)
 
 def baseline_blood_moon_policy(s):
     # Buy sequential research when affordable/ready. Parasites are allowed;
@@ -952,6 +973,7 @@ def reawaken(s):
     s.bank=0.0;s.run_earned=0.0;s.owned=[0]*20;s.free=[0]*20;s.standard_tiers=set();s.messenger_doublings=0;s.messenger_additive_stage=-1
     s.mouse_upgrades=0;s.insight_amplifiers=0;s.global_relics=set();s.prestige_purchases=0;s.prestige_effectiveness=0.0;s.handmade_echoes=0.0;s.clicks=0
     s.prod_buffs=[];s.click_buffs=[];s.omen_last="";s.omen_next=0.0;s.blood_moon_research_step=-1;s.blood_moon_research_ready_at=-1.0;s.blood_moon_stage=0;s.blood_moon_target_stage=0;s.pledge_count=0;s.pledge_until=0;s.permanent_suppression=False;s.parasites=[]
+    s.blood_moon_next_transition=-1.0;s.blood_moon_transition_after=s.elapsed
     s.ritual_energy=0;s.ritual_initialized=False;s.ritual_casts=0;s.oath_slots=[-1,-1,-1];s.oath_swaps=3;s.oath_last_recharge=s.elapsed
     s.exchange_unlocked=False;s.exchange_ticks=0;s.exchange_last_tick=s.elapsed;s.exchange_values=[0.0]*18;s.exchange_velocity=[0.0]*18;s.exchange_modes=[0]*18;s.exchange_mode_time=[0]*18;s.exchange_stock=[0]*18;s.exchange_profit=0;s.exchange_highest_raw_eps=0
     s.garden_plot=[None]*36;s.garden_soil=0;s.garden_next_tick=0;s.calendar_state=-1;s.calendar_switches=0;s.calendar_until=0

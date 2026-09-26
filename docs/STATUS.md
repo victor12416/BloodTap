@@ -1,8 +1,8 @@
 # Engineering status
 
-Executable status: **recovered core plus v0.19 corrections**.
+Executable status: **recovered core plus v0.19-v0.20 corrections**.
 
-On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19 has now been reapplied and verified locally; v0.20-v0.28 are still pending. See [recovery notes](RECOVERY.md).
+On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19-v0.20 have now been reapplied and verified; v0.21-v0.28 are still pending. See [recovery notes](RECOVERY.md).
 
 Historically reported milestones include:
 
@@ -18,9 +18,11 @@ Verified locally: recovered core script, unchanged v0.19 milestone script, and s
 
 Audit of the recovered baseline: v0.20 and v0.28 fail assertions; v0.21-v0.23 lack `highest_owned`; v0.24-v0.27 lack their later APIs/state. These nine milestone scripts remain pending, not passing or silently skipped.
 
+v0.20 validation: the existing milestone script and five boundary tests pass, including persisted geometric waits, research timing, pledge expiry, suppression, and reset. The parasite model remains approximate.
+
 ## Immediate queue
 
-Prerequisite: reapply v0.20 Blood Moon transitions, then v0.21-v0.28 in order, using the preserved tests and documented rules. The data files are recovered, but the full frozen specification (including the mutation matrix and exact Exchange tick rules) is still missing; unresolved formulas must be specified explicitly before claiming fidelity.
+Prerequisite: reapply v0.21-v0.28 in order, using the preserved tests and documented rules. The data files are recovered, but the full frozen specification (including the mutation matrix and exact Exchange tick rules) is still missing; unresolved formulas must be specified explicitly before claiming fidelity.
 
 1. Finish Garden passive-effect families and harvest/death reward integration.
 2. Tighten natural Omen candidate/wrath parity and special outcomes.
