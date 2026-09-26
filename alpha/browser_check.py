@@ -28,10 +28,14 @@ def main():
                 expect(page.locator('#vessel')).to_be_visible()
                 expect(page.locator('#save-status')).not_to_contain_text('Connecting')
                 expect(page.locator('#save-status')).not_to_contain_text('Disconnected')
+                expect(page.locator('#onboarding')).to_contain_text('15 more echoes')
+                expect(page.locator('#reawakening-info')).to_contain_text('23M lifetime echoes')
                 for _ in range(15):page.get_by_role('button',name='Gather echoes',exact=True).click()
+                expect(page.locator('#onboarding')).to_contain_text('enough echoes')
                 first=page.locator('.producer').first
                 expect(first).to_be_enabled();first.click()
                 expect(first.locator('.count')).to_have_text('1 owned')
+                expect(page.locator('#onboarding')).to_contain_text('gathers echoes automatically')
                 page.reload();expect(page.locator('.producer').first.locator('.count')).to_have_text('1 owned')
                 page.get_by_role('button',name='Save & settings').click()
                 with page.expect_download() as download:
@@ -50,6 +54,7 @@ def main():
                 page.locator('.upgrade').first.click()
                 game.state.omen_next=game.state.elapsed
                 expect(page.locator('#omen')).to_be_visible(timeout=4000)
+                expect(page.locator('#omen-announcement')).to_have_text('An Omen appeared. Collect it before it fades.')
                 page.locator('#omen').click();expect(page.locator('#omen')).to_be_hidden()
                 page.screenshot(path=str(artifacts/'desktop.png'),full_page=True)
                 # Keyboard activation, dialog cancellation, then explicit reset.

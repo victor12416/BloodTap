@@ -6,7 +6,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23df6973' d='M16 2 28 16 16 30 4 16Z'/%3E%3C/svg%3E"><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
 </head>
 <body>
-  <header><a class="wordmark" href="/">BLOOD<span>TAP</span></a><span class="edition">THE FIRST VIGIL <b>CORE PREVIEW</b></span><button id="settings-open" class="quiet">Save & settings</button></header>
+  <header><a class="wordmark" href="/">BLOOD<span>TAP</span></a><span class="edition">THE FIRST VIGIL <b>ALPHA CANDIDATE</b></span><button id="settings-open" class="quiet">Save & settings</button></header>
   <main>
     <section class="vigil" aria-labelledby="vigil-title">
       <div class="eyebrow">A city sleeps. Something listens.</div>
@@ -15,7 +15,7 @@
       <div class="income"><span id="eps">0</span> / second <span class="dot">·</span> <span id="tap-value">1</span> / tap</div>
       <button id="vessel" aria-label="Gather echoes" title="Tap, or use Enter / Space when focused"><span class="vessel-orbit"></span><span class="sigil">◆</span><span class="vessel-label">GATHER ECHOES</span></button>
       <p class="hint" id="onboarding">Tap the vessel to gather 15 echoes.<br>Then hire a Whisperer to earn while you wait.</p>
-      <button id="omen" class="omen" hidden>✦ An Omen appears <span id="omen-time"></span></button>
+      <span id="omen-announcement" class="sr-only" aria-live="assertive"></span><button id="omen" class="omen" hidden>✦ An Omen appears <span id="omen-time"></span></button>
       <div id="buffs" class="buffs"></div>
       <p id="notice" role="status" aria-live="polite"></p>
       <div class="vigil-stats"><div><strong id="achievements">0</strong><span>achievements</span></div><div><strong id="insight">0</strong><span>Insight</span></div><div><strong id="total-owned">0</strong><span>allies</span></div></div>
@@ -32,7 +32,7 @@
     </section>
   </main>
   <footer><span>BLOODTAP / LOCAL ALPHA CANDIDATE</span><span>Advanced systems are still in restoration.</span><span id="save-status">Connecting…</span></footer>
-  <dialog id="settings"><form method="dialog"><div class="dialog-head"><h2>Your vigil</h2><button aria-label="Close settings" class="quiet">Close</button></div></form><p>Progress saves locally every 10 seconds and after purchases. Export a copy before switching devices.</p><div class="settings-actions"><button id="save-now">Save now</button><a class="button" href="/api/export" download>Export save</a><button id="import-open">Import save</button><input id="import-file" type="file" accept=".json,application/json" hidden></div><label class="checkbox"><input id="reduced-motion" type="checkbox"> Reduce motion</label><p class="muted">Keep this tab connected for full production. Disconnected or suspended intervals longer than 10 seconds use offline rules. Offline production unlocks through Sleeping vigil.</p><p class="dialog-error" role="alert"></p><hr><h3>Start over</h3><p>This erases your current progress and permanent memories. Export first.</p><button id="reset" class="danger">Reset all progress</button></dialog>
-  <dialog id="confirm"><form id="confirm-form"><h2 id="confirm-title"></h2><p id="confirm-description"></p><label id="confirm-label">Confirmation <input id="confirm-input" autocomplete="off"></label><p class="dialog-error" role="alert"></p><div class="settings-actions"><button id="confirm-submit" type="submit">Continue</button><button id="confirm-cancel" type="button" class="quiet">Cancel</button></div></form></dialog>
+  <dialog id="settings" aria-labelledby="settings-title"><form method="dialog"><div class="dialog-head"><h2 id="settings-title">Your vigil</h2><button aria-label="Close settings" class="quiet">Close</button></div></form><p>Progress saves locally every 10 seconds and after purchases. Export a copy before switching devices.</p><div class="settings-actions"><button id="save-now">Save now</button><a class="button" href="/api/export" download>Export save</a><button id="import-open">Import save</button><input id="import-file" type="file" accept=".json,application/json" hidden></div><label class="checkbox"><input id="reduced-motion" type="checkbox"> Reduce motion</label><p class="muted">Keep this tab connected for full production. Disconnected or suspended intervals longer than 10 seconds use offline rules. Offline production unlocks through Sleeping vigil.</p><p class="dialog-error" role="alert"></p><hr><h3>Start over</h3><p>This erases your current progress and permanent memories. Export first.</p><button id="reset" class="danger">Reset all progress</button></dialog>
+  <dialog id="confirm" aria-labelledby="confirm-title"><form id="confirm-form"><h2 id="confirm-title"></h2><p id="confirm-description"></p><label id="confirm-label">Confirmation <input id="confirm-input" autocomplete="off"></label><p class="dialog-error" role="alert"></p><div class="settings-actions"><button id="confirm-submit" type="submit">Continue</button><button id="confirm-cancel" type="button" class="quiet">Cancel</button></div></form></dialog>
   <div id="error" role="alert" hidden></div>
 </body></html>

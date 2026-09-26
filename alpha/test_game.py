@@ -2,7 +2,7 @@ import random
 import tempfile
 from pathlib import Path
 import unittest
-from alpha.game import Game, alpha_new_fragments, alpha_target_prestige
+from alpha.game import Game, alpha_new_fragments, alpha_next_fragment_threshold, alpha_target_prestige
 from alpha import saves
 import simulator as sim
 
@@ -78,6 +78,15 @@ class GameTests(unittest.TestCase):
         g.state.run_earned=27_000_000_000_000-g.state.previous_runs_earned
         self.assertEqual(alpha_target_prestige(g.state),3)
         self.assertEqual(alpha_new_fragments(g.state),1)
+
+    def test_next_fragment_threshold_explains_starter_and_recovered_curves(self):
+        g=self.game
+        self.assertEqual(alpha_next_fragment_threshold(g.state),23_000_000)
+        g.state.run_earned=23_000_000
+        self.assertEqual(alpha_next_fragment_threshold(g.state),184_000_000)
+        g.state.run_earned=184_000_000
+        self.assertEqual(alpha_next_fragment_threshold(g.state),27_000_000_000_000)
+        self.assertEqual(g.snapshot()['next_fragment_at'],27_000_000_000_000)
 
 
 if __name__=='__main__':unittest.main()

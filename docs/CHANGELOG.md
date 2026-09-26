@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## Alpha onboarding and accessibility
+- Added stage-aware first-purchase, automatic-income, first-fragment, and first-bundle guidance.
+- Exposed the exact next-fragment lifetime-echo threshold without changing the save schema.
+- Added accessible dialog labels and a one-time live announcement when an Omen appears.
+- Extended the real-browser flow across the new guidance and Omen announcement.
+
 ## Playable-core alpha candidate pacing
 - Added an explicit 23,000,000-echo cubic prestige scale capped at the first two alpha fragments; fragment three and later retain the recovered 1,000,000,000,000-echo curve.
 - Reduced the original three-seed first-useful-bundle result from about 20.5 hours to 56m30s–80m50s.

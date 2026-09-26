@@ -10,7 +10,7 @@ Run `python -B -m alpha.server` from this folder, then open <http://127.0.0.1:87
 
 **Local playable-core alpha candidate — executable baseline restored and every preserved v0.19-v0.28 assertion passes**
 
-The simulator, economy data, Garden catalog, and core tests were restored from the user-provided executable archive. The archive did not contain the merged v0.19-v0.28 implementation, so the surviving milestone assertions were reconstructed in small tested increments. The recovered core, every preserved v0.19-v0.28 assertion, 47 simulator boundary tests, 18 playable-core tests, and the desktop/mobile browser flow pass. This proves the documented test-supported subset; rules absent from the recovered source and tests remain unavailable. See [engineering status](docs/STATUS.md), [playable-core guide](docs/ALPHA.md), and [recovery notes](docs/RECOVERY.md).
+The simulator, economy data, Garden catalog, and core tests were restored from the user-provided executable archive. The archive did not contain the merged v0.19-v0.28 implementation, so the surviving milestone assertions were reconstructed in small tested increments. The recovered core, every preserved v0.19-v0.28 assertion, 47 simulator boundary tests, 19 playable-core tests, and the desktop/mobile browser flow pass. This proves the documented test-supported subset; rules absent from the recovered source and tests remain unavailable. See [engineering status](docs/STATUS.md), [playable-core guide](docs/ALPHA.md), and [recovery notes](docs/RECOVERY.md).
 
 Run the verified subset from the repository root with Python 3.12 (no external dependencies):
 

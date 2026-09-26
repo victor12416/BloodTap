@@ -1,6 +1,6 @@
 'use strict';
 const $=id=>document.getElementById(id);
-let state=null,quantity=1,queue=Promise.resolve(),confirmation=null,polling=false;
+let state=null,quantity=1,queue=Promise.resolve(),confirmation=null,polling=false,hadOmen=false;
 const format=n=>Math.abs(n)>=1e9?n.toExponential(2).replace('e+','e'):new Intl.NumberFormat('en',{maximumFractionDigits:n<10?1:0,notation:n>=1e4?'compact':'standard'}).format(n);
 let errorTimer;
 function error(message){document.querySelectorAll('.dialog-error').forEach(n=>n.textContent=message);$('error').textContent=message;$('error').hidden=false;clearTimeout(errorTimer);errorTimer=setTimeout(()=>$('error').hidden=true,6500);}
@@ -9,8 +9,12 @@ const producerNodes=[];
 function render(next){
   state=next;
   for(const [id,key] of Object.entries({'bank':'bank','eps':'eps','tap-value':'click','achievements':'achievements','insight':'insight','total-owned':'owned','fragments':'fragments'}))$(id).textContent=format(state[key]);
-  if(state.owned)$('onboarding').textContent='Your vigil gathers echoes automatically. Grow it, discover upgrades, and watch for Omens.';
-  else $('onboarding').textContent='Tap the vessel to gather 15 echoes. Then hire a Whisperer to earn while you wait.';
+  if(!state.owned){
+    const firstCost=state.producers[0].costs['1'];
+    $('onboarding').textContent=state.bank>=firstCost?'You have enough echoes. Hire your first Whisperer in Build your vigil.':`Tap the vessel to gather ${format(firstCost-state.bank)} more echoes, then hire a Whisperer.`;
+  }else if(state.new_fragments>=2)$('onboarding').textContent='Your first useful memory bundle is ready. Reawaken when you are ready to begin again.';
+  else if(state.new_fragments===1)$('onboarding').textContent='One fragment is ready. Reach two before Reawakening to unlock offline play in one bundle.';
+  else $('onboarding').textContent='Your vigil gathers echoes automatically. Buy allies and upgrades, and collect gold Omen alerts before they fade.';
   $('notice').textContent=state.notice;
   $('save-status').textContent=state.saved_seconds_ago<2?'Progress saved':'Autosave · '+Math.floor(state.saved_seconds_ago)+'s ago';
   state.producers.forEach((p,i)=>{
@@ -26,10 +30,14 @@ function render(next){
   $('memories').replaceChildren();
   state.memories.forEach(m=>{const b=node('button','memory-node',m.name+(m.owned?' · owned':` · ${m.cost} fragments`));b.dataset.key=m.id;b.append(node('small','',m.description));b.disabled=m.owned||!m.unlocked||state.fragments<m.cost;b.addEventListener('click',()=>act({action:'ascension',id:m.id}));$('memories').append(b);});
   if(focusKey){for(const b of document.querySelectorAll('[data-key]'))if(b.dataset.key===focusKey&&!b.disabled){b.focus({preventScroll:true});break;}}
-  $('reawakening-info').textContent=`${format(state.earned)} earned this run · ${format(state.prestige)} lifetime prestige. Reawaken now for ${format(state.new_fragments)} new fragments. First useful bundle: 2 fragments for First memory + Sleeping vigil.`;
+  const nextFragment=state.new_fragments>=2?'Your first useful bundle is ready.':`Next fragment at ${format(state.next_fragment_at)} lifetime echoes.`;
+  $('reawakening-info').textContent=`${format(state.earned)} earned this run · ${format(state.prestige)} lifetime prestige. Reawaken now for ${format(state.new_fragments)} new fragments. ${nextFragment} First memory + Sleeping vigil cost 2 fragments.`;
   $('reawaken').disabled=state.new_fragments<1;
   $('offline-info').textContent=state.offline_efficiency?`Offline: ${Math.round(state.offline_efficiency*100)}% production for ${format(state.offline_cap/3600)} hours, then one tenth of that rate.`:'Offline earnings unlock with Sleeping vigil after Reawakening.';
-  $('omen').hidden=state.omen_seconds<=0;$('omen-time').textContent=`· ${Math.ceil(state.omen_seconds)}s`;
+  const hasOmen=state.omen_seconds>0;
+  if(hasOmen&&!hadOmen)$('omen-announcement').textContent='An Omen appeared. Collect it before it fades.';
+  if(!hasOmen)$('omen-announcement').textContent='';
+  hadOmen=hasOmen;$('omen').hidden=!hasOmen;$('omen-time').textContent=`· ${Math.ceil(state.omen_seconds)}s`;
   $('buffs').replaceChildren(...state.buffs.map(b=>node('span','',`${b.name} ×${format(b.factor)} · ${Math.ceil(b.seconds)}s`)));
 }
 async function request(body){

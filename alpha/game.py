@@ -34,6 +34,12 @@ def alpha_new_fragments(state):
     return max(0,alpha_target_prestige(state)-state.claimed_prestige)
 
 
+def alpha_next_fragment_threshold(state):
+    next_level=alpha_target_prestige(state)+1
+    scale=STARTER_PRESTIGE_SCALE if next_level<=STARTER_PRESTIGE_CAP else int(sim.DATA['prestige']['scale'])
+    return scale*next_level**int(sim.DATA['prestige']['exponent'])
+
+
 class Game:
     def __init__(self,path,rng=None,clock=time.monotonic,wall=time.time):
         self.path=Path(path);self.rng=rng or random.Random();self.clock=clock;self.wall=wall
@@ -162,6 +168,7 @@ class Game:
         return {'bank':s.bank,'earned':s.run_earned,'eps':sim.current_eps(s),'click':sim.click_value(s),
                 'achievements':len(s.achievements),'insight':sim.insight(s),'owned':sum(s.owned),
                 'fragments':s.dream_fragments,'prestige':s.claimed_prestige,'new_fragments':alpha_new_fragments(s),
+                'next_fragment_at':alpha_next_fragment_threshold(s),
                 'offline_efficiency':efficiency,'offline_cap':cap,'producers':producers,'upgrades':self.upgrades(),
                 'memories':memories,'notice':self.notice,'omen_seconds':max(0,self.omen_until-s.elapsed),
                 'buffs':[{'name':b[2].replace('_',' '),'factor':b[1],'seconds':max(0,b[0]-s.elapsed)} for b in s.prod_buffs+s.click_buffs],
