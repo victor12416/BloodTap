@@ -16,6 +16,8 @@ python -B -m tools.package_alpha
 
 Extract the ZIP, keep its folder structure intact, and run `Start-BloodTap.cmd`. `PACKAGE-MANIFEST.txt` records the SHA-256 of every packaged source file. Python is intentionally not bundled.
 
+Before a public alpha release, complete the [fresh-session playtest](PLAYTEST.md) with a real player. Its isolated data-directory command leaves the normal `alpha-data` save untouched.
+
 ## Implemented
 
 - Twenty producer types using the recovered economy, with original client display names.

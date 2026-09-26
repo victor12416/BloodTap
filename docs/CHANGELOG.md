@@ -1,5 +1,9 @@
 # BloodTap engineering changelog
 
+## Fresh-session playtest handoff
+- Added an isolated-save human playtest path covering onboarding, Omens, the two-fragment bundle, Reawakening, offline earnings, export, and mobile usability.
+- Added a compact report template so pacing and comprehension findings can be compared without changing balance from one anecdotal completion time.
+
 ## Reproducible alpha package
 - Added version `0.1.0-alpha.1` and a deterministic source-package builder with an embedded SHA-256 manifest.
 - Verified that two builds are byte-identical, archive paths are safe, and the extracted server starts under Python 3.12.

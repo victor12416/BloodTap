@@ -6,6 +6,8 @@ BloodTap is an original gothic-horror incremental/clicker game project inspired 
 
 Run `python -B -m alpha.server` from this folder, then open <http://127.0.0.1:8765>. On Windows, you can also double-click `Start-BloodTap.cmd`. See [the playable-core guide](docs/ALPHA.md) for saves, tests, and current limits.
 
+For a clean first-session evaluation that does not touch an existing save, follow the [fresh-session playtest](docs/PLAYTEST.md).
+
 ## Current status
 
 **Local playable-core alpha candidate — executable baseline restored and every preserved v0.19-v0.28 assertion passes**
