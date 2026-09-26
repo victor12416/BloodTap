@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## Playable-core action model
+- Added validated player actions using the existing simulator: taps, bulk producer purchases, upgrades, collectible Omens, Reawakening, and implemented permanent offline memories.
+- Added original display names for the client; recovered balance tables remain unchanged.
+- Passive income splits at buff expiry; disconnected intervals over ten seconds use offline rules.
+- Five gameplay tests cover purchase/reload, buff accounting, one-time Omen collection, import/reset safeguards, and the two-fragment root-plus-offline bundle.
+
 ## Playable-core save foundation
 - Added schema-v1 JSON save validation, atomic replacement, previous-save backup, and unlocked offline earnings. Unknown versions and malformed values are rejected without replacing a good save.
 - Fixed impractical large-number prestige correction loops using bounded integer bisection over the stored decimal value.
