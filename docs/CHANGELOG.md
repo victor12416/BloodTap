@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.26
+- Added Quiet Hunt run-local toggle, x1.5 base production, current-EPS one-hour toggle cost, and natural-Omen suppression.
+- Added Veil x1.50-x1.75 production scaling, four-step defense probability, click/Omen break checks, counters, and 24-hour-unbuffed-EPS reactivation.
+- Quiet Hunt and Veil multiply to x2.25 in the base deep-idle configuration.
+- Added targeted tests.
+
 ## v0.25
 - Added Garden contamination from Meddleweed, Crumbspore, and Doughshroom with cardinal-neighbor targeting and contamination immunity.
 - Added Pebbles natural-death seed-unlock behavior.
