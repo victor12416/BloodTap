@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## Playable-core save foundation
+- Added schema-v1 JSON save validation, atomic replacement, previous-save backup, and unlocked offline earnings. Unknown versions and malformed values are rejected without replacing a good save.
+- Fixed impractical large-number prestige correction loops using bounded integer bisection over the stored decimal value.
+- Added five persistence/numeric tests and CI coverage; restored simulator checks still pass.
+- Alpha persistence supports the core economy only; advanced systems remain gated. Ownership is capped at 1,000 per producer in this initial save schema.
+
 ## v0.21 supported behavior reapplied
 - Track highest producer ownership on purchases and Ritual grants; clear it and Exchange office state on Reawakening.
 - Restore capacity for office stages covered by surviving tests; unknown office bonuses fail explicitly.

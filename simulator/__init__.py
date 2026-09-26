@@ -4,6 +4,7 @@ Source and data provenance are recorded in docs/archive/manifest.json.
 Later milestone tests remain pending; see docs/STATUS.md.
 """
 from dataclasses import dataclass, field
+from decimal import Decimal
 from typing import List, Set
 import json, math, random, bisect
 from pathlib import Path
@@ -438,10 +439,17 @@ def greedy_step(s,cps):
 
 def target_prestige(s):
     lifetime=s.previous_runs_earned+s.run_earned
-    a=int((lifetime/1e12)**(1/3)) if lifetime>0 else 0
-    while 1e12*(a+1)**3<=lifetime:a+=1
-    while 1e12*a**3>lifetime:a-=1
-    return a
+    if not math.isfinite(lifetime) or lifetime<0:raise ValueError("Invalid lifetime earnings")
+    # Integer bisection avoids enormous correction loops at large magnitudes.
+    # Interpret the stored float's decimal value (e.g. 4.8627125e19),
+    # avoiding binary representation noise at familiar prestige thresholds.
+    units=int(Decimal(str(lifetime)))//10**12
+    low,high=0,1<<((units.bit_length()+2)//3)
+    while low+1<high:
+        middle=(low+high)//2
+        if middle**3<=units:low=middle
+        else:high=middle
+    return low
 
 def new_fragments(s):return max(0,target_prestige(s)-s.claimed_prestige)
 

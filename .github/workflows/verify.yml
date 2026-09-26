@@ -11,3 +11,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -B -m simulator.verify
+      - run: python -B -m unittest discover -s alpha -p "test_*.py"
