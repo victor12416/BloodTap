@@ -1,25 +1,24 @@
 # Engineering status
 
-Current milestone: **v0.21 subsystem fidelity repair**
+Current milestone: **v0.28 subsystem fidelity repair**
 
-Completed and targeted-tested since v0.18:
+Verified milestones now include:
 
-- v0.19: Ritual 4 grants advance producer price scaling.
-- v0.19: natural Omens correctly break Ascetic and consume remaining oath swaps.
-- v0.19: prestige-effectiveness purchases require ascension root U363.
-- v0.20: Blood Moon wrath stages use stochastic/geometric transitions instead of instant target jumps.
-- v0.20: pledge expiry resumes at stage 1; permanent suppression pins stage 0.
-- v0.21: Exchange capacity uses current-run highest ownership plus producer level and office modifiers.
+- v0.19: Ritual free grants, Ascetic break behavior, prestige-root dependency.
+- v0.20: Blood Moon stochastic stage transitions.
+- v0.21-v0.22: Exchange capacity and exact market/broker/office/loan mechanics.
+- v0.23-v0.25: Garden freeze/soil/neighbors, full mutation matrix, contamination and sacrifice.
+- v0.26: Quiet Hunt and Veil.
+- v0.27: all eleven Caryll Oath mechanical hooks, including Creation, Labor, Industry, Mother, Scorn and Order.
+- v0.28: Calendar core lifecycle and exact Calendar-Oath timing/drop hooks.
 
-All inherited targeted/core suites plus the new v0.19-v0.21 suites pass locally.
-
-No broad progression simulation was run for these milestones.
+Targeted/core tests pass for each completed milestone. Broad progression simulation remains intentionally deferred.
 
 ## Immediate queue
 
-1. Commit the complete current simulator source/data baseline to GitHub.
-2. Continue Chalice Exchange fidelity: exact tick modes, office upgrades, brokers and loans.
-3. Complete Blood Garden mutation/contamination/neighbor behavior.
-4. Tighten natural Omen candidate/wrath parity.
-5. Complete Calendar effects and remaining Caryll Oaths.
-6. Run the next progression study only after the systems affecting its result are sufficiently faithful.
+1. Finish Garden passive-effect families and harvest/death reward integration.
+2. Tighten natural Omen candidate/wrath parity and special outcomes.
+3. Complete Calendar visitor/drop collections and carryover.
+4. Complete Great One/aura plumbing and remaining parasite hooks.
+5. Run conservation/accounting and fixed-seed stochastic verification.
+6. Freeze the balance-relevant simulator subset and pivot to the playable BloodTap client.
