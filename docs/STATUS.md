@@ -1,8 +1,8 @@
 # Engineering status
 
-Executable status: **recovered core plus v0.19-v0.24 test-supported behavior**.
+Executable status: **recovered core plus v0.19-v0.25 test-supported behavior**.
 
-On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19-v0.24 preserved test cases now pass; v0.25-v0.28 are still pending. See [recovery notes](RECOVERY.md).
+On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19-v0.25 preserved test cases now pass; v0.26-v0.28 are still pending. See [recovery notes](RECOVERY.md).
 
 Historically reported milestones include:
 
@@ -16,7 +16,7 @@ Historically reported milestones include:
 
 Verified locally: recovered core script, v0.19-v0.21 milestone scripts, simulator boundary tests, alpha unit/integration tests, and a real-browser desktop/mobile flow. The core script's obsolete prestige-unlock assertion was updated to require U363. Both recovered JSON data files are unchanged.
 
-Audit of the recovered baseline found that v0.25-v0.28 still lack later APIs and state. The v0.24 script passes against the two mutation rows it asserts, but the other 32-species matrix rules are still missing. Four later milestone scripts remain pending, not passing or silently skipped.
+Audit of the recovered baseline found that v0.26-v0.28 still lack later APIs and state. The v0.24 script passes against the two mutation rows it asserts, but the other matrix rules are still missing. Three later milestone scripts remain pending, not passing or silently skipped.
 
 v0.20 validation: the existing milestone script and five boundary tests pass, including persisted geometric waits, research timing, pledge expiry, suppression, and reset. The parasite model remains approximate.
 
@@ -27,6 +27,8 @@ v0.22 validation: the preserved milestone script and four transaction boundary t
 v0.23 validation: Garden freeze, soil ownership/lockout, closed-time behavior, and the preserved neighbor examples pass, with four additional boundary tests. The recovered catalog supplies soil and plant strengths. Neighbor behavior outside the preserved examples is isolated in `garden_tile_modifiers`; it remains subject to correction if the frozen rules are recovered.
 
 v0.24 validation: the preserved script and four loop boundary tests pass. The implementation restores paired starter-plant mutation, eight-Queenbeet Lump mutation, spontaneous Meddleweed, weed protection, snapshot-based loops, and two extra Wood Chips loops. The historical script title says “matrix,” but asserts only two mutation rows; the unrecovered full 34-species matrix is explicitly incomplete.
+
+v0.25 validation: cardinal contamination from the three documented source species, the preserved immune Queenbeet case, Pebbles natural-death unlocks, Meddleweed conversion, and full-seed sacrifice/reset are restored. The preserved script and four boundary tests pass. The broader contamination-immunity set and source probabilities remain subject to the missing specification.
 
 Run `python -B -m simulator.verify` for the restored subset. `--all` also runs pending historical tests and currently exits with failure. CI tests the explicitly scoped restored subset.
 
@@ -39,7 +41,7 @@ Balance status: three one-hour profiles and three adaptive profiles through the 
 Two decisions block alpha readiness:
 
 1. Set a target window and approved balance lever for the first useful two-fragment bundle. The current measured window is roughly 20.5 hours of highly active play.
-2. Recover or redefine the missing v0.25-v0.28 rules, the other Garden mutation rows, and remaining Exchange rules before exposing advanced systems. The full frozen specification, including most of the mutation matrix and exact Exchange tick rules, is still missing.
+2. Recover or redefine the missing v0.26-v0.28 rules, the other Garden mutation rows, and remaining Exchange rules before exposing advanced systems. The full frozen specification, including most of the mutation matrix and exact Exchange tick rules, is still missing.
 
 1. Finish Garden passive-effect families and harvest/death reward integration.
 2. Tighten natural Omen candidate/wrath parity and special outcomes.

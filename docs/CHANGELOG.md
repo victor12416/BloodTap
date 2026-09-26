@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.25 test-supported contamination and sacrifice
+- Restored cardinal contamination from mature Meddleweed, Crumbspore, and Doughshroom sources with protected/immune targets.
+- Restored Pebbles natural-death seed unlocks, Meddleweed death conversion, and the full-seed +10 Blood Dregs sacrifice/reset.
+- The preserved v0.25 script and four boundary tests pass.
+- Contamination probabilities and immunity beyond preserved examples remain subject to the missing frozen specification.
+
 ## v0.24 test-supported mutation behavior
 - Restored the paired starter-plant and eight-Queenbeet Lump mutation rows asserted by the preserved script.
 - Added snapshot-based mutation loops, primary-loop spontaneous Meddleweed, weed protection, and extra Wood Chips loops.

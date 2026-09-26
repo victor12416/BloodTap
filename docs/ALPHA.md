@@ -30,7 +30,7 @@ The local server is authoritative. A connected tab earns full production. A gap 
 ## Current limits
 
 - Preview scope is the playable core. Garden, Ritual, Oath, Exchange, Blood Moon, Calendar, and later ascension interfaces are not exposed. Their incomplete simulator behavior does not run behind the preview.
-- v0.25-v0.28 and part of Exchange/Garden fidelity remain pending. The v0.22-v0.24 preserved tests pass, but v0.24 asserts only two mutation rows; most of the 34-species matrix remains unavailable. Missing original rules prevent an exact-parity claim.
+- v0.26-v0.28 and part of Exchange/Garden fidelity remain pending. The v0.22-v0.25 preserved tests pass, but v0.24 asserts only two mutation rows; most of the 34-species matrix remains unavailable. Missing original rules prevent an exact-parity claim.
 - Ownership is limited to 1,000 per producer. Finite floating-point economy values and scientific notation support large late-game numbers, with ordinary floating-point rounding; arbitrary-precision economy support is not claimed.
 - No public deployment, telemetry, audio, or multiplayer. The server binds only to 127.0.0.1 and rejects cross-origin mutations.
 - Fresh-run pacing is measured in [the core balance report](balance/README.md). The first useful two-fragment bundle takes about 20.3–20.9 hours of uninterrupted four-tap/s automated play across three seeds. That is too long for a reasonable first-session alpha target. A target window and explicit balance change are required before declaring alpha ready.
@@ -43,7 +43,7 @@ python -B -m unittest discover -s alpha -p "test_*.py"
 python -B -m alpha.balance
 ```
 
-The first command explicitly tests the restored core and test-supported v0.19-v0.24 subset. Its output calls out that the full mutation matrix is still pending. Add `--all` to audit later historical milestone scripts (currently fails).
+The first command explicitly tests the restored core and test-supported v0.19-v0.25 subset. Its output calls out that the full mutation matrix is still pending. Add `--all` to audit later historical milestone scripts (currently fails).
 
 Optional browser verification uses installed Google Chrome and Playwright:
 

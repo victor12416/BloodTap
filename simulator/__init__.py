@@ -81,6 +81,7 @@ class State:
     garden_harvest_count: int=0
     garden_frozen: bool=False
     garden_soil_changed_at: float=-1e100
+    garden_sacrifices: int=0
     blood_moon_research_step: int=-1
     blood_moon_research_ready_at: float=-1.0
     blood_moon_stage: int=0
@@ -773,6 +774,46 @@ def garden_mutation_loop(s,rng,loop=0):
         if s.garden_plot[slot] is None:s.garden_plot[slot]=[pid,0.0]
     return len(additions)
 
+_GARDEN_CONTAMINATION={13:.05,23:.03,27:.03}
+_GARDEN_CONTAMINATION_IMMUNE={13,20,21,22,23,27,31,32}
+
+def _garden_cardinal(slot):
+    x,y=slot%6,slot//6
+    if x>0:yield slot-1
+    if x<5:yield slot+1
+    if y>0:yield slot-6
+    if y<5:yield slot+6
+
+def garden_contaminate(s,rng):
+    if not garden_available(s) or s.garden_frozen:return 0
+    snapshot=[None if tile is None else list(tile) for tile in s.garden_plot]
+    replacements=[]
+    _,_,weed=garden_tile_modifiers(s)
+    for slot,tile in enumerate(snapshot):
+        if tile is None:continue
+        source,source_age=tile
+        chance=_GARDEN_CONTAMINATION.get(source)
+        if chance is None or source_age<GARDEN["plants"][source]["mature"]:continue
+        targets=[]
+        for target in _garden_cardinal(slot):
+            neighbor=snapshot[target]
+            if (neighbor is not None and neighbor[0] not in _GARDEN_CONTAMINATION_IMMUNE
+                    and weed[target]>0):targets.append(target)
+        if targets and rng.random()<chance:replacements.append((rng.choice(targets),source))
+    changed=0
+    for target,source in replacements:
+        current=s.garden_plot[target]
+        if current is not None and current[0] not in _GARDEN_CONTAMINATION_IMMUNE:
+            s.garden_plot[target]=[source,0.0];changed+=1
+    return changed
+
+def garden_sacrifice(s):
+    if set(s.garden_unlocked_seeds)!=set(range(len(GARDEN["plants"]))):return False
+    s.garden_unlocked_seeds={0};s.garden_plot=[None]*36;s.garden_soil=0
+    s.garden_frozen=False;s.garden_next_tick=0.0;s.garden_soil_changed_at=s.elapsed
+    s.garden_sacrifices+=1;s.blood_dregs+=10
+    return True
+
 def garden_seed_cost(s,pid):
     p=GARDEN["plants"][pid]
     return max(p["minimum_cost"],current_eps(s)*60*p["cost_minutes"])
@@ -802,6 +843,20 @@ def garden_harvest(s,slot,rng,replant=True):
     if replant and pid in s.garden_unlocked_seeds:garden_plant(s,slot,pid)
     return True
 
+def _garden_natural_death(s,slot,rng):
+    tile=s.garden_plot[slot]
+    if tile is None:return False
+    pid,age=tile
+    if s.garden_soil==3 and pid not in s.garden_unlocked_seeds and rng.random()<.35:
+        s.garden_unlocked_seeds.add(pid)
+    if pid==23:
+        gain=min(.01*s.bank,current_eps(s)*60)*rng.random();s.bank+=gain;s.run_earned+=gain
+    elif pid==27:
+        gain=min(.03*s.bank,current_eps(s)*300)*rng.random();s.bank+=gain;s.run_earned+=gain
+    # Meddleweed may leave one of its two recovered fungus descendants.
+    s.garden_plot[slot]=[rng.choice((12,23)),0.0] if pid==13 else None
+    return True
+
 def garden_tick(s,rng,active=True):
     if not garden_available(s) or s.garden_frozen or not active:return
     soil=GARDEN["soils"][s.garden_soil]
@@ -816,16 +871,13 @@ def garden_tick(s,rng,active=True):
         # Immortal reference species: elderwort and everdaisy.
         if pid in (7,32):age=min(age,p["mature"]+1)
         if age>=100 and pid not in (7,32):
-            # Fungus death rewards.
-            if pid==23:
-                gain=min(.01*s.bank,current_eps(s)*60)*rng.random();s.bank+=gain;s.run_earned+=gain
-            elif pid==27:
-                gain=min(.03*s.bank,current_eps(s)*300)*rng.random();s.bank+=gain;s.run_earned+=gain
-            s.garden_plot[slot]=None
+            s.garden_plot[slot]=[pid,age]
+            _garden_natural_death(s,slot,rng)
         else:s.garden_plot[slot]=[pid,age]
     garden_mutation_loop(s,rng,0)
     if s.garden_soil==4:
         garden_mutation_loop(s,rng,1);garden_mutation_loop(s,rng,2)
+    garden_contaminate(s,rng)
     # Baseline strategy harvests mature starter crop and replants it.
     if active:
         for slot,tile in enumerate(list(s.garden_plot)):
@@ -1155,7 +1207,8 @@ def reawaken(s):
     s.ritual_energy=0;s.ritual_initialized=False;s.ritual_casts=0;s.oath_slots=[-1,-1,-1];s.oath_swaps=3;s.oath_last_recharge=s.elapsed
     s.exchange_unlocked=False;s.exchange_ticks=0;s.exchange_last_tick=s.elapsed;s.exchange_values=[0.0]*18;s.exchange_velocity=[0.0]*18;s.exchange_modes=[0]*18;s.exchange_mode_time=[0]*18;s.exchange_stock=[0]*18;s.exchange_profit=0;s.exchange_highest_raw_eps=0
     s.exchange_trade_tick=[-1]*18;s.exchange_trade_side=[""]*18;s.exchange_loan_phase=[0]*3;s.exchange_loan_until=[0.0]*3
-    s.garden_plot=[None]*36;s.garden_soil=0;s.garden_next_tick=0;s.calendar_state=-1;s.calendar_switches=0;s.calendar_until=0
+    s.garden_plot=[None]*36;s.garden_soil=0;s.garden_next_tick=0;s.garden_frozen=False;s.garden_soil_changed_at=s.elapsed
+    s.calendar_state=-1;s.calendar_switches=0;s.calendar_until=0
     return gain
 
 def baseline_ascension_spend(s):
