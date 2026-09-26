@@ -19,6 +19,8 @@ Open <http://127.0.0.1:8765>. Python 3.12 is sufficient; playing needs no packag
 
 ## Save behavior
 
+Only one server may use a save folder at a time; a second is rejected before loading or writing progress.
+
 `alpha-data/save.json` is saved every ten seconds while connected and after purchases. `alpha-data/save.bak` holds the previous saved version. Export before importing or resetting. To recover manually, stop the server, preserve both files, and copy a valid backup over `save.json`.
 
 Malformed saves and unknown schema versions are rejected, not silently reset. Schema 1 is the first supported format; older standalone simulator snapshots do not have a defined migration. Future versions must add explicit migrations before changing this format.

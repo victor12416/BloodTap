@@ -55,5 +55,29 @@ class SaveTests(unittest.TestCase):
             with self.assertRaises(ValueError):saves.write(p,s,101)
             self.assertEqual(p.read_bytes(),original)
 
+    def test_corrupt_save_is_not_overwritten_and_backup_stays_readable(self):
+        with tempfile.TemporaryDirectory() as folder:
+            p=Path(folder)/'save.json';s=sim.State(bank=123)
+            saves.write(p,s,100);s.bank=456;saves.write(p,s,101)
+            backup=p.with_suffix('.bak').read_bytes()
+            p.write_text('{broken',encoding='utf-8')
+            with self.assertRaises(ValueError):saves.read(p,200)
+            with self.assertRaises(ValueError):saves.write(p,s,200)
+            self.assertEqual(p.read_text(),'{broken')
+            self.assertEqual(p.with_suffix('.bak').read_bytes(),backup)
+
+    def test_closed_reward_is_not_repeated_after_checkpoint(self):
+        with tempfile.TemporaryDirectory() as folder:
+            p=Path(folder)/'save.json'
+            s=sim.State(owned=[0,10]+[0]*18,highest_owned=[0,10]+[0]*18,
+                        ascension_upgrades={'U363','U281'})
+            saves.write(p,s,100)
+            restored,gain,_=saves.read(p,100+86400)
+            self.assertEqual(gain,5940)
+            saves.write(p,restored,100+86400)
+            again,gain,_=saves.read(p,100+86400)
+            self.assertEqual(gain,0)
+            self.assertEqual(again.bank,restored.bank)
+
 
 if __name__=='__main__':unittest.main()

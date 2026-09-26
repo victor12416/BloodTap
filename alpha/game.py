@@ -112,7 +112,7 @@ class Game:
                 self.notice=f'Reawakened with {gain} new fragments. Choose your memories below.';changed=True
         elif kind=='ascension':
             uid=body.get('id')
-            if uid not in PERMANENT:raise ValueError('Unknown core memory')
+            if not isinstance(uid,str) or uid not in PERMANENT:raise ValueError('Unknown core memory')
             changed=sim.buy_ascension_upgrade(s,uid)
         elif kind=='save':self.save();self.notice='Progress saved.';changed=True
         elif kind=='reset':

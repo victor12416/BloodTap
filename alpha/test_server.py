@@ -41,6 +41,7 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(self.request('GET','/api/state',host='evil.example')[0],403)
         self.assertEqual(self.request('POST','/api/action',{'action':'buy','producer':-1})[0],400)
         self.assertEqual(self.request('POST','/api/action',{'action':'reset'})[0],400)
+        self.assertEqual(self.request('POST','/api/action',{'action':'ascension','id':[]})[0],400)
         self.assertEqual(self.game.state.bank,0)
 
 

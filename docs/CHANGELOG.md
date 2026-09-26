@@ -1,5 +1,10 @@
 # BloodTap engineering changelog
 
+## Save durability hardening
+- Added an OS-owned save-folder lock to prevent concurrent servers from overwriting the same progress; locks release after process exit.
+- Added corruption-preservation and offline-reward checkpoint tests. Invalid action payloads return errors without crashing the request.
+- Fifteen alpha tests and the desktop/mobile browser flow pass.
+
 ## Local browser preview
 - Added the responsive gothic core client and a loopback-only Python server with same-origin action checks.
 - Exposed live production, shop, upgrades, Omens, permanent memories, import/export, typed confirmations, and reduced-motion settings.
