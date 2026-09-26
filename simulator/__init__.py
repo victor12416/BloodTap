@@ -108,12 +108,12 @@ class State:
 
 def next_cost(s,i,discount=1.0):
     p=DATA["producers"][i]
-    return math.ceil(p["base_cost"]*GROWTH**max(0,s.owned[i]-s.free[i])*discount)
+    return math.ceil(p["base_cost"]*GROWTH**max(0,s.owned[i]-s.free[i])*discount*oath_producer_price_factor(s))
 
 def exact_bulk_cost(s,i,k,discount=1.0):
     p=DATA["producers"][i]; total=0
     for n in range(s.owned[i],s.owned[i]+k):
-        total+=math.ceil(p["base_cost"]*GROWTH**max(0,n-s.free[i])*discount)
+        total+=math.ceil(p["base_cost"]*GROWTH**max(0,n-s.free[i])*discount*oath_producer_price_factor(s))
     return total
 
 def standard_tier_factor(s,i):
@@ -147,10 +147,10 @@ def insight_factor(s):
     cfg=DATA["insight_amplifiers"]
     for j in range(s.insight_amplifiers):
         out*=1+ins*cfg["coefficients"][j]*s.insight_effectiveness
-    return out
+    return out*oath_insight_factor(s)
 
 def prestige_factor(s):
-    return 1+(s.claimed_prestige/100.0)*s.prestige_effectiveness
+    return 1+(s.claimed_prestige/100.0)*s.prestige_effectiveness*oath_prestige_effectiveness_factor(s)
 
 def relic_factor(s):
     out=1.0
@@ -165,7 +165,24 @@ def oath_production_factor(s):
     for slot,oath in enumerate(s.oath_slots):
         if oath==0: out*=1+ascetic[slot]
         elif oath==1: out*=1-decadence[slot]
+        elif oath==6:out*=.97
+        elif oath==7:out*=1.10
     return out
+
+def oath_producer_price_factor(s):return .93 if 5 in s.oath_slots else 1.0
+def oath_prestige_effectiveness_factor(s):return .70 if 5 in s.oath_slots else 1.0
+def oath_click_factor(s):return 1.15 if 6 in s.oath_slots else 1.0
+def oath_omen_spawn_factor(s):
+    out=1.0
+    if 7 in s.oath_slots:out*=1.10
+    if 8 in s.oath_slots:out*=1.15
+    return out
+def oath_insight_factor(s):return 1.10 if 8 in s.oath_slots else 1.0
+def oath_force_wrath(s):return 9 in s.oath_slots
+def oath_parasite_spawn_factor(s):return 2.5 if 9 in s.oath_slots else 1.0
+def oath_parasite_payout_factor(s):return 1.15 if 9 in s.oath_slots else 1.0
+def oath_order_dreg_seconds(s):
+    return (s.owned[0]//10)*3600 if 10 in s.oath_slots else 0
 
 def garden_stage_strength(plant,age):
     m=plant["mature"]
@@ -258,7 +275,7 @@ def click_value(s):
     # click-buff channel multiplies the completed click value.
     n=sum(s.owned[1:])
     base=1*(2**s.messenger_doublings)+messenger_coefficient(s)*n
-    return (base + 0.01*s.mouse_upgrades*current_eps(s))*click_buff_factor(s)
+    return (base + 0.01*s.mouse_upgrades*current_eps(s))*click_buff_factor(s)*oath_click_factor(s)
 
 def _grant_achievements_pass(s):
     before=len(s.achievements)
@@ -670,10 +687,12 @@ def parasite_withheld_fraction(s):
     return min(1.0,.05*len(parasite_attached(s)))
 
 def update_parasites(s,dt,rng):
-    if s.permanent_suppression or s.pledge_until>s.elapsed or s.blood_moon_stage<=0:return
+    stage=s.blood_moon_stage
+    if stage<=0 and oath_force_wrath(s):stage=1
+    if s.permanent_suppression or s.pledge_until>s.elapsed or stage<=0:return
     frames=max(0,int(dt*30));cap=parasite_capacity(s)
     # Equivalent probability of >=1 spawn opportunity per empty slot over dt.
-    pframe=.00001*s.blood_moon_stage
+    pframe=.00001*stage*oath_parasite_spawn_factor(s)
     pspan=1-(1-pframe)**frames
     empty=max(0,cap-len(s.parasites))
     for _ in range(empty):
@@ -696,7 +715,7 @@ def pop_all_parasites(s):
     total=0.0
     for p in s.parasites:
         if p["phase"]==2:
-            total+=p["stored"]*1.10*(3 if p["shiny"] else 1)
+            total+=p["stored"]*1.10*(3 if p["shiny"] else 1)*oath_parasite_payout_factor(s)
     s.bank+=total;s.run_earned+=total;s.parasites_popped+=len(s.parasites);s.parasites=[]
     return total
 
@@ -1280,6 +1299,8 @@ def sample_omen_wait(rng):
     u=rng.random();i=bisect.bisect_left(_OMEN_CDF,u)
     return _OMEN_TIMES[min(i,len(_OMEN_TIMES)-1)]
 
+def next_omen_wait(s,rng):return sample_omen_wait(rng)/oath_omen_spawn_factor(s)
+
 def expire_buffs(s):
     s.prod_buffs=[b for b in s.prod_buffs if b[0]>s.elapsed]
     s.click_buffs=[b for b in s.click_buffs if b[0]>s.elapsed]
@@ -1364,15 +1385,15 @@ def resolve_omen(s,rng):
     return True
 
 def init_omens(s,rng):
-    s.omen_next=s.elapsed+sample_omen_wait(rng)
+    s.omen_next=s.elapsed+next_omen_wait(s,rng)
 
 def process_omens(s,rng):
     if s.quiet_hunt_unlocked and s.quiet_hunt_active:
-        if s.elapsed>=s.omen_next:s.omen_next=s.elapsed+sample_omen_wait(rng)
+        if s.elapsed>=s.omen_next:s.omen_next=s.elapsed+next_omen_wait(s,rng)
         return
     while s.elapsed>=s.omen_next:
         resolve_omen(s,rng)
-        s.omen_next+=sample_omen_wait(rng)
+        s.omen_next+=next_omen_wait(s,rng)
 
 def simulate(seconds,cps=4.0,step=5.0,checkpoints=(300,1800,3600,14400),seed=1,omens=True):
     s=State();out=[];next_cp=0;rng=random.Random(seed)

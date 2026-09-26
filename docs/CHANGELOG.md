@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.27 Oaths 6-11 restored
+- Wired the preserved Industry, Labor, Creation, Mother, Scorn, and Order factors into producer prices, prestige, clicking, production, Omen timing, Insight, forced wrath, and parasites.
+- Added compositional and integration checks for costs, timing, parasite payout, and Order's Dreg-time calculation.
+- The preserved v0.27 script and five boundary tests pass.
+- The Order timing trigger and Oath mechanics not asserted by the preserved script remain outside the fidelity claim.
+
 ## v0.26 Quiet Hunt and Veil restored
 - Restored Quiet Hunt's current-EPS toggle cost, x1.5 production, and natural-Omen suppression while preserving forced Omens.
 - Restored Veil x1.50-x1.75 scaling, reinforcement defenses, click/Omen breaks, counters, and 24-hour-unveiled-EPS reactivation.
