@@ -2,6 +2,10 @@
 
 BloodTap is an original gothic-horror incremental/clicker game project inspired by the progression depth of classic web incrementals. It uses original project names, presentation, code, and assets.
 
+## Play locally
+
+Run `python -B -m alpha.server` from this folder, then open <http://127.0.0.1:8765>. On Windows, you can also double-click `Start-BloodTap.cmd`. See [the playable-core guide](docs/ALPHA.md) for saves, tests, and current limits.
+
 ## Current status
 
 **Pre-alpha / simulator phase — executable baseline restored, v0.19-v0.21 tested behavior restored**

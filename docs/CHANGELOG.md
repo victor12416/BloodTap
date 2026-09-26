@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## Local browser preview
+- Added the responsive gothic core client and a loopback-only Python server with same-origin action checks.
+- Exposed live production, shop, upgrades, Omens, permanent memories, import/export, typed confirmations, and reduced-motion settings.
+- Desktop and 390px mobile flows passed in installed Chrome with no JavaScript exceptions. Twelve alpha unit/integration tests pass.
+- Added the launch guide and Windows launcher. Preview remains short of alpha readiness pending balance and restoration decisions.
+
 ## Playable-core action model
 - Added validated player actions using the existing simulator: taps, bulk producer purchases, upgrades, collectible Omens, Reawakening, and implemented permanent offline memories.
 - Added original display names for the client; recovered balance tables remain unchanged.

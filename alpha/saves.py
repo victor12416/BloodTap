@@ -16,7 +16,7 @@ COUNTS={'claimed_prestige':10**100,'dream_fragments':10**100,'clicks':10**15,
         'prestige_purchases':len(sim.DATA['prestige_effectiveness_purchases'])}
 SETS=('standard_tiers','global_relics','achievements','ascension_upgrades')
 FIELDS=set(NUMBERS)|set(COUNTS)|set(SETS)|{'owned','highest_owned','prod_buffs','click_buffs'}
-ASCENSION=set(sim.ASCENSION_COSTS)-{'U181'}
+ASCENSION={'U363','U281','U395','U274','U275','U353','U354'}
 
 
 def number(value,maximum,minimum=0):
