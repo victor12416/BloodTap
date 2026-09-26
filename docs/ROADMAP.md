@@ -2,6 +2,8 @@
 
 ## Phase 1 — Simulator correctness
 
+Status: the recovered core and every preserved v0.19-v0.28 assertion pass. The full frozen rules were not recovered, so unasserted advanced behavior remains isolated and excluded from the playable preview.
+
 - Finish v0.18 affordability scheduling.
 - Fix Ritual free-purchase price scaling.
 - Fix Ascetic Oath break semantics.
@@ -17,6 +19,8 @@
 
 ## Phase 2 — Progression validation
 
+Status: fresh-run and first-useful-bundle profiles are reproducible. At four taps per second with every Omen collected, the useful two-fragment bundle currently takes 20.3–20.9 hours. Further tuning is blocked on the intended target window and balance lever.
+
 Run only simulations that answer launch-relevant questions.
 
 - 30- and 60-minute active-day profiles.
@@ -29,6 +33,8 @@ Run only simulations that answer launch-relevant questions.
 **Exit condition:** progression has documented percentile ranges and any deliberate balance changes have a changelog.
 
 ## Phase 3 — Playable game core
+
+Status: implemented in the local browser preview with versioned saves, backup/import/export safeguards, responsive desktop/mobile behavior, and automated browser coverage.
 
 - Stable save schema and migrations.
 - Large-number representation.
@@ -43,6 +49,8 @@ Run only simulations that answer launch-relevant questions.
 - Responsive desktop/mobile layout.
 
 ## Phase 4 — Advanced systems
+
+Status: simulator-only, limited to recovered and test-supported rules; intentionally unavailable in the playable preview.
 
 - Blood Gardens.
 - Hunter Rituals.
@@ -62,6 +70,8 @@ Run only simulations that answer launch-relevant questions.
 - Performance work for long-running saves.
 
 ## Phase 6 — Alpha / beta
+
+Status: automated save/economy tests, returning/offline cases, and mobile browser flows pass. Fresh-session pacing and a real player playtest remain release blockers.
 
 - Automated save and economy regression tests.
 - Fresh-save playtest.

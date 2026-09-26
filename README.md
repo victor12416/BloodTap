@@ -8,9 +8,9 @@ Run `python -B -m alpha.server` from this folder, then open <http://127.0.0.1:87
 
 ## Current status
 
-**Pre-alpha / simulator phase — executable baseline restored, v0.19-v0.21 tested behavior restored**
+**Playable-core pre-alpha — executable baseline restored and every preserved v0.19-v0.28 assertion passes**
 
-The simulator, economy data, Garden catalog, and core tests have been restored from the user-provided executable archive. The core suite and v0.19-v0.21 milestone tests now pass. Historical v0.22-v0.28 tests remain pending integration; the archive did not contain their merged implementation. See [engineering status](docs/STATUS.md) and [recovery notes](docs/RECOVERY.md).
+The simulator, economy data, Garden catalog, and core tests were restored from the user-provided executable archive. The archive did not contain the merged v0.19-v0.28 implementation, so the surviving milestone assertions were reconstructed in small tested increments. The recovered core, every preserved v0.19-v0.28 assertion, 46 added simulator boundary tests, 16 playable-core tests, and the desktop/mobile browser flow pass. This proves the documented test-supported subset; rules absent from the recovered source and tests remain unavailable. See [engineering status](docs/STATUS.md), [playable-core guide](docs/ALPHA.md), and [recovery notes](docs/RECOVERY.md).
 
 Run the verified subset from the repository root with Python 3.12 (no external dependencies):
 
@@ -18,7 +18,7 @@ Run the verified subset from the repository root with Python 3.12 (no external d
 python -B -m simulator.verify
 ```
 
-Use `import simulator` in study scripts. Do not enable Python's `-O` flag: the historical test scripts use assertions. Running all historical tests currently fails on the pending milestones.
+Use `import simulator` in study scripts. Do not enable Python's `-O` flag: the historical milestone scripts use assertions.
 
 ### Recovered core
 
@@ -34,7 +34,7 @@ The archive's core suite identifies its original baseline as v0.15. Earlier v0.1
 
 ### Remaining fidelity work
 
-First resolve missing office bonuses and reapply v0.22-v0.28 against explicit rules and tests. Then continue Garden passive effects and harvest/death rewards, natural Omen candidate/wrath parity, Calendar collections and carryover, Great One/aura and parasite integration, and accounting/seeded verification. See `docs/STATUS.md` for the ordered queue.
+The original specification is still needed for unasserted Exchange office/tick behavior, most Garden mutation and passive-effect rules, earlier Oath hooks, Calendar collections and carryover, natural Omen candidate/wrath parity, and Great One/aura integration. These advanced systems stay outside the playable preview. The other alpha blocker is first-session pacing: the first useful two-fragment bundle currently takes about 20.3–20.9 hours of highly active play, so a target window and approved balance lever are required before an alpha declaration. See [engineering status](docs/STATUS.md) for the evidence and queue.
 
 ## Development rules
 
