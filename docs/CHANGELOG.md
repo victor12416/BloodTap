@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.26 Quiet Hunt and Veil restored
+- Restored Quiet Hunt's current-EPS toggle cost, x1.5 production, and natural-Omen suppression while preserving forced Omens.
+- Restored Veil x1.50-x1.75 scaling, reinforcement defenses, click/Omen breaks, counters, and 24-hour-unveiled-EPS reactivation.
+- The preserved v0.26 script and five integration/boundary tests pass.
+- Intermediate defense probabilities remain subject to the missing frozen specification.
+
 ## v0.25 test-supported contamination and sacrifice
 - Restored cardinal contamination from mature Meddleweed, Crumbspore, and Doughshroom sources with protected/immune targets.
 - Restored Pebbles natural-death seed unlocks, Meddleweed death conversion, and the full-seed +10 Blood Dregs sacrifice/reset.

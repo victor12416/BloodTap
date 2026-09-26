@@ -98,6 +98,13 @@ class State:
     calendar_until: float=0.0
     ascension_upgrades: set=field(default_factory=set)
     total_reawakenings: int=0
+    quiet_hunt_unlocked: bool=False
+    quiet_hunt_active: bool=False
+    veil_unlocked: bool=False
+    veil_active: bool=False
+    veil_reinforcements: int=0
+    veil_defenses: int=0
+    veil_breaks: int=0
 
 def next_cost(s,i,discount=1.0):
     p=DATA["producers"][i]
@@ -219,8 +226,17 @@ def blood_moon_global_factor(s):
     if s.permanent_suppression:out*=.95
     return out
 
+def quiet_hunt_production_factor(s):
+    return 1.5 if s.quiet_hunt_unlocked and s.quiet_hunt_active else 1.0
+
+def veil_production_factor(s):
+    if not s.veil_unlocked or not s.veil_active:return 1.0
+    return 1.5+.0625*min(4,max(0,s.veil_reinforcements))
+
 def raw_eps(s):
-    return sum(producer_eps(s,i) for i in range(20))*s.global_factor*relic_factor(s)*insight_factor(s)*prestige_factor(s)*oath_production_factor(s)*garden_production_factor(s)*blood_moon_global_factor(s)
+    return (sum(producer_eps(s,i) for i in range(20))*s.global_factor*relic_factor(s)*insight_factor(s)*
+            prestige_factor(s)*oath_production_factor(s)*garden_production_factor(s)*blood_moon_global_factor(s)*
+            quiet_hunt_production_factor(s)*veil_production_factor(s))
 
 def production_buff_factor(s):
     out=1.0
@@ -294,9 +310,10 @@ def earn_passive(s,seconds):
     g=gross*seconds-withheld
     s.bank+=g;s.run_earned+=g;update_dreg_unlock(s);return g
 
-def click(s,count=1):
+def click(s,count=1,rng=None):
     total=0.0
     for _ in range(count):
+        if rng is not None:veil_break_check(s,rng)
         v=click_value(s);s.bank+=v;s.run_earned+=v;s.handmade_echoes+=v;s.clicks+=1;total+=v;update_dreg_unlock(s)
     grant_achievements(s);return total
 
@@ -718,6 +735,33 @@ def baseline_blood_moon_policy(s):
     # Buy sequential research when affordable/ready. Parasites are allowed;
     # harvesting strategy is deferred until they can actually exist.
     while buy_blood_moon_research(s):pass
+
+# ---------- Quiet Hunt and Veil ----------
+def toggle_quiet_hunt(s):
+    if not s.quiet_hunt_unlocked:return False
+    cost=current_eps(s)*3600
+    if not math.isfinite(cost) or cost<0 or s.bank<cost:return False
+    s.bank-=cost;s.quiet_hunt_active=not s.quiet_hunt_active
+    return True
+
+def veil_break_check(s,rng):
+    if not s.veil_unlocked or not s.veil_active:return False
+    reinforcements=min(4,max(0,s.veil_reinforcements))
+    defense_probability=.20*reinforcements
+    if reinforcements and rng.random()<defense_probability:
+        s.veil_reinforcements-=1;s.veil_defenses+=1
+        return False
+    s.veil_active=False;s.veil_breaks+=1
+    return True
+
+def reactivate_veil(s):
+    if not s.veil_unlocked or s.veil_active:return False
+    factor=veil_production_factor(s)
+    unbuffed=raw_eps(s)/factor
+    cost=unbuffed*86400
+    if not math.isfinite(cost) or cost<0 or s.bank<cost:return False
+    s.bank-=cost;s.veil_active=True
+    return True
 
 # ---------- Blood Gardens ----------
 def garden_available(s):return s.producer_levels[2]>=1
@@ -1274,6 +1318,8 @@ def break_ascetic_on_natural_omen(s):
 
 
 def resolve_omen(s,rng):
+    if s.quiet_hunt_unlocked and s.quiet_hunt_active:return False
+    veil_break_check(s,rng)
     break_ascetic_on_natural_omen(s)
     choice=choose_omen(s,rng);s.omen_last=choice;s.omen_clicks+=1
     before=s.bank
@@ -1315,11 +1361,15 @@ def resolve_omen(s,rng):
     # blab intentionally pays nothing.
     s.omen_log.append((s.elapsed,choice,s.bank-before))
     grant_achievements(s)
+    return True
 
 def init_omens(s,rng):
     s.omen_next=s.elapsed+sample_omen_wait(rng)
 
 def process_omens(s,rng):
+    if s.quiet_hunt_unlocked and s.quiet_hunt_active:
+        if s.elapsed>=s.omen_next:s.omen_next=s.elapsed+sample_omen_wait(rng)
+        return
     while s.elapsed>=s.omen_next:
         resolve_omen(s,rng)
         s.omen_next+=sample_omen_wait(rng)

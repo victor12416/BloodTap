@@ -84,7 +84,7 @@ class Game:
         if not isinstance(body,dict):raise ValueError('Expected an action object')
         kind=body.get('action');s=self.state;changed=False
         if kind=='click':
-            sim.click(s);changed=True
+            sim.click(s,rng=self.rng);changed=True
         elif kind=='buy':
             i=body.get('producer');quantity=body.get('quantity',1)
             if type(i) is not int or not 0<=i<20 or type(quantity) is not int or quantity not in (1,10,100):raise ValueError('Invalid producer purchase')
