@@ -70,6 +70,10 @@ class State:
     exchange_brokers: int=0
     exchange_office_stage: int=0
     exchange_highest_raw_eps: float=0.0
+    exchange_trade_tick: list=field(default_factory=lambda:[-1]*18)
+    exchange_trade_side: list=field(default_factory=lambda:[""]*18)
+    exchange_loan_phase: list=field(default_factory=lambda:[0]*3)
+    exchange_loan_until: list=field(default_factory=lambda:[0.0]*3)
     garden_unlocked_seeds: set=field(default_factory=lambda:{0})
     garden_plot: list=field(default_factory=lambda:[None]*36)
     garden_soil: int=0
@@ -803,6 +807,63 @@ def exchange_buy_price(s,i):
 def exchange_sell_price(s,i):
     return s.exchange_highest_raw_eps*s.exchange_values[i]
 
+def _exchange_trade_valid(s,i,quantity):
+    return (s.exchange_unlocked and type(i) is int and 0<=i<18 and
+            type(quantity) is int and quantity>0)
+
+def exchange_buy(s,i,quantity):
+    if not _exchange_trade_valid(s,i,quantity):return False
+    if s.exchange_trade_tick[i]==s.exchange_ticks and s.exchange_trade_side[i]=="sell":return False
+    if s.exchange_stock[i]+quantity>exchange_capacity(s,i):return False
+    price=float(exchange_buy_price(s,i)*quantity)
+    if not math.isfinite(price) or price<0 or s.bank<price:return False
+    s.bank-=price;s.exchange_stock[i]+=quantity;s.exchange_profit=float(s.exchange_profit-price)
+    s.exchange_trade_tick[i]=s.exchange_ticks;s.exchange_trade_side[i]="buy"
+    return True
+
+def exchange_sell(s,i,quantity):
+    if not _exchange_trade_valid(s,i,quantity):return False
+    if s.exchange_trade_tick[i]==s.exchange_ticks and s.exchange_trade_side[i]=="buy":return False
+    if quantity>s.exchange_stock[i]:return False
+    gain=float(exchange_sell_price(s,i)*quantity)
+    if not math.isfinite(gain) or gain<0:return False
+    s.bank+=gain;s.run_earned+=gain;s.exchange_stock[i]-=quantity
+    s.exchange_profit=float(s.exchange_profit+gain)
+    s.exchange_trade_tick[i]=s.exchange_ticks;s.exchange_trade_side[i]="sell"
+    return True
+
+def exchange_max_brokers(s):
+    return max(0,s.highest_owned[0]//10+s.producer_levels[0])
+
+def exchange_buy_broker(s):
+    if s.exchange_brokers>=exchange_max_brokers(s):return False
+    cost=max(1000.0,s.exchange_highest_raw_eps*1200.0)
+    if s.bank<cost:return False
+    s.bank-=cost;s.exchange_brokers+=1
+    return True
+
+def exchange_upgrade_office(s):
+    if s.exchange_office_stage!=0:
+        raise NotImplementedError("Later office sacrifices require the missing rule specification")
+    if s.producer_levels[0]<2 or s.owned[0]<100:return False
+    s.owned[0]-=100;s.exchange_office_stage=1
+    return True
+
+def exchange_take_loan(s,loan):
+    if type(loan) is not int or not 0<=loan<3:return False
+    if loan>0:raise NotImplementedError("Loans 2 and 3 require the missing rule specification")
+    if s.exchange_office_stage<1 or s.exchange_loan_phase[loan]:return False
+    fee=s.bank*.20
+    s.bank-=fee;s.exchange_loan_phase[loan]=1;s.exchange_loan_until[loan]=s.elapsed+7200
+    return True
+
+def update_exchange_loans(s):
+    # Recovered loan 1 schedule: two-hour positive phase, four-hour negative phase.
+    if s.exchange_loan_phase[0]==1 and s.elapsed>=s.exchange_loan_until[0]:
+        s.exchange_loan_phase[0]=2;s.exchange_loan_until[0]+=14400
+    if s.exchange_loan_phase[0]==2 and s.elapsed>=s.exchange_loan_until[0]:
+        s.exchange_loan_phase[0]=0;s.exchange_loan_until[0]=0.0
+
 def exchange_mean_reversion_policy(s):
     # Conservative policy: buy only well below resting value; sell well above.
     for i in range(18):
@@ -998,6 +1059,7 @@ def reawaken(s):
     s.blood_moon_next_transition=-1.0;s.blood_moon_transition_after=s.elapsed
     s.ritual_energy=0;s.ritual_initialized=False;s.ritual_casts=0;s.oath_slots=[-1,-1,-1];s.oath_swaps=3;s.oath_last_recharge=s.elapsed
     s.exchange_unlocked=False;s.exchange_ticks=0;s.exchange_last_tick=s.elapsed;s.exchange_values=[0.0]*18;s.exchange_velocity=[0.0]*18;s.exchange_modes=[0]*18;s.exchange_mode_time=[0]*18;s.exchange_stock=[0]*18;s.exchange_profit=0;s.exchange_highest_raw_eps=0
+    s.exchange_trade_tick=[-1]*18;s.exchange_trade_side=[""]*18;s.exchange_loan_phase=[0]*3;s.exchange_loan_until=[0.0]*3
     s.garden_plot=[None]*36;s.garden_soil=0;s.garden_next_tick=0;s.calendar_state=-1;s.calendar_switches=0;s.calendar_until=0
     return gain
 

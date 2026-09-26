@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.22 test-supported Exchange behavior
+- Restored validated buy/sell transactions, capacity enforcement, same-tick opposite-side restrictions, and floating-point profit accounting.
+- Restored broker caps/purchases, the first office sacrifice, and the preserved first-loan phase schedule.
+- The preserved v0.22 script and four boundary tests pass.
+- Later office sacrifices, loans 2-3, and full exact ticker parity remain unsupported because their frozen rules were not recovered.
+
 ## Core pacing measurement
 - Added a reproducible seeded study with spending/income conservation checks and a deterministic smoke test.
 - At four taps/second with five-second adaptive purchases and every Omen collected, the first useful two-fragment bundle took 20h 20m 30s to 20h 55m 35s across three seeds.
