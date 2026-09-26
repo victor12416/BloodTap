@@ -1,5 +1,33 @@
 # BloodTap engineering changelog
 
+## v0.25
+- Added Garden contamination from Meddleweed, Crumbspore, and Doughshroom with cardinal-neighbor targeting and contamination immunity.
+- Added Pebbles natural-death seed-unlock behavior.
+- Added Meddleweed death conversion behavior.
+- Added full-seed Garden sacrifice/reset for the adapted +10 Blood Dregs reward.
+- Added targeted tests.
+
+## v0.24
+- Encoded the full 34-species Garden mutation candidate matrix from the frozen rule specification.
+- Added 8-neighbor mature/total counting, weed/fungus protection checks, spontaneous Meddleweed, Wood Chips mutation loops, and Supreme Intellect loop hook.
+- Added targeted tests.
+
+## v0.23
+- Added Garden freeze semantics and 10-minute soil-change lockout.
+- Added soil ownership requirements.
+- Added neighbor age/power/weed modifiers for Elderwort, Queenbeet Lump, Nursetulip, Shriekbulb, Tidygrass, Everdaisy, and Ichorpuff.
+- Closed/offline time no longer advances Garden growth.
+- Added targeted tests.
+
+## v0.22
+- Replaced approximate Exchange price movement with the frozen one-minute tick equations.
+- Added weighted modes, global shocks, noise, fast/chaotic instability, high-value damping, and exact mode-duration selection.
+- Added same-tick buy/sell restrictions and normalized profit ledger.
+- Added broker limits/purchases, office sacrifices, and all three loan phase transitions.
+- Added targeted tests.
+
+# BloodTap engineering changelog
+
 ## v0.21
 - Added per-producer current-run highest-owned tracking.
 - Chalice Exchange storage now uses highest ownership, producer level, office flat bonuses, and the final office x1.5 multiplier.
