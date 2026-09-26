@@ -60,7 +60,7 @@
           "click_value": 155.623,
           "owned": 228,
           "achievements": 20,
-          "prestige": 0,
+          "prestige": 1,
           "omens_collected": 8
         }
       ]
@@ -80,7 +80,7 @@
           "click_value": 347.256,
           "owned": 237,
           "achievements": 21,
-          "prestige": 0,
+          "prestige": 1,
           "omens_collected": 4
         },
         {
@@ -91,7 +91,7 @@
           "click_value": 3628.30464,
           "owned": 294,
           "achievements": 23,
-          "prestige": 0,
+          "prestige": 1,
           "omens_collected": 8
         }
       ]
@@ -122,7 +122,7 @@
           "click_value": 353.415,
           "owned": 180,
           "achievements": 20,
-          "prestige": 0,
+          "prestige": 1,
           "omens_collected": 7
         }
       ]
@@ -153,7 +153,7 @@
           "click_value": 941.9534600000001,
           "owned": 198,
           "achievements": 21,
-          "prestige": 0,
+          "prestige": 1,
           "omens_collected": 8
         }
       ]
@@ -163,7 +163,7 @@
       "policy": "adaptive",
       "cps": 4,
       "first_producer_seconds": 5,
-      "first_two_fragment_bundle_seconds": null,
+      "first_two_fragment_bundle_seconds": 3390,
       "checkpoints": [
         {
           "seconds": 1800,
@@ -173,7 +173,7 @@
           "click_value": 169.36,
           "owned": 165,
           "achievements": 20,
-          "prestige": 0,
+          "prestige": 1,
           "omens_collected": 4
         },
         {
@@ -184,7 +184,7 @@
           "click_value": 20670.01974608,
           "owned": 207,
           "achievements": 23,
-          "prestige": 0,
+          "prestige": 2,
           "omens_collected": 8
         }
       ]

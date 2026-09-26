@@ -19,7 +19,7 @@ Status: the recovered core and every preserved v0.19-v0.28 assertion pass. The f
 
 ## Phase 2 — Progression validation
 
-Status: fresh-run and first-useful-bundle profiles are reproducible. At four taps per second with every Omen collected, the useful two-fragment bundle currently takes 20.3–20.9 hours. Further tuning is blocked on the intended target window and balance lever.
+Status: fresh-run and first-useful-bundle profiles are reproducible. The approved capped starter-prestige curve puts the 20-seed automated sample at 69m15s–89m50s, with an 82m15s median. Human pacing remains to be measured.
 
 Run only simulations that answer launch-relevant questions.
 
@@ -71,7 +71,7 @@ Status: simulator-only, limited to recovered and test-supported rules; intention
 
 ## Phase 6 — Alpha / beta
 
-Status: automated save/economy tests, returning/offline cases, and mobile browser flows pass. Fresh-session pacing and a real player playtest remain release blockers.
+Status: automated save/economy tests, returning/offline cases, the 60–90 minute automated pacing target, and mobile browser flows pass. The local playable core is an alpha candidate; a real fresh-player session remains before public alpha release.
 
 - Automated save and economy regression tests.
 - Fresh-save playtest.

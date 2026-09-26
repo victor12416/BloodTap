@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## Playable-core alpha candidate pacing
+- Added an explicit 23,000,000-echo cubic prestige scale capped at the first two alpha fragments; fragment three and later retain the recovered 1,000,000,000,000-echo curve.
+- Reduced the original three-seed first-useful-bundle result from about 20.5 hours to 56m30s–80m50s.
+- Expanded validation to seeds 1–20: 69m15s–89m50s with an 82m15s median under four taps/second and perfect Omen collection.
+- Added a CI pacing regression using the slowest sampled seed and retained income/spending conservation checks.
+
 ## v0.28 test-supported Calendar core
 - Restored Calendar unlock/switch lifecycle, escalating costs, one-day expiry, and eternal mode.
 - Composed the preserved Night of the Hunt and Masquerade Omen timing factors with scheduling, plus the preserved Communion drop-failure factor and slot scaling.

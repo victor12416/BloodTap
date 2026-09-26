@@ -21,7 +21,7 @@ PERMANENT={
 
 # Alpha onboarding accelerator. It affects only the first useful two-fragment
 # bundle; later fragments continue on the recovered 1e12 cubic prestige curve.
-STARTER_PRESTIGE_SCALE=30_000_000
+STARTER_PRESTIGE_SCALE=23_000_000
 STARTER_PRESTIGE_CAP=2
 
 

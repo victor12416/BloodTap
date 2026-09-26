@@ -36,22 +36,19 @@ v0.27 validation: the preserved Oaths 6-11 factors now affect producer prices, p
 
 v0.28 validation: the Calendar can be unlocked by its ascension upgrade or the preserved direct test flag, charges the escalating switch cost, expires after one day unless eternal mode is enabled, and composes the preserved Night of the Hunt and Masquerade timing factors with Omen scheduling. Communion scales those recovered timing and drop-failure reductions by slot. The preserved script and five boundary tests pass. Visitor/drop collections, carryover, the other Calendar effects, and any rules not asserted by the surviving script remain unavailable.
 
-Run `python -B -m simulator.verify` for the restored subset. `--all` also runs pending historical tests and currently exits with failure. CI tests the explicitly scoped restored subset.
+Run `python -B -m simulator.verify` for the recovered and test-supported contract. `--all` also discovers any preserved milestone script outside the declared set. CI tests the same declared contract.
 
-Playable preview status: the local client implements the core clicker loop, shops, achievements/Insight, collectible Omens, Reawakening, permanent offline memories, validated saves, import/export, reset safeguards, responsive layout, and reduced motion. Fifteen alpha tests and the Chrome desktop/mobile flow pass.
+Playable alpha-candidate status: the local client implements the core clicker loop, shops, achievements/Insight, collectible Omens, Reawakening, permanent offline memories, validated saves, import/export, reset safeguards, responsive layout, and reduced motion. Eighteen alpha tests and the Chrome desktop/mobile flow pass.
 
-Balance status: three one-hour profiles and three adaptive profiles through the first useful Reawakening bundle were run with four taps/second, five-second purchase decisions, and 100% Omen collection. The two-fragment bundle took 73,230-75,335 seconds (20h 20m 30s to 20h 55m 35s). See [the balance report](balance/README.md). This is too long for a reasonable first session; the intended target and balance lever were not recovered.
+Balance status: the playable alpha now uses a versioned 23,000,000-echo cubic prestige scale capped at its first two fragments. The 20-seed adaptive sample, with four taps/second and 100% Omen collection, reaches the useful bundle in 69m15s–89m50s with an 82m15s median. Later fragments retain the recovered scale. See [the balance report](balance/README.md). Human pacing remains unmeasured.
 
 ## Immediate queue
 
-Two decisions block alpha readiness:
-
-1. Set a target window and approved balance lever for the first useful two-fragment bundle. The current measured window is roughly 20.5 hours of highly active play.
-2. Recover or redefine the unasserted Calendar and Oath hooks, the other Garden mutation rows, and remaining Exchange rules before exposing advanced systems. The full frozen specification, including most of the mutation matrix and exact Exchange tick rules, is still missing.
+The local playable core is an alpha candidate. Run a real fresh-player session to validate comprehension, interaction, and human pacing before a public alpha release. Advanced systems remain gated until the unasserted Calendar and Oath hooks, other Garden mutation rows, and remaining Exchange rules are recovered or explicitly redefined; the full frozen specification is still missing.
 
 1. Finish Garden passive-effect families and harvest/death reward integration.
 2. Tighten natural Omen candidate/wrath parity and special outcomes.
 3. Complete Calendar visitor/drop collections and carryover.
 4. Complete Great One/aura plumbing and remaining parasite hooks.
 5. Run conservation/accounting and fixed-seed stochastic verification.
-6. Rerun seeded first-session and repeated-Reawakening profiles after an explicit balance decision.
+6. Run a human fresh-session playtest, then profile repeated Reawakenings before expanding permanent progression.

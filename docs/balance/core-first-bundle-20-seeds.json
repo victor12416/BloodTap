@@ -1,0 +1,847 @@
+{
+  "scope": "core preview; 4 taps/s; 5s decisions; 100% Omen catch; no advanced systems or resets",
+  "seconds_limit": 7200,
+  "until_bundle": true,
+  "results": [
+    {
+      "seed": 1,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4850,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 2828999.774999896,
+          "bank": 1310456.7750000008,
+          "raw_eps": 3144.9,
+          "click_value": 47.349000000000004,
+          "owned": 126,
+          "achievements": 17,
+          "prestige": 0,
+          "omens_collected": 3
+        },
+        {
+          "seconds": 3600,
+          "earned": 53000230.68925202,
+          "bank": 19662162.689248484,
+          "raw_eps": 33291.5,
+          "click_value": 353.415,
+          "owned": 180,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 4850,
+          "earned": 184055132.3857908,
+          "bank": 72474886.3857566,
+          "raw_eps": 79507.407252,
+          "click_value": 1612.6481450400001,
+          "owned": 202,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 10
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4980,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 3466285.765000132,
+          "bank": 1047953.7650000155,
+          "raw_eps": 4014.8,
+          "click_value": 57.248000000000005,
+          "owned": 143,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 3
+        },
+        {
+          "seconds": 3600,
+          "earned": 56343144.353009775,
+          "bank": 8803030.353011698,
+          "raw_eps": 43407.0,
+          "click_value": 455.07,
+          "owned": 185,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 4980,
+          "earned": 184341368.89455658,
+          "bank": 52761122.8945924,
+          "raw_eps": 88116.46989600001,
+          "click_value": 1784.9293979200002,
+          "owned": 203,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 10
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 5390,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 3922034.5152501874,
+          "bank": 1801564.5152500635,
+          "raw_eps": 3667.0,
+          "click_value": 53.370000000000005,
+          "owned": 137,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 22123655.838420987,
+          "bank": 12951496.838418053,
+          "raw_eps": 13301.0,
+          "click_value": 151.51,
+          "owned": 155,
+          "achievements": 19,
+          "prestige": 0,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 5390,
+          "earned": 184394905.53775457,
+          "bank": 72814659.53773029,
+          "raw_eps": 79507.407252,
+          "click_value": 1612.6481450400001,
+          "owned": 202,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4905,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 2826657.8132500006,
+          "bank": 165488.81325000004,
+          "raw_eps": 4161.3,
+          "click_value": 308.59100000000007,
+          "owned": 146,
+          "achievements": 17,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 53355339.15221809,
+          "bank": 2566822.152224039,
+          "raw_eps": 42790.0,
+          "click_value": 877.9000000000001,
+          "owned": 201,
+          "achievements": 21,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4905,
+          "earned": 185972208.53267202,
+          "bank": 53737975.532653295,
+          "raw_eps": 88660.85424000002,
+          "click_value": 12435.819593600001,
+          "owned": 213,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4380,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 3860906.6877498548,
+          "bank": 1637555.687749967,
+          "raw_eps": 3726.7,
+          "click_value": 54.166999999999994,
+          "owned": 140,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 87999066.38411178,
+          "bank": 5467629.38411219,
+          "raw_eps": 63007.234000000004,
+          "click_value": 1282.64468,
+          "owned": 203,
+          "achievements": 21,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4380,
+          "earned": 186847413.26860505,
+          "bank": 54853299.2686262,
+          "raw_eps": 88594.658032,
+          "click_value": 12426.352124480001,
+          "owned": 209,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 10
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4980,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 3617090.164999855,
+          "bank": 1438378.1649999714,
+          "raw_eps": 3699.2,
+          "click_value": 53.792,
+          "owned": 140,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 3
+        },
+        {
+          "seconds": 3600,
+          "earned": 51918134.28202207,
+          "bank": 25080066.28201153,
+          "raw_eps": 24971.5,
+          "click_value": 270.21500000000003,
+          "owned": 180,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 4980,
+          "earned": 184379376.16632894,
+          "bank": 107531374.16631608,
+          "raw_eps": 62752.31,
+          "click_value": 2594.64471,
+          "owned": 193,
+          "achievements": 21,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4300,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 4157109.1650001695,
+          "bank": 3088.16500005126,
+          "raw_eps": 7456.6,
+          "click_value": 539.3620000000001,
+          "owned": 147,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 92731485.14476807,
+          "bank": 35542111.14478273,
+          "raw_eps": 45992.673,
+          "click_value": 941.9534600000001,
+          "owned": 198,
+          "achievements": 21,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4300,
+          "earned": 184231203.20189843,
+          "bank": 52334205.20191745,
+          "raw_eps": 88561.89201600001,
+          "click_value": 1794.2378403200003,
+          "owned": 207,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 9
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 5055,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 3353406.0150000136,
+          "bank": 151816.01500000036,
+          "raw_eps": 4791.2,
+          "click_value": 352.98400000000004,
+          "owned": 149,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 62592324.043636106,
+          "bank": 20929531.04363744,
+          "raw_eps": 36095.0,
+          "click_value": 742.9,
+          "owned": 185,
+          "achievements": 21,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 5055,
+          "earned": 184299704.76215285,
+          "bank": 52684033.76213403,
+          "raw_eps": 88454.4062,
+          "click_value": 1791.788124,
+          "owned": 204,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4385,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 3984890.686250217,
+          "bank": 1884675.686249942,
+          "raw_eps": 3654.0,
+          "click_value": 53.14,
+          "owned": 136,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 87565958.57067627,
+          "bank": 30279468.570667293,
+          "raw_eps": 46021.66,
+          "click_value": 942.6332000000001,
+          "owned": 200,
+          "achievements": 21,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4385,
+          "earned": 184106094.33608297,
+          "bank": 52111980.336069785,
+          "raw_eps": 88594.658032,
+          "click_value": 1794.99316064,
+          "owned": 209,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 9
+        }
+      ]
+    },
+    {
+      "seed": 10,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 5005,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 2553409.6160624386,
+          "bank": 1759473.6160624505,
+          "raw_eps": 1898.0,
+          "click_value": 26.98,
+          "owned": 103,
+          "achievements": 15,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 43871684.758473314,
+          "bank": 13182670.758470884,
+          "raw_eps": 32571.5,
+          "click_value": 346.21500000000003,
+          "owned": 180,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 5005,
+          "earned": 184265765.22271362,
+          "bank": 52685519.22272295,
+          "raw_eps": 88439.240848,
+          "click_value": 12404.09371872,
+          "owned": 203,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 5275,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 3950968.1750001647,
+          "bank": 74401.17500005325,
+          "raw_eps": 7148.0,
+          "click_value": 295.972,
+          "owned": 142,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 43179916.160791725,
+          "bank": 21606358.160787888,
+          "raw_eps": 22160.5,
+          "click_value": 241.90500000000003,
+          "owned": 178,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 5275,
+          "earned": 184251943.89355612,
+          "bank": 72671697.89351559,
+          "raw_eps": 79216.17132800001,
+          "click_value": 1606.8234265600004,
+          "owned": 202,
+          "achievements": 22,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 12,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4155,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 8677259.70000044,
+          "bank": 2759627.699999922,
+          "raw_eps": 8505.6,
+          "click_value": 103.45600000000002,
+          "owned": 157,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 3
+        },
+        {
+          "seconds": 3600,
+          "earned": 96894397.8653395,
+          "bank": 46291341.86535303,
+          "raw_eps": 45314.5,
+          "click_value": 474.645,
+          "owned": 190,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 4155,
+          "earned": 184000943.1010442,
+          "bank": 52420697.10107228,
+          "raw_eps": 88116.46989600001,
+          "click_value": 1784.9293979200002,
+          "owned": 203,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 8
+        }
+      ]
+    },
+    {
+      "seed": 13,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4995,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 1692637.7432500052,
+          "bank": 4882.743250000058,
+          "raw_eps": 3327.2,
+          "click_value": 249.004,
+          "owned": 129,
+          "achievements": 16,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 31022616.666950665,
+          "bank": 16126032.66694925,
+          "raw_eps": 17405.8,
+          "click_value": 193.958,
+          "owned": 173,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 4995,
+          "earned": 184003020.2261574,
+          "bank": 52422774.22617512,
+          "raw_eps": 88116.46989600001,
+          "click_value": 1784.9293979200002,
+          "owned": 203,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4845,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 5111200.6312497975,
+          "bank": 2107324.6312500415,
+          "raw_eps": 4525.9,
+          "click_value": 62.759,
+          "owned": 148,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 76244059.33793601,
+          "bank": 190599.3379369639,
+          "raw_eps": 62366.995,
+          "click_value": 4075.5546750000003,
+          "owned": 192,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4845,
+          "earned": 184048636.1421344,
+          "bank": 82548326.14214934,
+          "raw_eps": 74471.53715199999,
+          "click_value": 1511.5307430399998,
+          "owned": 197,
+          "achievements": 22,
+          "prestige": 2,
+          "omens_collected": 10
+        }
+      ]
+    },
+    {
+      "seed": 15,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 5190,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 1104986.7027500002,
+          "bank": 891068.7027499999,
+          "raw_eps": 745.2,
+          "click_value": 8.0,
+          "owned": 80,
+          "achievements": 13,
+          "prestige": 0,
+          "omens_collected": 3
+        },
+        {
+          "seconds": 3600,
+          "earned": 30338147.378885455,
+          "bank": 15783744.37888652,
+          "raw_eps": 16525.8,
+          "click_value": 185.15800000000002,
+          "owned": 173,
+          "achievements": 19,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 5190,
+          "earned": 184356942.7973243,
+          "bank": 52776696.79729652,
+          "raw_eps": 88116.46989600001,
+          "click_value": 1784.9293979200002,
+          "owned": 203,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 16,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4680,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 2372954.4812497986,
+          "bank": 1592336.4812499294,
+          "raw_eps": 1890.0,
+          "click_value": 26.900000000000002,
+          "owned": 102,
+          "achievements": 16,
+          "prestige": 0,
+          "omens_collected": 3
+        },
+        {
+          "seconds": 3600,
+          "earned": 44922309.40074887,
+          "bank": 19013989.400753018,
+          "raw_eps": 21785.5,
+          "click_value": 456.41,
+          "owned": 184,
+          "achievements": 21,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 4680,
+          "earned": 184109283.68482834,
+          "bank": 52406023.6848507,
+          "raw_eps": 88484.736904,
+          "click_value": 1792.5947380800003,
+          "owned": 206,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 10
+        }
+      ]
+    },
+    {
+      "seed": 17,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4965,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 518267.93812500004,
+          "bank": 314.93812499998603,
+          "raw_eps": 1410.6,
+          "click_value": 4.0,
+          "owned": 81,
+          "achievements": 14,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 22814909.38747055,
+          "bank": 360506.38747082185,
+          "raw_eps": 26251.2,
+          "click_value": 1857.584,
+          "owned": 174,
+          "achievements": 20,
+          "prestige": 0,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4965,
+          "earned": 202640855.2295792,
+          "bank": 184360.22959630936,
+          "raw_eps": 115837.1929,
+          "click_value": 1875867.477666,
+          "owned": 252,
+          "achievements": 25,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4710,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 5139921.3092503175,
+          "bank": 2306827.3092500027,
+          "raw_eps": 4426.6,
+          "click_value": 61.666000000000004,
+          "owned": 147,
+          "achievements": 18,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 66084288.39168893,
+          "bank": 24437205.391681995,
+          "raw_eps": 38559.5,
+          "click_value": 406.89500000000004,
+          "owned": 188,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4710,
+          "earned": 184283844.70573688,
+          "bank": 72627434.70575072,
+          "raw_eps": 79537.62726000001,
+          "click_value": 1613.4525452000003,
+          "owned": 204,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 10
+        }
+      ]
+    },
+    {
+      "seed": 19,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 4520,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 2084336.6647500012,
+          "bank": 324.6647500000836,
+          "raw_eps": 4540.4,
+          "click_value": 205.9968,
+          "owned": 117,
+          "achievements": 16,
+          "prestige": 0,
+          "omens_collected": 4
+        },
+        {
+          "seconds": 3600,
+          "earned": 65779807.1648687,
+          "bank": 8381634.164862132,
+          "raw_eps": 46050.849,
+          "click_value": 6469.418860000001,
+          "owned": 202,
+          "achievements": 21,
+          "prestige": 1,
+          "omens_collected": 8
+        },
+        {
+          "seconds": 4520,
+          "earned": 184122676.28228092,
+          "bank": 52016879.28226895,
+          "raw_eps": 88627.64544000001,
+          "click_value": 1795.7529088000003,
+          "owned": 211,
+          "achievements": 24,
+          "prestige": 2,
+          "omens_collected": 10
+        }
+      ]
+    },
+    {
+      "seed": 20,
+      "policy": "adaptive",
+      "cps": 4,
+      "first_producer_seconds": 5,
+      "first_two_fragment_bundle_seconds": 5055,
+      "checkpoints": [
+        {
+          "seconds": 1800,
+          "earned": 1810309.7587499353,
+          "bank": 605650.7587500012,
+          "raw_eps": 2442.0,
+          "click_value": 32.42,
+          "owned": 113,
+          "achievements": 15,
+          "prestige": 0,
+          "omens_collected": 3
+        },
+        {
+          "seconds": 3600,
+          "earned": 30670133.8295197,
+          "bank": 14715730.82952327,
+          "raw_eps": 17931.2,
+          "click_value": 199.312,
+          "owned": 174,
+          "achievements": 20,
+          "prestige": 1,
+          "omens_collected": 7
+        },
+        {
+          "seconds": 5055,
+          "earned": 186198487.61231536,
+          "bank": 54618241.61234063,
+          "raw_eps": 88116.46989600001,
+          "click_value": 1784.9293979200002,
+          "owned": 203,
+          "achievements": 23,
+          "prestige": 2,
+          "omens_collected": 11
+        }
+      ]
+    }
+  ]
+}

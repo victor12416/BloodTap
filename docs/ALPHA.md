@@ -1,4 +1,4 @@
-# Playable core preview
+# Playable core alpha candidate
 
 Start from the repository root:
 
@@ -6,7 +6,7 @@ Start from the repository root:
 python -B -m alpha.server
 ```
 
-Open <http://127.0.0.1:8765>. Python 3.12 is sufficient; playing needs no packages, build tools, external assets, or account. Stop the server with Ctrl+C. This is a local preview, not a public deployment.
+Open <http://127.0.0.1:8765>. Python 3.12 is sufficient; playing needs no packages, build tools, external assets, or account. Stop the server with Ctrl+C. This is a local alpha candidate, not a public deployment.
 
 ## Implemented
 
@@ -33,7 +33,7 @@ The local server is authoritative. A connected tab earns full production. A gap 
 - Every preserved v0.19-v0.28 milestone assertion passes. Exchange, Garden, Oath, and Calendar fidelity remains limited to those assertions: v0.24 covers only two mutation rows, v0.27 asserts Oaths 6-11, and v0.28 covers only core Calendar lifecycle plus selected Communion hooks. Missing original rules prevent an exact-parity claim.
 - Ownership is limited to 1,000 per producer. Finite floating-point economy values and scientific notation support large late-game numbers, with ordinary floating-point rounding; arbitrary-precision economy support is not claimed.
 - No public deployment, telemetry, audio, or multiplayer. The server binds only to 127.0.0.1 and rejects cross-origin mutations.
-- Fresh-run pacing is measured in [the core balance report](balance/README.md). The first useful two-fragment bundle takes about 20.3–20.9 hours of uninterrupted four-tap/s automated play across three seeds. That is too long for a reasonable first-session alpha target. A target window and explicit balance change are required before declaring alpha ready.
+- Fresh-run pacing is measured in [the core balance report](balance/README.md). The capped starter-prestige curve puts seeds 1–20 at 69m15s–89m50s with an 82m15s median under uninterrupted four-tap/s automated play and perfect Omen collection. A real fresh-player session is still required because human play will be slower and less consistent.
 
 ## Verification
 

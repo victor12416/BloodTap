@@ -62,11 +62,11 @@ class GameTests(unittest.TestCase):
 
     def test_starter_prestige_accelerates_only_first_bundle(self):
         g=self.game
-        g.state.run_earned=29_999_999
+        g.state.run_earned=22_999_999
         self.assertEqual(alpha_new_fragments(g.state),0)
-        g.state.run_earned=30_000_000
+        g.state.run_earned=23_000_000
         self.assertEqual(alpha_new_fragments(g.state),1)
-        g.state.run_earned=240_000_000
+        g.state.run_earned=184_000_000
         self.assertEqual(alpha_target_prestige(g.state),2)
         self.assertEqual(alpha_new_fragments(g.state),2)
         g.action({'action':'reawaken','confirmation':'REAWAKEN'})
