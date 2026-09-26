@@ -2,7 +2,7 @@ import random
 import tempfile
 from pathlib import Path
 import unittest
-from alpha.game import Game
+from alpha.game import Game, alpha_new_fragments, alpha_target_prestige
 from alpha import saves
 import simulator as sim
 
@@ -59,6 +59,25 @@ class GameTests(unittest.TestCase):
         g.action({'action':'ascension','id':'U281'})
         self.assertEqual(g.state.dream_fragments,0)
         self.assertEqual(sim.offline_settings(g.state),(.05,3600))
+
+    def test_starter_prestige_accelerates_only_first_bundle(self):
+        g=self.game
+        g.state.run_earned=29_999_999
+        self.assertEqual(alpha_new_fragments(g.state),0)
+        g.state.run_earned=30_000_000
+        self.assertEqual(alpha_new_fragments(g.state),1)
+        g.state.run_earned=240_000_000
+        self.assertEqual(alpha_target_prestige(g.state),2)
+        self.assertEqual(alpha_new_fragments(g.state),2)
+        g.action({'action':'reawaken','confirmation':'REAWAKEN'})
+        self.assertEqual((g.state.claimed_prestige,g.state.dream_fragments),(2,2))
+        self.assertEqual(alpha_new_fragments(g.state),0)
+
+        # The starter curve is capped; fragment three keeps the recovered
+        # cubic threshold of 27e12 lifetime echoes.
+        g.state.run_earned=27_000_000_000_000-g.state.previous_runs_earned
+        self.assertEqual(alpha_target_prestige(g.state),3)
+        self.assertEqual(alpha_new_fragments(g.state),1)
 
 
 if __name__=='__main__':unittest.main()

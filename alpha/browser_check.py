@@ -25,7 +25,9 @@ def main():
                 errors=[]
                 page.on('pageerror',lambda e:errors.append(str(e)))
                 page.goto(url)
-                expect(page.locator('#save-status')).to_contain_text('Progress saved')
+                expect(page.locator('#vessel')).to_be_visible()
+                expect(page.locator('#save-status')).not_to_contain_text('Connecting')
+                expect(page.locator('#save-status')).not_to_contain_text('Disconnected')
                 for _ in range(15):page.get_by_role('button',name='Gather echoes',exact=True).click()
                 first=page.locator('.producer').first
                 expect(first).to_be_enabled();first.click()

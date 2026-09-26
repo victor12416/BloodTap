@@ -514,13 +514,15 @@ def greedy_step(s,cps):
     if choice[0]=="insight":return buy_insight_amp(s)
     return False
 
-def target_prestige(s):
+def target_prestige(s,scale=None):
     lifetime=s.previous_runs_earned+s.run_earned
     if not math.isfinite(lifetime) or lifetime<0:raise ValueError("Invalid lifetime earnings")
+    if scale is None:scale=int(DATA["prestige"]["scale"])
+    if isinstance(scale,bool) or not isinstance(scale,int) or scale<=0:raise ValueError("Invalid prestige scale")
     # Integer bisection avoids enormous correction loops at large magnitudes.
     # Interpret the stored float's decimal value (e.g. 4.8627125e19),
     # avoiding binary representation noise at familiar prestige thresholds.
-    units=int(Decimal(str(lifetime)))//10**12
+    units=int(Decimal(str(lifetime)))//scale
     low,high=0,1<<((units.bit_length()+2)//3)
     while low+1<high:
         middle=(low+high)//2
@@ -1269,10 +1271,12 @@ def buy_ascension_upgrade(s,uid):
     if uid in req and req[uid] not in s.ascension_upgrades:return False
     s.dream_fragments-=c;s.ascension_upgrades.add(uid);return True
 
-def reawaken(s):
-    gain=new_fragments(s)
+def reawaken(s,target=None):
+    if target is None:target=target_prestige(s)
+    if isinstance(target,bool) or not isinstance(target,int) or target<0:raise ValueError("Invalid prestige target")
+    gain=max(0,target-s.claimed_prestige)
     if gain<=0:return 0
-    target=target_prestige(s);s.previous_runs_earned+=s.run_earned;s.claimed_prestige=target;s.dream_fragments+=gain;s.total_reawakenings+=1
+    s.previous_runs_earned+=s.run_earned;s.claimed_prestige=target;s.dream_fragments+=gain;s.total_reawakenings+=1
     s.bank=0.0;s.run_earned=0.0;s.owned=[0]*20;s.free=[0]*20;s.standard_tiers=set();s.messenger_doublings=0;s.messenger_additive_stage=-1
     s.highest_owned=[0]*20;s.exchange_office_stage=0
     s.mouse_upgrades=0;s.insight_amplifiers=0;s.global_relics=set();s.prestige_purchases=0;s.prestige_effectiveness=0.0;s.handmade_echoes=0.0;s.clicks=0

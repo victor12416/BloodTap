@@ -5,7 +5,7 @@ from pathlib import Path
 import random
 import tempfile
 import time
-from alpha.game import Game
+from alpha.game import Game, alpha_new_fragments
 import simulator as sim
 
 
@@ -34,14 +34,14 @@ def profile(seed,policy,seconds=3600,cps=4,until_bundle=False):
                 spent+=cost
             else:raise RuntimeError('Study policy did not stabilize')
             if first_producer is None and sum(s.owned):first_producer=t
-            if useful_bundle is None and sim.new_fragments(s)>=2:useful_bundle=t
+            if useful_bundle is None and alpha_new_fragments(s)>=2:useful_bundle=t
             reached=until_bundle and useful_bundle is not None
             if t in (1800,3600,seconds) or reached:
                 checkpoints.append({'seconds':t,'earned':s.run_earned,'bank':s.bank,'raw_eps':sim.raw_eps(s),
                                     'click_value':sim.click_value(s),'owned':sum(s.owned),'achievements':len(s.achievements),
-                                    'prestige':sim.new_fragments(s),'omens_collected':s.omen_clicks})
+                                    'prestige':alpha_new_fragments(s),'omens_collected':s.omen_clicks})
             if seconds>3600 and t%3600==0:
-                print(f'Progress: {policy} seed {seed}, {t//3600} hours, {s.run_earned:.3g} earned, {sim.new_fragments(s)} fragments',flush=True)
+                print(f'Progress: {policy} seed {seed}, {t//3600} hours, {s.run_earned:.3g} earned, {alpha_new_fragments(s)} fragments',flush=True)
             if reached:break
         # No resets, losses, or Exchange trading occur in this stage-0 core profile.
         if abs(s.bank+spent-s.run_earned)>max(1e-6,s.run_earned*1e-10):raise RuntimeError('Core income/spend ledger does not conserve')

@@ -19,6 +19,20 @@ PERMANENT={
     'U354':('Enduring dream II','Double that window again.','U353'),
 }
 
+# Alpha onboarding accelerator. It affects only the first useful two-fragment
+# bundle; later fragments continue on the recovered 1e12 cubic prestige curve.
+STARTER_PRESTIGE_SCALE=30_000_000
+STARTER_PRESTIGE_CAP=2
+
+
+def alpha_target_prestige(state):
+    starter=min(STARTER_PRESTIGE_CAP,sim.target_prestige(state,STARTER_PRESTIGE_SCALE))
+    return max(sim.target_prestige(state),starter)
+
+
+def alpha_new_fragments(state):
+    return max(0,alpha_target_prestige(state)-state.claimed_prestige)
+
 
 class Game:
     def __init__(self,path,rng=None,clock=time.monotonic,wall=time.time):
@@ -106,7 +120,7 @@ class Game:
             self.omen_until=0;sim.init_omens(s,self.rng);changed=True
         elif kind=='reawaken':
             if body.get('confirmation')!='REAWAKEN':raise ValueError('Reawakening requires confirmation')
-            gain=sim.reawaken(s)
+            gain=sim.reawaken(s,alpha_target_prestige(s))
             if gain:
                 self.omen_until=0;sim.init_omens(s,self.rng)
                 self.notice=f'Reawakened with {gain} new fragments. Choose your memories below.';changed=True
@@ -147,7 +161,7 @@ class Game:
                              'owned':uid in s.ascension_upgrades,'unlocked':req is None or req in s.ascension_upgrades})
         return {'bank':s.bank,'earned':s.run_earned,'eps':sim.current_eps(s),'click':sim.click_value(s),
                 'achievements':len(s.achievements),'insight':sim.insight(s),'owned':sum(s.owned),
-                'fragments':s.dream_fragments,'prestige':s.claimed_prestige,'new_fragments':sim.new_fragments(s),
+                'fragments':s.dream_fragments,'prestige':s.claimed_prestige,'new_fragments':alpha_new_fragments(s),
                 'offline_efficiency':efficiency,'offline_cap':cap,'producers':producers,'upgrades':self.upgrades(),
                 'memories':memories,'notice':self.notice,'omen_seconds':max(0,self.omen_until-s.elapsed),
                 'buffs':[{'name':b[2].replace('_',' '),'factor':b[1],'seconds':max(0,b[0]-s.elapsed)} for b in s.prod_buffs+s.click_buffs],

@@ -79,6 +79,12 @@ class FidelityIntegrationTests(unittest.TestCase):
         for tier in (-1,1,len(sim.DATA['prestige_effectiveness_purchases'])):
             self.assertFalse(sim.prestige_purchase_unlocked(s,tier))
 
+    def test_optional_prestige_scale_does_not_change_recovered_default(self):
+        s=sim.State(run_earned=240_000_000)
+        self.assertEqual(sim.target_prestige(s),0)
+        self.assertEqual(sim.target_prestige(s,30_000_000),2)
+        with self.assertRaises(ValueError):sim.target_prestige(s,True)
+
 
 if __name__=='__main__':
     unittest.main()
