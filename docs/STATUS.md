@@ -1,8 +1,8 @@
 # Engineering status
 
-Executable status: **recovered core plus v0.19-v0.20 corrections**.
+Executable status: **recovered core plus v0.19-v0.21 tested behavior**.
 
-On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19-v0.20 have now been reapplied and verified; v0.21-v0.28 are still pending. See [recovery notes](RECOVERY.md).
+On 2026-09-26, the user supplied `BloodTap_VSCode_Current_Executable.zip`, restoring the engine, both data files, and a passing core suite. The archive explicitly says the later merged simulator was not persisted. v0.19-v0.21 test cases now pass; v0.22-v0.28 are still pending. See [recovery notes](RECOVERY.md).
 
 Historically reported milestones include:
 
@@ -20,9 +20,13 @@ Audit of the recovered baseline: v0.20 and v0.28 fail assertions; v0.21-v0.23 la
 
 v0.20 validation: the existing milestone script and five boundary tests pass, including persisted geometric waits, research timing, pledge expiry, suppression, and reset. The parasite model remains approximate.
 
+v0.21 validation: highest ownership is tracked on purchases and Ritual grants, preserved on losses, and reset on Reawakening. The existing script and four additional tests pass. Office stages 0, 3, and 5 are specified by the surviving tests; stages 1, 2, and 4 explicitly raise `NotImplementedError` because their bonuses were not recovered. This is a supported subset, not full Exchange parity.
+
+Run `python -B -m simulator.verify` for the restored subset. `--all` also runs pending historical tests and currently exits with failure. CI tests the explicitly scoped restored subset.
+
 ## Immediate queue
 
-Prerequisite: reapply v0.21-v0.28 in order, using the preserved tests and documented rules. The data files are recovered, but the full frozen specification (including the mutation matrix and exact Exchange tick rules) is still missing; unresolved formulas must be specified explicitly before claiming fidelity.
+Prerequisite: recover the remaining office bonuses and reapply v0.22-v0.28, using the preserved tests and documented rules. The data files are recovered, but the full frozen specification (including the mutation matrix and exact Exchange tick rules) is still missing; unresolved formulas must be specified explicitly before claiming fidelity.
 
 1. Finish Garden passive-effect families and harvest/death reward integration.
 2. Tighten natural Omen candidate/wrath parity and special outcomes.

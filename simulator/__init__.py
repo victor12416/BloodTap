@@ -21,6 +21,7 @@ class State:
     claimed_prestige: int=0
     dream_fragments: int=0
     owned: List[int]=field(default_factory=lambda:[0]*20)
+    highest_owned: List[int]=field(default_factory=lambda:[0]*20)
     free: List[int]=field(default_factory=lambda:[0]*20)
     producer_levels: List[int]=field(default_factory=lambda:[0]*20)
     standard_tiers: Set[str]=field(default_factory=set)
@@ -66,6 +67,7 @@ class State:
     exchange_stock: list=field(default_factory=lambda:[0]*18)
     exchange_profit: float=0.0
     exchange_brokers: int=0
+    exchange_office_stage: int=0
     exchange_highest_raw_eps: float=0.0
     garden_unlocked_seeds: set=field(default_factory=lambda:{0})
     garden_plot: list=field(default_factory=lambda:[None]*36)
@@ -257,9 +259,12 @@ def click(s,count=1):
     grant_achievements(s);return total
 
 def buy_producer(s,i,k=1,discount=1.0):
+    if type(i) is not int or not 0<=i<len(s.owned) or type(k) is not int or k<=0:return False
+    if not math.isfinite(discount) or discount<=0:return False
     c=exact_bulk_cost(s,i,k,discount)
     if s.bank<c:return False
-    s.bank-=c;s.owned[i]+=k;s.purchase_log.append((s.elapsed,"producer",i,k,c));grant_achievements(s);return True
+    s.bank-=c;s.owned[i]+=k;s.highest_owned[i]=max(s.highest_owned[i],s.owned[i])
+    s.purchase_log.append((s.elapsed,"producer",i,k,c));grant_achievements(s);return True
 
 def tier_cost(i,t):
     return math.ceil(DATA["producers"][i]["base_cost"]*DATA["standard_tiers"]["cost_base_multipliers"][t])
@@ -774,8 +779,15 @@ def exchange_tick(s,rng,allow_trade=True):
     if allow_trade:exchange_mean_reversion_policy(s)
 
 def exchange_capacity(s,i):
-    pi=min(i+1,19)
-    return math.ceil(s.owned[pi]+s.producer_levels[pi]*10)
+    if type(i) is not int or not 0<=i<18:raise ValueError("Invalid Exchange good")
+    # Only these office bonuses are recoverable from the preserved v0.21 test.
+    # Refuse unverified stages rather than silently inventing balance values.
+    bonuses={0:0,3:150,5:160}
+    if s.exchange_office_stage not in bonuses:
+        raise NotImplementedError("Office capacity bonus requires the missing rule specification")
+    pi=i+1
+    capacity=s.highest_owned[pi]+s.producer_levels[pi]*10+bonuses[s.exchange_office_stage]
+    return math.ceil(capacity*(1.5 if s.exchange_office_stage==5 else 1))
 
 def exchange_buy_price(s,i):
     return s.exchange_highest_raw_eps*s.exchange_values[i]*(1+.20*(.95**s.exchange_brokers))
@@ -890,6 +902,7 @@ def cast_ritual(s,r,rng):
             if candidates:
                 # A no-cost Ritual grant still advances normal price scaling.
                 i=rng.choice(candidates);s.owned[i]+=1
+                s.highest_owned[i]=max(s.highest_owned[i],s.owned[i])
     grant_achievements(s);return True
 
 def update_oath_swaps(s):
@@ -971,6 +984,7 @@ def reawaken(s):
     if gain<=0:return 0
     target=target_prestige(s);s.previous_runs_earned+=s.run_earned;s.claimed_prestige=target;s.dream_fragments+=gain;s.total_reawakenings+=1
     s.bank=0.0;s.run_earned=0.0;s.owned=[0]*20;s.free=[0]*20;s.standard_tiers=set();s.messenger_doublings=0;s.messenger_additive_stage=-1
+    s.highest_owned=[0]*20;s.exchange_office_stage=0
     s.mouse_upgrades=0;s.insight_amplifiers=0;s.global_relics=set();s.prestige_purchases=0;s.prestige_effectiveness=0.0;s.handmade_echoes=0.0;s.clicks=0
     s.prod_buffs=[];s.click_buffs=[];s.omen_last="";s.omen_next=0.0;s.blood_moon_research_step=-1;s.blood_moon_research_ready_at=-1.0;s.blood_moon_stage=0;s.blood_moon_target_stage=0;s.pledge_count=0;s.pledge_until=0;s.permanent_suppression=False;s.parasites=[]
     s.blood_moon_next_transition=-1.0;s.blood_moon_transition_after=s.elapsed

@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.21 supported behavior reapplied
+- Track highest producer ownership on purchases and Ritual grants; clear it and Exchange office state on Reawakening.
+- Restore capacity for office stages covered by surviving tests; unknown office bonuses fail explicitly.
+- Reject invalid producer/count/discount purchases without mutating state.
+- Added four ownership tests, an explicit restored-subset test runner, and CI.
+
 ## v0.20 reapplied
 - Restored .001-per-frame stochastic stage transitions with persisted geometric waits.
 - Research raises only the target; pledge expiry resumes at stage 1; suppression and Reawakening clear pending transitions.
