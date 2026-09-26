@@ -736,6 +736,43 @@ def garden_change_soil(s,soil):
     s.garden_next_tick=s.elapsed+GARDEN["soils"][soil]["tick"]
     return True
 
+def _garden_mutation_candidates(total,mature):
+    """Mutation entries recoverable from preserved tests.
+
+    The historical status says the original matrix had 34 species. Only these
+    two rows survive in executable assertions, so callers must not treat this
+    as the unrecovered full matrix.
+    """
+    out=[]
+    if mature[0]>=2:out.append((1,.05))
+    if mature[20]>=8:out.append((21,.001))
+    return out
+
+def garden_mutation_loop(s,rng,loop=0):
+    if not garden_available(s) or s.garden_frozen:return 0
+    if type(loop) is not int or loop<0:raise ValueError("Invalid mutation loop")
+    snapshot=[None if tile is None else list(tile) for tile in s.garden_plot]
+    _,_,weed=garden_tile_modifiers(s)
+    additions=[]
+    for slot,tile in enumerate(snapshot):
+        if tile is not None:continue
+        total=[0]*len(GARDEN["plants"]);mature=[0]*len(GARDEN["plants"])
+        for other in _garden_nearby(slot,1):
+            neighbor=snapshot[other]
+            if neighbor is None:continue
+            pid,plant_age=neighbor;total[pid]+=1
+            if plant_age>=GARDEN["plants"][pid]["mature"]:mature[pid]+=1
+        candidates=_garden_mutation_candidates(total,mature)
+        successful=[pid for pid,chance in candidates if rng.random()<chance]
+        if successful:additions.append((slot,rng.choice(successful)))
+        # Only the primary loop creates spontaneous weeds. Extra Wood Chips
+        # loops evaluate mutations against the same pre-loop plot.
+        elif loop==0 and weed[slot]>0 and not any(total) and rng.random()<.002*weed[slot]:
+            additions.append((slot,13))
+    for slot,pid in additions:
+        if s.garden_plot[slot] is None:s.garden_plot[slot]=[pid,0.0]
+    return len(additions)
+
 def garden_seed_cost(s,pid):
     p=GARDEN["plants"][pid]
     return max(p["minimum_cost"],current_eps(s)*60*p["cost_minutes"])
@@ -786,6 +823,9 @@ def garden_tick(s,rng,active=True):
                 gain=min(.03*s.bank,current_eps(s)*300)*rng.random();s.bank+=gain;s.run_earned+=gain
             s.garden_plot[slot]=None
         else:s.garden_plot[slot]=[pid,age]
+    garden_mutation_loop(s,rng,0)
+    if s.garden_soil==4:
+        garden_mutation_loop(s,rng,1);garden_mutation_loop(s,rng,2)
     # Baseline strategy harvests mature starter crop and replants it.
     if active:
         for slot,tile in enumerate(list(s.garden_plot)):

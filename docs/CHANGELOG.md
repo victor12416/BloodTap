@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.24 test-supported mutation behavior
+- Restored the paired starter-plant and eight-Queenbeet Lump mutation rows asserted by the preserved script.
+- Added snapshot-based mutation loops, primary-loop spontaneous Meddleweed, weed protection, and extra Wood Chips loops.
+- The preserved v0.24 script and four boundary tests pass.
+- The full 34-species matrix is not restored: its other rows and probabilities were not preserved by the tests or recovered data.
+
 ## v0.23 test-supported Garden behavior
 - Restored freeze behavior, soil ownership requirements, the ten-minute soil lockout, and active/open-time-only growth.
 - Added isolated neighbor age/power/weed modifiers for the species named by the historical milestone.
