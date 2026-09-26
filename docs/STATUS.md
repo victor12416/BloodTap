@@ -1,21 +1,25 @@
 # Engineering status
 
-Current milestone: **v0.18 affordability frontier**
+Current milestone: **v0.21 subsystem fidelity repair**
 
-The v0.18 implementation separates the event scheduler's cheap question — "when could a visible purchase become affordable?" — from the expensive marginal-production optimizer used for actual purchase decisions.
+Completed and targeted-tested since v0.18:
 
-Targeted local verification completed:
+- v0.19: Ritual 4 grants advance producer price scaling.
+- v0.19: natural Omens correctly break Ascetic and consume remaining oath swaps.
+- v0.19: prestige-effectiveness purchases require ascension root U363.
+- v0.20: Blood Moon wrath stages use stochastic/geometric transitions instead of instant target jumps.
+- v0.20: pledge expiry resumes at stage 1; permanent suppression pins stage 0.
+- v0.21: Exchange capacity uses current-run highest ownership plus producer level and office modifiers.
 
-- Existing event-driven timing test: PASS
-- v0.17 targeted correctness tests: PASS
-- v0.18 targeted affordability tests: PASS
+All inherited targeted/core suites plus the new v0.19-v0.21 suites pass locally.
 
-No broad progression simulation was required for this milestone.
+No broad progression simulation was run for these milestones.
 
 ## Immediate queue
 
-1. Commit the current simulator/data/test baseline to this repository.
-2. Correct Ritual free-purchase price scaling.
-3. Correct Ascetic Oath break semantics.
-4. Verify prestige-effectiveness root/dependency behavior.
-5. Continue subsystem fidelity repairs before the next progression study.
+1. Commit the complete current simulator source/data baseline to GitHub.
+2. Continue Chalice Exchange fidelity: exact tick modes, office upgrades, brokers and loans.
+3. Complete Blood Garden mutation/contamination/neighbor behavior.
+4. Tighten natural Omen candidate/wrath parity.
+5. Complete Calendar effects and remaining Caryll Oaths.
+6. Run the next progression study only after the systems affecting its result are sufficiently faithful.
