@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## Core pacing measurement
+- Added a reproducible seeded study with spending/income conservation checks and a deterministic smoke test.
+- At four taps/second with five-second adaptive purchases and every Omen collected, the first useful two-fragment bundle took 20h 20m 30s to 20h 55m 35s across three seeds.
+- Recorded first-hour greedy, adaptive, and reserve profiles without changing recovered balance data.
+- Marked first-session pacing as an explicit alpha blocker pending a target window and approved balance lever.
+
 ## Save durability hardening
 - Added an OS-owned save-folder lock to prevent concurrent servers from overwriting the same progress; locks release after process exit.
 - Added corruption-preservation and offline-reward checkpoint tests. Invalid action payloads return errors without crashing the request.

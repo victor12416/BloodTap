@@ -14,9 +14,9 @@ Historically reported milestones include:
 - v0.27: all eleven Caryll Oath mechanical hooks, including Creation, Labor, Industry, Mother, Scorn and Order.
 - v0.28: Calendar core lifecycle and exact Calendar-Oath timing/drop hooks.
 
-Verified locally: recovered core script, unchanged v0.19 milestone script, and six v0.19 integration/boundary tests. The core script's obsolete prestige-unlock assertion was updated to require U363. Both recovered JSON data files are unchanged. No broad progression simulation was run.
+Verified locally: recovered core script, v0.19-v0.21 milestone scripts, simulator boundary tests, alpha unit/integration tests, and a real-browser desktop/mobile flow. The core script's obsolete prestige-unlock assertion was updated to require U363. Both recovered JSON data files are unchanged.
 
-Audit of the recovered baseline: v0.20 and v0.28 fail assertions; v0.21-v0.23 lack `highest_owned`; v0.24-v0.27 lack their later APIs/state. These nine milestone scripts remain pending, not passing or silently skipped.
+Audit of the recovered baseline found that v0.22-v0.28 still lack later APIs, state, and exact rules. Those seven milestone scripts remain pending, not passing or silently skipped.
 
 v0.20 validation: the existing milestone script and five boundary tests pass, including persisted geometric waits, research timing, pledge expiry, suppression, and reset. The parasite model remains approximate.
 
@@ -24,13 +24,20 @@ v0.21 validation: highest ownership is tracked on purchases and Ritual grants, p
 
 Run `python -B -m simulator.verify` for the restored subset. `--all` also runs pending historical tests and currently exits with failure. CI tests the explicitly scoped restored subset.
 
+Playable preview status: the local client implements the core clicker loop, shops, achievements/Insight, collectible Omens, Reawakening, permanent offline memories, validated saves, import/export, reset safeguards, responsive layout, and reduced motion. Fifteen alpha tests and the Chrome desktop/mobile flow pass.
+
+Balance status: three one-hour profiles and three adaptive profiles through the first useful Reawakening bundle were run with four taps/second, five-second purchase decisions, and 100% Omen collection. The two-fragment bundle took 73,230-75,335 seconds (20h 20m 30s to 20h 55m 35s). See [the balance report](balance/README.md). This is too long for a reasonable first session; the intended target and balance lever were not recovered.
+
 ## Immediate queue
 
-Prerequisite: recover the remaining office bonuses and reapply v0.22-v0.28, using the preserved tests and documented rules. The data files are recovered, but the full frozen specification (including the mutation matrix and exact Exchange tick rules) is still missing; unresolved formulas must be specified explicitly before claiming fidelity.
+Two decisions block alpha readiness:
+
+1. Set a target window and approved balance lever for the first useful two-fragment bundle. The current measured window is roughly 20.5 hours of highly active play.
+2. Recover or redefine the missing v0.22-v0.28 rules before exposing advanced systems. The full frozen specification, including the mutation matrix and exact Exchange tick rules, is still missing.
 
 1. Finish Garden passive-effect families and harvest/death reward integration.
 2. Tighten natural Omen candidate/wrath parity and special outcomes.
 3. Complete Calendar visitor/drop collections and carryover.
 4. Complete Great One/aura plumbing and remaining parasite hooks.
 5. Run conservation/accounting and fixed-seed stochastic verification.
-6. Freeze the balance-relevant simulator subset and pivot to the playable BloodTap client.
+6. Rerun seeded first-session and repeated-Reawakening profiles after an explicit balance decision.

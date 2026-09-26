@@ -33,13 +33,14 @@ The local server is authoritative. A connected tab earns full production. A gap 
 - v0.22-v0.28 fidelity restoration is pending. Missing original rules prevent an exact-parity claim. v0.21 office bonuses are implemented only for recovered stages 0, 3, and 5.
 - Ownership is limited to 1,000 per producer. Finite floating-point economy values and scientific notation support large late-game numbers, with ordinary floating-point rounding; arbitrary-precision economy support is not claimed.
 - No public deployment, telemetry, audio, or multiplayer. The server binds only to 127.0.0.1 and rejects cross-origin mutations.
-- Fresh-run pacing and repeated-Reawakening balance still need measured validation before declaring alpha ready.
+- Fresh-run pacing is measured in [the core balance report](balance/README.md). The first useful two-fragment bundle takes about 20.3–20.9 hours of uninterrupted four-tap/s automated play across three seeds. That is too long for a reasonable first-session alpha target. A target window and explicit balance change are required before declaring alpha ready.
 
 ## Verification
 
 ```powershell
 python -B -m simulator.verify
 python -B -m unittest discover -s alpha -p "test_*.py"
+python -B -m alpha.balance
 ```
 
 The first command explicitly tests the restored core and v0.19-v0.21 subset. Add `--all` to audit historical pending milestone scripts (currently fails).
