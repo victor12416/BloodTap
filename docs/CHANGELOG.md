@@ -1,5 +1,11 @@
 # BloodTap engineering changelog
 
+## v0.23 test-supported Garden behavior
+- Restored freeze behavior, soil ownership requirements, the ten-minute soil lockout, and active/open-time-only growth.
+- Added isolated neighbor age/power/weed modifiers for the species named by the historical milestone.
+- The preserved v0.23 script and four boundary tests pass.
+- Neighbor values beyond preserved assertions remain subject to the missing frozen specification; the Garden is still excluded from the playable preview.
+
 ## v0.22 test-supported Exchange behavior
 - Restored validated buy/sell transactions, capacity enforcement, same-tick opposite-side restrictions, and floating-point profit accounting.
 - Restored broker caps/purchases, the first office sacrifice, and the preserved first-loan phase schedule.

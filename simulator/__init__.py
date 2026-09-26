@@ -79,6 +79,8 @@ class State:
     garden_soil: int=0
     garden_next_tick: float=0.0
     garden_harvest_count: int=0
+    garden_frozen: bool=False
+    garden_soil_changed_at: float=-1e100
     blood_moon_research_step: int=-1
     blood_moon_research_ready_at: float=-1.0
     blood_moon_stage: int=0
@@ -164,13 +166,47 @@ def garden_stage_strength(plant,age):
     if age>=.333*m:return .25
     return .10
 
-def garden_production_factor(s):
-    if s.producer_levels[2]<1:return 1.0
+def _garden_nearby(slot,radius):
+    x,y=slot%6,slot//6
+    for other in range(36):
+        if other==slot:continue
+        ox,oy=other%6,other//6
+        if max(abs(x-ox),abs(y-oy))<=radius:yield other
+
+def garden_tile_modifiers(s):
+    """Return per-tile age, power, and weed/fungus multipliers."""
+    age=[1.0]*36;power=[1.0]*36;weed=[1.0]*36
+    if s.garden_frozen:return age,power,weed
     soil=GARDEN["soils"][s.garden_soil]["effect"]
-    additive=0.0;mult=1.0
-    for tile in s.garden_plot:
+    for slot,tile in enumerate(s.garden_plot):
         if tile is None:continue
-        pid,age=tile;p=GARDEN["plants"][pid];strength=soil*garden_stage_strength(p,age)
+        pid,plant_age=tile
+        plant=GARDEN["plants"][pid]
+        strength=soil*garden_stage_strength(plant,plant_age)
+        if pid==7: # Elderwort: neighbors age up to 3% faster.
+            for other in _garden_nearby(slot,1):age[other]*=1+.03*strength
+        elif pid==21: # Queenbeet Lump: neighbors age up to 5% slower.
+            for other in _garden_nearby(slot,1):age[other]*=1-.05*strength
+        elif pid==16: # Nursetulip: neighbors are up to 20% stronger.
+            for other in _garden_nearby(slot,1):power[other]*=1+.20*strength
+        elif pid==30: # Shriekbulb: neighbors are up to 5% weaker.
+            for other in _garden_nearby(slot,1):power[other]*=1-.05*strength
+        elif pid==31: # Tidygrass protects a 5x5 area.
+            for other in _garden_nearby(slot,2):weed[other]=0.0
+        elif pid==32: # Everdaisy protects immediate neighbors.
+            for other in _garden_nearby(slot,1):weed[other]=0.0
+        elif pid==33: # Ichorpuff: neighbors age up to 50% slower.
+            for other in _garden_nearby(slot,1):age[other]*=1-.50*strength
+    return age,power,weed
+
+def garden_production_factor(s):
+    if s.producer_levels[2]<1 or s.garden_frozen:return 1.0
+    soil=GARDEN["soils"][s.garden_soil]["effect"]
+    _,power,_=garden_tile_modifiers(s)
+    additive=0.0;mult=1.0
+    for slot,tile in enumerate(s.garden_plot):
+        if tile is None:continue
+        pid,age=tile;p=GARDEN["plants"][pid];strength=soil*garden_stage_strength(p,age)*power[slot]
         if p["effect"]=="prod":additive+=p["power"]*strength
         elif p["effect"]=="prod_mult":mult*=1+p["power"]*strength
     return (1+additive)*mult
@@ -685,6 +721,21 @@ def baseline_blood_moon_policy(s):
 # ---------- Blood Gardens ----------
 def garden_available(s):return s.producer_levels[2]>=1
 
+def garden_set_frozen(s,frozen):
+    if not garden_available(s) or type(frozen) is not bool:return False
+    s.garden_frozen=frozen
+    if not frozen:s.garden_next_tick=s.elapsed+GARDEN["soils"][s.garden_soil]["tick"]
+    return True
+
+def garden_change_soil(s,soil):
+    if (not garden_available(s) or s.garden_frozen or type(soil) is not int or
+            not 0<=soil<len(GARDEN["soils"]) or soil==s.garden_soil):return False
+    if s.elapsed-s.garden_soil_changed_at<600:return False
+    if s.highest_owned[2]<GARDEN["soils"][soil]["requirement"]:return False
+    s.garden_soil=soil;s.garden_soil_changed_at=s.elapsed
+    s.garden_next_tick=s.elapsed+GARDEN["soils"][soil]["tick"]
+    return True
+
 def garden_seed_cost(s,pid):
     p=GARDEN["plants"][pid]
     return max(p["minimum_cost"],current_eps(s)*60*p["cost_minutes"])
@@ -715,13 +766,14 @@ def garden_harvest(s,slot,rng,replant=True):
     return True
 
 def garden_tick(s,rng,active=True):
-    if not garden_available(s):return
+    if not garden_available(s) or s.garden_frozen or not active:return
     soil=GARDEN["soils"][s.garden_soil]
+    age_modifiers,_,_=garden_tile_modifiers(s)
     for slot,tile in enumerate(list(s.garden_plot)):
         if tile is None:continue
         pid,age=tile;p=GARDEN["plants"][pid]
         # randomFloor(x): floor(x) plus Bernoulli(frac(x)).
-        x=p["age_tick"]+p["age_random"]*rng.random()
+        x=(p["age_tick"]+p["age_random"]*rng.random())*age_modifiers[slot]
         inc=math.floor(x)+(1 if rng.random()<(x-math.floor(x)) else 0)
         age+=inc
         # Immortal reference species: elderwort and everdaisy.
@@ -742,6 +794,9 @@ def garden_tick(s,rng,active=True):
 
 def update_garden(s,rng,active=True):
     if not garden_available(s):return
+    if s.garden_frozen or not active:
+        s.garden_next_tick=s.elapsed+GARDEN["soils"][s.garden_soil]["tick"]
+        return
     if s.garden_next_tick<=0:s.garden_next_tick=s.elapsed+GARDEN["soils"][s.garden_soil]["tick"]
     # Starter passive-production policy: fill affordable empty plots with starter seed.
     if active:
