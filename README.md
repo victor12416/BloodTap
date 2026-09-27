@@ -2,6 +2,16 @@
 
 BloodTap is an original gothic-horror incremental/clicker game project inspired by the progression depth of classic web incrementals. It uses original project names, presentation, code, and assets.
 
+## Play in a browser
+
+The repository includes a standalone GitHub Pages alpha in `docs/`. It runs entirely in the browser, stores progress in browser local storage, supports save export/import, and does not require Python or Pydroid on a phone.
+
+Once GitHub Pages is configured to deploy the `main` branch from `/docs`, the playable URL is:
+
+`https://victor12416.github.io/BloodTap/`
+
+The Python-backed local alpha remains the authoritative development implementation while the web alpha is validated against it.
+
 ## Play locally
 
 Run `python -B -m alpha.server` from this folder, then open <http://127.0.0.1:8765>. On Windows, you can also double-click `Start-BloodTap.cmd`. See [the playable-core guide](docs/ALPHA.md) for saves, tests, and current limits.
