@@ -52,6 +52,19 @@ def main() -> None:
             "main browser game loop is missing")
     require("#vessel" in style, "Gather Echoes control has no Pages styling")
 
+    # Player-facing lore vocabulary must stay coherent. Internal save keys and
+    # DOM ids intentionally retain legacy names for backwards compatibility.
+    require("Whisperer" not in index and "Whisperer" not in script,
+            "stale player-facing Whisperer terminology returned")
+    require("The First Vigil" not in index and "Loading the vigil" not in index,
+            "stale vigil terminology returned to the visible Pages UI")
+    require("lifetime prestige" not in script and "new fragments" not in script,
+            "raw prestige terminology leaked back into player-facing text")
+    require("Sleeping vigil" not in index and "Sleeping vigil" not in script,
+            "obsolete Sleeping vigil name returned")
+    require("Blood Echoes" in index and "Return to the Dream" in index,
+            "core Hunt/Dream vocabulary is missing from the visible UI")
+
     data = json.loads(economy_path.read_text(encoding="utf-8"))
     require(len(data.get("producers", [])) == 20, "Pages economy must contain 20 producers")
     require(data["producers"][0]["base_cost"] == 15, "unexpected first producer cost")
