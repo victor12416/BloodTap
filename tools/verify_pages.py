@@ -66,6 +66,10 @@ def main() -> None:
             "core Hunt/Dream vocabulary is missing from the visible UI")
     require("const REVEAL_AT=" in script and "visibleName(i)" in script and "visibleLore(i)" in script,
             "Insight-gated lore revelation is missing")
+    require('id="marks-open"' in index and 'id="marks-list"' in index,
+            "Marks of the Hunt record UI is missing")
+    require("function markRecord(id)" in script and "function renderMarks()" in script,
+            "achievement-to-Mark presentation layer is missing")
     require("Perception of truths beyond the Hunt" not in index,
             "opening UI explains the cosmic layer too directly")
 
