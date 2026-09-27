@@ -68,6 +68,11 @@ def main() -> None:
             "Insight-gated lore revelation is missing")
     require('id="marks-open"' in index and 'id="marks-list"' in index,
             "Marks of the Hunt record UI is missing")
+    require('class="game-dock"' in index and 'id="upgrades-open"' in index
+            and 'id="knowledge"' in index and 'id="upgrade-badge"' in index,
+            "fixed game command dock or Hunter's Knowledge panel is missing")
+    require("$('upgrades-open').onclick" in script and "$('upgrade-badge').textContent=ups.length" in script,
+            "knowledge dock interaction or upgrade badge wiring is missing")
     require("function markRecord(id)" in script and "function renderMarks()" in script,
             "achievement-to-Mark presentation layer is missing")
     require("Perception of truths beyond the Hunt" not in index,
