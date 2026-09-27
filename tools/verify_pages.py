@@ -29,7 +29,11 @@ def main() -> None:
     for asset in re.findall(r'(?:src|href)="([^"]+)"', index):
         if asset.startswith(("data:", "http:", "https:", "#")):
             continue
-        target = (DOCS / asset.split("?", 1)[0]).resolve()
+        clean = asset.split("?", 1)[0]
+        # "./" is the wordmark/home navigation target, not an asset file.
+        if clean in (".", "./", ""):
+            continue
+        target = (DOCS / clean).resolve()
         require(target.is_file(), f"index.html references missing Pages asset: {asset}")
 
     for element_id in ("vessel", "bank", "eps", "producers", "upgrades",
