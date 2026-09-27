@@ -70,3 +70,6 @@ body{padding-bottom:88px}
 /* Currency readout stays visually separate from descriptive panel copy */
 .holdings-balance{margin:16px 0 12px}
 .holdings-toolbar{padding-top:8px}
+
+/* Offline return */
+.offline-return{max-width:460px;text-align:center}.offline-return-inner{padding:8px 2px}.offline-return h2{margin:7px 0 12px;font-family:Georgia,serif;font-weight:400}.offline-return p{line-height:1.55}.offline-reward{margin:18px 0;padding:16px;border:1px solid var(--line);background:#171014;display:grid;gap:5px}.offline-reward span{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}.offline-reward strong{font-family:Georgia,serif;font-size:30px;font-weight:400;color:var(--gold)}.offline-return #offline-continue{margin-top:12px;width:100%}@media(max-width:520px){.offline-return{width:calc(100% - 28px)}.offline-return::backdrop{background:#080608dd}.offline-reward strong{font-size:27px}}
