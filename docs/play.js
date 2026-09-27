@@ -1,39 +1,16 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const SAVE_KEY='bloodtap-web-alpha-v1', STARTER_SCALE=23000000, STARTER_CAP=2, GROWTH=1.15;
-const NAMES=['Messengers','Huntsmen','Blood Ministers','Tomb Prospectors','Hunter Workshops','Church Hunters','Byrgenwerth Scholars','Labyrinth Expeditions','Blood Saints','Research Hall Patients','Choir Scholars','Mensis Scholars','Ritualists','Nightmare Seekers','Kin of the Cosmos','Great One Communion','Nightmare Convergences','Eldritch Revelations','Great One Memories','Transcendent Selves'];
+const NAMES=['Messengers','Huntsmen','Blood Ministers','Hunter Workshops','Church Hunters','Tomb Prospectors','Byrgenwerth Scholars','Labyrinth Expeditions','Blood Saints','Research Hall Patients','Choir Scholars','Mensis Scholars','Ritualists','Nightmare Seekers','Kin of the Cosmos','Great One Communion','Nightmare Convergences','Eldritch Revelations','Great One Memories','Transcendent Selves'];
 const REVEAL_AT=[0,0,0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,7,8,9];
-const VEILED_NAMES=['Messengers','Huntsmen','Blood Ministers','Tomb Prospectors','Hunter Workshops','Church Hunters','Forbidden Scholars','Old Labyrinth Expeditions','Consecrated Vessels','Research Subjects','Upper Scholars','Hidden Scholars','Ritualists','Dream Seekers','Altered Kin','Unknown Communion','Converging Dreams','Forbidden Revelations','Ancient Memories','Something Beyond'];
-function visibleName(i){return insight()>=REVEAL_AT[i]?NAMES[i]:VEILED_NAMES[i];}
-function visibleLore(i){if(insight()>=REVEAL_AT[i])return PRODUCER_LORE[i];const veiled=[
-'Pale attendants gather what the Hunt leaves behind.',
-'Hunters scour the streets and return with echoes taken from beasts and the mad.',
-'Ministers administer sacred blood, drawing wealth and influence toward the blood ministry.',
-'Explorers descend into old tombs beneath the city and return with blood and relics.',
-'Craftsmen arm the Hunt with specialized weapons and tools.',
-'Church-sanctioned hunters contain outbreaks and protect the blood ministry.',
-'Their studies are forbidden to ordinary hunters. What they seek is not yet clear.',
-'Expeditions descend below even the oldest tombs. Their reports are deliberately incomplete.',
-'The Church guards these vessels closely and says little of their purpose.',
-'Human subjects are changed in pursuit of a result the Church refuses to name.',
-'These scholars study something above the city, but their work is kept from the Hunt.',
-'Their rituals are hidden even from most of the Church.',
-'Forbidden rites consume blood and knowledge for an unknown purpose.',
-'Some hunters claim there are places reached only through sleep.',
-'They were human once. Beyond that, the records become unreliable.',
-'Something answers the rites. You cannot yet perceive what.',
-'Separate dreams appear to touch one another in ways that should be impossible.',
-'The truth is present, but your mind cannot yet hold its shape.',
-'Something persists between dreams. Its origin remains beyond perception.',
-'You can sense an ending beyond the Hunt, but cannot yet understand it.'
-];return veiled[i];}
+const VEILED_NAMES=['Messengers','Huntsmen','Blood Ministers','Hunter Workshops','Church Hunters','Tomb Prospectors','Forbidden Scholars','Old Labyrinth Expeditions','Consecrated Vessels','Research Subjects','Upper Scholars','Hidden Scholars','Ritualists','Dream Seekers','Altered Kin','Unknown Communion','Converging Dreams','Forbidden Revelations','Ancient Memories','Something Beyond'];
 const PRODUCER_LORE=[
 'Pale attendants of the dream who gather what the Hunt leaves behind.',
 'Common hunters scour the streets, returning with echoes taken from beasts and the mad.',
 'Ministers administer sacred blood, drawing wealth and influence toward the growing blood ministry.',
-'Chosen explorers descend into ancient tombs beneath the city and return with blood, relics, and dangerous knowledge.',
 'Craftsmen arm the Hunt with specialized weapons and tools, turning the beast scourge into an organized trade.',
 'Church-sanctioned hunters contain outbreaks and protect the institution built around blood healing.',
+'Chosen explorers descend into ancient tombs beneath the city and return with blood, relics, and dangerous knowledge.',
 'Scholars pursue forbidden knowledge, convinced that humanity must elevate its mind to approach higher beings.',
 'Expeditions push deeper into the old labyrinth, where ancient civilizations and eldritch traces predate the city above.',
 'Cultivated vessels provide unusually potent blood, strengthening the authority and mysteries of the Church.',
@@ -49,6 +26,30 @@ const PRODUCER_LORE=[
 'Fragments of beings beyond humanity persist through dreams and memory, feeding the Hunt across repeated cycles.',
 'The final pursuit is no longer the Hunt. Humanity is being left behind in the attempt to become something greater.'
 ];
+const VEILED_LORE=[
+'Pale attendants gather what the Hunt leaves behind.',
+'Hunters scour the streets and return with echoes taken from beasts and the mad.',
+'Ministers administer sacred blood, drawing wealth and influence toward the blood ministry.',
+'Craftsmen arm the Hunt with specialized weapons and tools.',
+'Church-sanctioned hunters contain outbreaks and protect the blood ministry.',
+'Explorers descend into old tombs beneath the city and return with blood and relics.',
+'Their studies are forbidden to ordinary hunters. What they seek is not yet clear.',
+'Expeditions descend below even the oldest tombs. Their reports are deliberately incomplete.',
+'The Church guards these vessels closely and says little of their purpose.',
+'Human subjects are changed in pursuit of a result the Church refuses to name.',
+'These scholars study something above the city, but their work is kept from the Hunt.',
+'Their rituals are hidden even from most of the Church.',
+'Forbidden rites consume blood and knowledge for an unknown purpose.',
+'Some hunters claim there are places reached only through sleep.',
+'They were human once. Beyond that, the records become unreliable.',
+'Something answers the rites. You cannot yet perceive what.',
+'Separate dreams appear to touch one another in ways that should be impossible.',
+'The truth is present, but your mind cannot yet hold its shape.',
+'Something persists between dreams. Its origin remains beyond perception.',
+'You can sense an ending beyond the Hunt, but cannot yet understand it.'
+];
+function visibleName(i){return insight()>=REVEAL_AT[i]?NAMES[i]:VEILED_NAMES[i];}
+function visibleLore(i){return insight()>=REVEAL_AT[i]?PRODUCER_LORE[i]:VEILED_LORE[i];}
 const TIER_NAMES=['Tempered Practice','Blood-Honed Methods','Church Sanction','Workshop Refinement','Forbidden Technique','Old Blood Infusion','Runic Inscription','Labyrinth Relic','Moonlit Revelation','Eldritch Method','Nightmare Practice','Ritual Communion','Cosmic Revelation','Formless Understanding','Transcendent Mastery'];
 const TIER_LORE=[
 'Hard-earned practice makes this work twice as effective.',
