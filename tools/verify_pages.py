@@ -66,8 +66,9 @@ def main() -> None:
             "core Hunt/Dream vocabulary is missing from the visible UI")
     require("const REVEAL_AT=" in script and "visibleName(i)" in script and "visibleLore(i)" in script,
             "Insight-gated lore revelation is missing")
-    require('id="marks-open"' in index and 'id="marks-list"' in index,
-            "Marks of the Hunt record UI is missing")
+    require('id="marks-list"' in index and 'id="records-insight"' in index
+            and 'id="insight-open"' in index,
+            "Hunter Records / Insight UI is missing")
     require('class="game-dock"' in index and 'id="upgrades-open"' in index
             and 'id="knowledge"' in index and 'id="upgrade-badge"' in index,
             "fixed game command dock or Hunter's Knowledge panel is missing")
@@ -81,6 +82,11 @@ def main() -> None:
             "knowledge dock interaction or upgrade badge wiring is missing")
     require("function markRecord(id)" in script and "function renderMarks()" in script,
             "achievement-to-Mark presentation layer is missing")
+    require("$('records-stage').textContent=insightState[0]" in script
+            and "$('records-insight-detail').textContent=insightState[1]" in script,
+            "Insight perception stage is not wired into Hunter Records")
+    require(index.count("</main>") == 1,
+            "main game document must contain exactly one closing main tag")
     require('id="phase-name"' in index and 'id="phase-detail"' in index
             and "const HUNT_PHASES=" in script and "function huntPhase()" in script,
             "narrative Hunt chapter progression is missing")
