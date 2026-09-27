@@ -50,6 +50,9 @@ def main() -> None:
             "browser save/load path is missing")
     require("requestAnimationFrame(tick)" in script,
             "main browser game loop is missing")
+    require("exponentialRampToValueAtTime(endFrequency" in script
+            and "root*2,root*1.55" in script and "root,root*.72" in script,
+            "Hunt ambience must retain its descending pitch contour")
     require("#vessel" in style, "Gather Echoes control has no Pages styling")
 
     # Player-facing lore vocabulary must stay coherent. Internal save keys and
