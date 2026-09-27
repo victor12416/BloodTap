@@ -75,6 +75,11 @@ def main() -> None:
             "knowledge dock interaction or upgrade badge wiring is missing")
     require("function markRecord(id)" in script and "function renderMarks()" in script,
             "achievement-to-Mark presentation layer is missing")
+    require('id="phase-name"' in index and 'id="phase-detail"' in index
+            and "const HUNT_PHASES=" in script and "function huntPhase()" in script,
+            "narrative Hunt chapter progression is missing")
+    require("['Messengers','Huntsmen','Blood Ministers','Hunter Workshops','Church Hunters','Tomb Prospectors'" in script,
+            "early Hunt/Church producer order drifted from the narrative progression")
     require("Perception of truths beyond the Hunt" not in index,
             "opening UI explains the cosmic layer too directly")
 
