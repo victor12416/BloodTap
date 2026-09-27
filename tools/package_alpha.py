@@ -7,7 +7,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parent.parent
 RUNTIME_FILES=(
-    'VERSION','README.md','Start-BloodTap.cmd',
+    'VERSION','README.md','Start-BloodTap.cmd','android.py',
     'alpha/__init__.py','alpha/game.py','alpha/locking.py','alpha/saves.py','alpha/server.py',
     'alpha/web/app.js','alpha/web/index.html','alpha/web/style.css',
     'simulator/__init__.py','simulator/economy_data.json','simulator/garden_data.json',
