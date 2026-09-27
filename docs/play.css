@@ -36,3 +36,12 @@ body{padding-bottom:88px}
 .dream-panel #memories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 #dream-badge{position:absolute;right:-4px;top:-7px;min-width:20px;height:20px;padding:2px 5px;border-radius:10px;background:var(--gold);color:#1b1014;font-size:10px;line-height:16px;box-shadow:0 2px 8px #0008}
 @media(max-width:600px){.dream-return{display:block}.dream-return button{width:100%;margin-top:10px}.dream-panel #memories{grid-template-columns:1fr}.game-dock button{gap:5px}}
+
+/* Hunter Records: achievements and perception belong together */
+.records-panel{width:min(760px,calc(100vw - 24px))}
+.records-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
+.records-summary>div{padding:13px;border:1px solid var(--line);background:#171014;text-align:center}
+.records-summary strong{display:block;font-family:Georgia,serif;font-size:22px;font-weight:400;color:var(--gold)}
+.records-summary span{display:block;margin-top:5px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.records-panel h3{font-family:Georgia,serif;font-weight:400}
+@media(max-width:460px){.records-summary{grid-template-columns:1fr}.records-summary>div{display:flex;align-items:baseline;justify-content:space-between;text-align:left}.records-summary span{margin:0}}
