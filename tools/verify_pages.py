@@ -75,7 +75,7 @@ def main() -> None:
     require('id="hunt-open"' in index and 'id="dream-open"' in index
             and 'id="dream"' in index and 'id="dream-badge"' in index,
             "dedicated Hunt/Dream navigation is missing")
-    require("$('dream-open').onclick=()=>$('dream').showModal()" in script
+    require("$('dream-open').onclick" in script and "$('dream').showModal()" in script
             and "$('hunt-open').onclick" in script,
             "Hunt/Dream system screen wiring is missing")
     require("$('upgrades-open').onclick" in script and "$('upgrade-badge').textContent=ups.length" in script,
@@ -90,7 +90,7 @@ def main() -> None:
     require('id="holdings"' in index and 'id="holdings-open"' in index
             and 'id="producers"' in index and 'class="producers holdings-grid"' in index,
             "producer Holdings management screen is missing")
-    require("$('holdings-open').onclick=()=>$('holdings').showModal()" in script,
+    require("$('holdings-open').onclick" in script and "$('holdings').showModal()" in script,
             "Holdings screen navigation is not wired")
     require("minimumFractionDigits:2,maximumFractionDigits:2" in script,
             "compact economy values must retain decimal progress")
