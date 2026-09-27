@@ -87,6 +87,11 @@ def main() -> None:
             "Insight perception stage is not wired into Hunter Records")
     require(index.count("</main>") == 1,
             "main game document must contain exactly one closing main tag")
+    require('id="holdings"' in index and 'id="holdings-open"' in index
+            and 'id="producers"' in index and 'class="producers holdings-grid"' in index,
+            "producer Holdings management screen is missing")
+    require("$('holdings-open').onclick=()=>$('holdings').showModal()" in script,
+            "Holdings screen navigation is not wired")
     require("minimumFractionDigits:2,maximumFractionDigits:2" in script,
             "compact economy values must retain decimal progress")
     require('id="phase-name"' in index and 'id="phase-detail"' in index
