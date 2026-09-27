@@ -8,3 +8,15 @@
 .mark-record{display:grid;gap:.2rem;padding:.75rem .85rem;border:1px solid var(--line,#49343c);background:rgba(255,255,255,.025)}
 .mark-record strong{font-family:var(--serif,serif);font-size:1rem}
 .mark-record span{font-size:.82rem;opacity:.72;line-height:1.35}
+
+/* Game-like fixed command dock and dedicated knowledge panel */
+body{padding-bottom:88px}
+.game-dock{position:fixed;z-index:15;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:6px;padding:7px;border:1px solid #65404a;border-radius:14px;background:#160f13eF;box-shadow:0 14px 45px #000b,0 0 28px #8f263522;backdrop-filter:blur(12px)}
+.game-dock button{position:relative;min-width:108px;padding:9px 15px 8px;display:flex;align-items:center;justify-content:center;gap:8px;border-color:transparent;background:#25181e;font-size:11px;letter-spacing:.5px}
+.game-dock button:hover{border-color:#9b5060;background:#3a222b}
+.dock-glyph{font-family:Georgia,serif;color:var(--gold);font-size:17px;line-height:1}
+#upgrade-badge{position:absolute;right:-4px;top:-7px;min-width:20px;height:20px;padding:2px 5px;border-radius:10px;background:var(--red);color:white;font-size:10px;line-height:16px;box-shadow:0 2px 8px #0008}
+.game-panel{width:min(760px,calc(100vw - 24px));padding:24px}
+.game-panel .upgrades{grid-template-columns:repeat(2,minmax(0,1fr));max-height:min(65vh,650px);padding:4px;gap:10px}
+.game-panel .upgrade{min-height:105px;padding:14px}
+@media(max-width:600px){body{padding-bottom:82px}.game-dock{width:calc(100vw - 20px);bottom:max(8px,env(safe-area-inset-bottom));justify-content:stretch}.game-dock button{min-width:0;flex:1;padding:9px 5px;font-size:10px}.game-panel{padding:18px}.game-panel .upgrades{grid-template-columns:1fr;max-height:68vh}.game-panel .upgrade{min-height:0}}
