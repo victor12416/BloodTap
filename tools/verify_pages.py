@@ -71,6 +71,12 @@ def main() -> None:
     require('class="game-dock"' in index and 'id="upgrades-open"' in index
             and 'id="knowledge"' in index and 'id="upgrade-badge"' in index,
             "fixed game command dock or Hunter's Knowledge panel is missing")
+    require('id="hunt-open"' in index and 'id="dream-open"' in index
+            and 'id="dream"' in index and 'id="dream-badge"' in index,
+            "dedicated Hunt/Dream navigation is missing")
+    require("$('dream-open').onclick=()=>$('dream').showModal()" in script
+            and "$('hunt-open').onclick" in script,
+            "Hunt/Dream system screen wiring is missing")
     require("$('upgrades-open').onclick" in script and "$('upgrade-badge').textContent=ups.length" in script,
             "knowledge dock interaction or upgrade badge wiring is missing")
     require("function markRecord(id)" in script and "function renderMarks()" in script,
