@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const SAVE_KEY='bloodtap-web-alpha-v1', STARTER_SCALE=23000000, STARTER_CAP=2, GROWTH=1.15;
-const NAMES=['Whisperers','Lantern Keepers','Crimson Orchards','Grave Delvers','Night Forges','Echo Vaults','Silent Choirs','Star Observatories','Relic Caravans','Ichor Foundries','Dusk Portals','Dream Wheels','Hollow Crucibles','Lumen Groves','Omen Spires','Endless Vigils','Rune Archives','Dream Confluences','Ancient Memories','Awakened Selves'];
+const NAMES=['Messengers','Huntsmen','Blood Ministers','Tomb Prospectors','Hunter Workshops','Church Hunters','Byrgenwerth Scholars','Labyrinth Expeditions','Blood Saints','Research Hall Patients','Choir Scholars','Mensis Scholars','Ritualists','Nightmare Seekers','Kin of the Cosmos','Great One Communion','Nightmare Convergences','Eldritch Revelations','Great One Memories','Transcendent Selves'];
 const PERMANENT={U363:['First memory','Unlock resonance upgrades in each new run.',1,null],U281:['Sleeping vigil','Earn 5% offline for an hour, then 0.5%.',1,'U363'],U395:['Deep memory','Unlock stronger offline paths.',3,'U363'],U274:['Long vigil I','Add 10 percentage points to offline production.',7,'U395'],U275:['Long vigil II','Add another 10 percentage points.',49,'U274'],U353:['Enduring dream I','Double the full-efficiency offline window.',7,'U395'],U354:['Enduring dream II','Double that window again.',49,'U353']};
 let D,state,quantity=1,lastFrame=performance.now(),lastSaved=Date.now(),omenUntil=0,confirmation=null,hadOmen=false;
 
