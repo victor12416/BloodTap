@@ -165,3 +165,25 @@ button,.button,input,output{font-size:inherit}
  .insight-progress-head{display:grid;gap:3px}
  #insight-effects-list{grid-template-columns:1fr}
 }
+
+/* Primary Hunt interaction: large gothic blood seal, touch-first */
+#vessel{
+ width:min(330px,78vw);height:min(330px,78vw);min-width:250px;min-height:250px;
+ margin:24px auto 18px;border:0;outline:0;-webkit-tap-highlight-color:transparent;
+ background:
+  radial-gradient(circle at 50% 48%,#7b2635 0 9%,#421820 10% 27%,#170d12 28% 51%,#32131b 52% 54%,#100a0d 55% 100%);
+ box-shadow:0 0 54px #7d1f3029,inset 0 0 50px #000b;
+}
+#vessel:focus{outline:none}#vessel:focus-visible{outline:1px solid #b6786e;outline-offset:7px}
+#vessel:hover{box-shadow:0 0 65px #8e263839,inset 0 0 50px #000b}
+#vessel:active{transform:scale(.985);box-shadow:0 0 42px #7d1f3030,inset 0 0 58px #000d}
+.vessel-orbit{inset:18px;border:1px solid #9c685d88;box-shadow:inset 0 0 0 8px #0b070950}
+.vessel-orbit:before,.vessel-orbit:after{content:"";position:absolute;inset:15%;border:1px solid #77474a99;transform:rotate(45deg)}
+.vessel-orbit:after{inset:29%;transform:rotate(45deg);border-color:#a1675d80}
+.sigil{font-size:0;width:96px;height:96px;position:relative;filter:drop-shadow(0 0 12px #8d2b3d66)}
+.sigil:before,.sigil:after{content:"";position:absolute;left:50%;top:50%;background:#b98578;transform:translate(-50%,-50%)}
+.sigil:before{width:7px;height:94px;clip-path:polygon(50% 0,100% 16%,72% 43%,100% 50%,68% 57%,78% 100%,22% 100%,32% 57%,0 50%,28% 43%,0 16%)}
+.sigil:after{width:82px;height:7px;clip-path:polygon(0 50%,18% 0,42% 30%,50% 0,58% 30%,82% 0,100% 50%,82% 100%,58% 70%,50% 100%,42% 70%,18% 100%)}
+.vessel-label{margin-top:17px;color:#c7a39b;font-size:10px;letter-spacing:2.3px}
+@media(max-width:600px){#vessel{width:min(310px,82vw);height:min(310px,82vw);min-width:250px;min-height:250px;margin-top:20px}}
+@media(max-width:340px){#vessel{width:250px;height:250px;min-width:250px;min-height:250px}}
