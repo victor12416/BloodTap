@@ -139,3 +139,29 @@ button,.button,input,output{font-size:inherit}
  .producer .detail{margin-top:3px}
  .holdings-toolbar{align-items:center}
 }
+
+/* Insight guide: source -> currency -> consequence */
+.insight-path{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:9px;margin:18px 0}
+.insight-step{min-width:0;padding:13px 8px;border:1px solid var(--line);background:#171014;text-align:center}
+.insight-step strong{display:block;font-family:Georgia,serif;font-size:22px;font-weight:400;color:var(--gold);overflow-wrap:anywhere}
+.insight-step span{display:block;margin-top:5px;color:var(--muted);font-size:9px;letter-spacing:.8px;text-transform:uppercase}
+.insight-arrow{color:var(--red);font-size:18px}
+.insight-progress{padding:14px;border:1px solid var(--line);background:#120d10}
+.insight-progress-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:12px}
+.insight-progress-head strong{color:var(--gold);font-weight:500}
+.insight-progress progress{width:100%;height:10px;margin:10px 0 6px;accent-color:var(--red)}
+.insight-progress small{color:var(--muted);font-size:10px}
+.insight-effects{margin-top:18px}
+.insight-effects h3,.records-heading h3{margin:0 0 10px;font-family:Georgia,serif;font-weight:400}
+#insight-effects-list{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.insight-effect{padding:10px 11px;border-left:2px solid var(--red);background:#171014;font-size:12px;line-height:1.4}
+.records-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.records-heading small{color:var(--muted);font-size:10px}
+@media(max-width:520px){
+ .insight-path{grid-template-columns:1fr auto 1fr;gap:6px}
+ .insight-path .insight-arrow:nth-of-type(2){display:none}
+ .insight-path .insight-step:last-child{grid-column:1/-1}
+ .insight-step{padding:10px 6px}.insight-step strong{font-size:19px}
+ .insight-progress-head{display:grid;gap:3px}
+ #insight-effects-list{grid-template-columns:1fr}
+}
