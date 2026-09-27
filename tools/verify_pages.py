@@ -87,6 +87,8 @@ def main() -> None:
             "Insight perception stage is not wired into Hunter Records")
     require(index.count("</main>") == 1,
             "main game document must contain exactly one closing main tag")
+    require("minimumFractionDigits:2,maximumFractionDigits:2" in script,
+            "compact economy values must retain decimal progress")
     require('id="phase-name"' in index and 'id="phase-detail"' in index
             and "const HUNT_PHASES=" in script and "function huntPhase()" in script,
             "narrative Hunt chapter progression is missing")
