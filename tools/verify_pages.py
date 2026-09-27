@@ -64,6 +64,10 @@ def main() -> None:
             "obsolete Sleeping vigil name returned")
     require("Blood Echoes" in index and "Return to the Dream" in index,
             "core Hunt/Dream vocabulary is missing from the visible UI")
+    require("const REVEAL_AT=" in script and "visibleName(i)" in script and "visibleLore(i)" in script,
+            "Insight-gated lore revelation is missing")
+    require("Perception of truths beyond the Hunt" not in index,
+            "opening UI explains the cosmic layer too directly")
 
     data = json.loads(economy_path.read_text(encoding="utf-8"))
     require(len(data.get("producers", [])) == 20, "Pages economy must contain 20 producers")
