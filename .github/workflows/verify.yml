@@ -12,6 +12,7 @@ jobs:
           python-version: '3.12'
       - run: python -B -m simulator.verify
       - run: python -B -m unittest discover -s alpha -p "test_*.py"
+      - run: python -B -m tools.verify_pages
       - run: python -B -m tools.package_alpha
       - uses: actions/upload-artifact@v4
         with:
