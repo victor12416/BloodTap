@@ -26,3 +26,13 @@ body{padding-bottom:88px}
 .hunt-phase span{display:block;color:var(--gold);font-size:9px;letter-spacing:1.8px;text-transform:uppercase}
 .hunt-phase strong{display:block;margin-top:4px;font-family:Georgia,serif;font-size:20px;font-weight:400}
 .hunt-phase small{display:block;margin-top:5px;color:var(--muted);font-size:10px;line-height:1.45}
+
+/* Dedicated system screens */
+.dream-panel{width:min(820px,calc(100vw - 24px))}
+.dream-panel>p{max-width:650px}
+.dream-return{display:flex;align-items:end;justify-content:space-between;gap:18px;padding:12px 0}
+.dream-return p{margin:0;max-width:520px}
+.dream-return button{flex:0 0 auto}
+.dream-panel #memories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#dream-badge{position:absolute;right:-4px;top:-7px;min-width:20px;height:20px;padding:2px 5px;border-radius:10px;background:var(--gold);color:#1b1014;font-size:10px;line-height:16px;box-shadow:0 2px 8px #0008}
+@media(max-width:600px){.dream-return{display:block}.dream-return button{width:100%;margin-top:10px}.dream-panel #memories{grid-template-columns:1fr}.game-dock button{gap:5px}}
