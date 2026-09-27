@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#160e12"><title>BloodTap · The First Vigil</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23df6973' d='M16 2 28 16 16 30 4 16Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="play.css"><script src="play.js" defer></script>
+</head>
+<body>
+<header><a class="wordmark" href="./">BLOOD<span>TAP</span></a><span class="edition">THE FIRST VIGIL <b>WEB ALPHA</b></span><button id="settings-open" class="quiet">Save & settings</button></header>
+<main>
+<section class="vigil" aria-labelledby="vigil-title">
+<div class="eyebrow">A city sleeps. Something listens.</div><h1 id="vigil-title">Wake the<br><em>blood.</em></h1>
+<div class="balance"><strong id="bank">0</strong><span>echoes</span></div><div class="income"><span id="eps">0</span> / second <span class="dot">·</span> <span id="tap-value">1</span> / tap</div>
+<button id="vessel" aria-label="Gather echoes"><span class="vessel-orbit"></span><span class="sigil">◆</span><span class="vessel-label">GATHER ECHOES</span></button>
+<p class="hint" id="onboarding">Loading the vigil…</p><span id="omen-announcement" class="sr-only" aria-live="assertive"></span><button id="omen" class="omen" hidden>✦ An Omen appears <span id="omen-time"></span></button>
+<div id="buffs" class="buffs"></div><p id="notice" role="status" aria-live="polite"></p>
+<div class="vigil-stats"><div><strong id="achievements">0</strong><span>achievements</span></div><div><strong id="insight">0</strong><span>Insight</span></div><div><strong id="total-owned">0</strong><span>allies</span></div></div>
+</section>
+<section class="empire"><div class="section-head"><div><div class="eyebrow">THE CITY ANSWERS</div><h2>Build your vigil</h2></div><div class="quantity"><button data-quantity="1" aria-pressed="true">1</button><button data-quantity="10">10</button><button data-quantity="100">100</button></div></div>
+<div id="producers" class="producers"></div><div class="section-head upgrade-heading"><div><div class="eyebrow">SMALL RITES. LASTING POWER.</div><h2>Upgrades</h2></div></div><p id="upgrade-empty" class="muted">Grow your vigil to discover upgrades.</p><div id="upgrades" class="upgrades"></div></section>
+<section class="memory"><div><div class="eyebrow">WHAT SURVIVES THE NIGHT</div><h2>Reawakening</h2><p>Begin again. Keep achievements and permanent memories. Convert lifetime echoes into fragments.</p><p id="reawakening-info"></p><button id="reawaken" disabled>Reawaken</button></div><div><div class="memory-total"><strong id="fragments">0</strong> fragments to spend</div><div id="memories"></div><p id="offline-info" class="muted"></p></div></section>
+</main>
+<footer><span>BLOODTAP / WEB ALPHA</span><span>Progress is stored on this device.</span><span id="save-status">Loading…</span></footer>
+<dialog id="settings"><form method="dialog"><div class="dialog-head"><h2>Your vigil</h2><button class="quiet">Close</button></div></form><p>Progress saves in this browser every 10 seconds and after purchases. Export a copy before clearing browser data or switching devices.</p><div class="settings-actions"><button id="save-now">Save now</button><button id="export-save">Export save</button><button id="import-open">Import save</button><input id="import-file" type="file" accept=".json,application/json" hidden></div><label class="checkbox"><input id="reduced-motion" type="checkbox"> Reduce motion</label><p class="muted">Offline production unlocks through Sleeping vigil.</p><hr><h3>Start over</h3><p>This erases progress on this browser. Export first.</p><button id="reset" class="danger">Reset all progress</button></dialog>
+<dialog id="confirm"><form id="confirm-form"><h2 id="confirm-title"></h2><p id="confirm-description"></p><label id="confirm-label">Confirmation <input id="confirm-input" autocomplete="off"></label><p class="dialog-error" role="alert"></p><div class="settings-actions"><button id="confirm-submit" type="submit">Continue</button><button id="confirm-cancel" type="button" class="quiet">Cancel</button></div></form></dialog>
+<div id="error" role="alert" hidden></div>
+</body></html>
