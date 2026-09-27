@@ -1,5 +1,10 @@
 # BloodTap engineering changelog
 
+## Ominous Hunt audio palette
+- Rebuilt every sound effect as an original low-register, descending minor or dissonant phrase with darker decay and restrained noise.
+- Lowered the rapid-tap synthesis into a 78–39 Hz pulse and retained the descending procedural ambience.
+- Added a deterministic standard-library audio generator and CI verification so all shipped WAV assets stay reproducible.
+
 ## Fresh-session playtest handoff
 - Added an isolated-save human playtest path covering onboarding, Omens, the two-fragment bundle, Reawakening, offline earnings, export, and mobile usability.
 - Added a compact report template so pacing and comprehension findings can be compared without changing balance from one anecdotal completion time.

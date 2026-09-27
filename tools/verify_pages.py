@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from tools.generate_audio import check_assets
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
@@ -18,6 +19,7 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 def main() -> None:
+    check_assets()
     index = (DOCS / "index.html").read_text(encoding="utf-8")
     script = (DOCS / "play.js").read_text(encoding="utf-8")
     style = (DOCS / "play.css").read_text(encoding="utf-8")
@@ -53,6 +55,9 @@ def main() -> None:
     require("exponentialRampToValueAtTime(endFrequency" in script
             and "root*2,root*1.55" in script and "root,root*.72" in script,
             "Hunt ambience must retain its descending pitch contour")
+    require("osc.frequency.setValueAtTime(78" in script
+            and "osc.frequency.exponentialRampToValueAtTime(39" in script,
+            "manual tap sound must retain its low descending pulse")
     require("#vessel" in style, "Gather Echoes control has no Pages styling")
 
     # Player-facing lore vocabulary must stay coherent. Internal save keys and
