@@ -187,3 +187,51 @@ button,.button,input,output{font-size:inherit}
 .vessel-label{margin-top:17px;color:#c7a39b;font-size:10px;letter-spacing:2.3px}
 @media(max-width:600px){#vessel{width:min(310px,82vw);height:min(310px,82vw);min-width:250px;min-height:250px;margin-top:20px}}
 @media(max-width:340px){#vessel{width:250px;height:250px;min-width:250px;min-height:250px}}
+
+/* Fixed Hunt home: app-like dashboard, not a scrolling webpage */
+html,body{height:100%;overscroll-behavior:none}
+body{height:100dvh;min-height:0;overflow:hidden;padding-bottom:0}
+header{height:72px;min-height:72px;padding:12px 4%;max-width:none}
+main{height:calc(100dvh - 72px);max-width:1180px;width:100%;padding:0 28px 88px;grid-template-columns:minmax(0,1fr) 300px;align-items:center;overflow:hidden}
+.vigil{position:relative;top:auto;align-self:center;padding:12px 34px 10px 0;max-height:100%;overflow:hidden}
+.vigil>.eyebrow{display:none}
+.vigil h1{font-size:clamp(34px,5.2vh,58px);margin:4px 0 10px;line-height:.95}
+.balance strong{font-size:clamp(27px,4vh,36px)}
+.income{margin-top:3px}
+#vessel{width:min(300px,34vh,66vw);height:min(300px,34vh,66vw);min-width:190px;min-height:190px;margin:12px auto 8px}
+.hint{min-height:0;margin:5px auto;line-height:1.4;max-width:520px}
+#notice{min-height:0;margin:4px auto;line-height:1.35}
+.omen{margin:7px auto}
+.vigil-stats{padding-top:10px;margin-top:8px;gap:clamp(18px,4vw,44px)}
+.vigil-stats small{display:none}
+.empire{align-self:center;padding:18px 0 18px 24px}
+.hunt-phase{padding:14px;border:1px solid var(--line);background:#171014}
+.hunt-phase>span{display:block;color:var(--muted);font-size:9px;letter-spacing:1px;text-transform:uppercase}
+.hunt-phase>strong{display:block;margin-top:4px;font-family:Georgia,serif;font-size:21px;font-weight:400}
+.hunt-phase .text-info{margin-top:3px}
+.home-holdings{width:100%;margin-top:10px;padding:16px;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(120deg,#281b21,#1c1619)}
+.home-holdings span{display:grid;gap:3px}.home-holdings small{color:var(--gold);font-size:9px;letter-spacing:1px}.home-holdings strong{font-family:Georgia,serif;font-size:27px;font-weight:400}.home-holdings em{font-style:normal;color:var(--muted);font-size:10px}.home-holdings b{font-size:11px;color:var(--gold);font-weight:500}
+footer{display:none}
+.game-dock{bottom:max(10px,env(safe-area-inset-bottom))}
+dialog{overflow:auto;overscroll-behavior:contain}
+@media(max-width:800px){
+ header{height:58px;min-height:58px;padding:8px 14px}
+ main{height:calc(100dvh - 58px);padding:0 14px 82px;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;align-items:center}
+ .vigil{padding:5px 0;align-self:center}
+ .vigil h1{font-size:clamp(30px,5.2vh,46px);margin:2px 0 6px}
+ .balance strong{font-size:clamp(25px,3.8vh,32px)}
+ #vessel{width:min(285px,34vh,76vw);height:min(285px,34vh,76vw);min-width:180px;min-height:180px;margin:8px auto 5px}
+ .vessel-label{margin-top:11px}
+ .hint{font-size:11px;margin:3px auto;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #notice{font-size:11px;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .vigil-stats{margin-top:5px;padding-top:7px;gap:30px}
+ .vigil-stats strong{font-size:18px}
+ .empire{border:0;border-top:1px solid var(--line);padding:7px 0;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+ .hunt-phase{padding:8px 10px}.hunt-phase>strong{font-size:15px}.hunt-phase .text-info{font-size:9px;padding:2px 0}.hunt-phase small{position:absolute;left:14px;right:14px;bottom:82px;z-index:5;padding:10px;background:#171014;border:1px solid var(--line)}
+ .home-holdings{margin:0;padding:8px 10px}.home-holdings strong{font-size:20px}.home-holdings em{display:none}.home-holdings b{font-size:10px}
+}
+@media(max-height:700px){
+ .vigil h1{font-size:30px}.vigil h1 br{display:none}
+ #vessel{width:min(220px,30vh);height:min(220px,30vh);min-width:160px;min-height:160px}
+ .hint{display:none}.vigil-stats{margin-top:3px}
+}
